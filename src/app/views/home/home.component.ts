@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   categories = [
-    { title: 'Top Of The Week', playlists: [{}, {}, {}, {}, {}, {}] },
-    { title: 'Tech House', playlists: [{}, {}, {}, {}, {}, {}] },
-    { title: 'Progressive', playlists: [{}, {}, {}, {}, {}, {}] },
-    { title: 'Old School', playlists: [{}, {}, {}, {}, {}, {}] }
+    { title: 'Top Of The Week', playlists: [{}, {}, {}, {}] },
+    { title: 'Tech House', playlists: [{}, {}, {}, {}] },
+    { title: 'Progressive', playlists: [{}, {}, {}, {}] },
+    { title: 'Old School', playlists: [{}, {}, {}, {}] }
   ];
 
   constructor() {}
