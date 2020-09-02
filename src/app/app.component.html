@@ -1,8 +1,13 @@
 <div class="flex h-full">
-  <div class="hidden md:block w-1/4 min-h-screen bg-gray-900 shadow-lg">
+  <div *ngIf="isMenuOpen" class="absolute w-2/3 z-20 md:block md:w-1/4 min-h-screen bg-gray-900 shadow-lg">
     <app-sidebar></app-sidebar>
   </div>
   <div class="md:w-3/4 p-8">
+    <button class=" md:hidden pr-2 py-2 mb-4 focus:outline-none" (click)="isMenuOpen = !isMenuOpen">
+      <!-- Menu Button -->
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
     <router-outlet></router-outlet>
   </div>
+  <div *ngIf="isMenuOpen" class="absolute w-full h-full bg-gray-900 opacity-50 z-10" (click)="isMenuOpen = false"></div>
 </div>
