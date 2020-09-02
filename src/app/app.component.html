@@ -14,7 +14,7 @@
   </div>
   <div
     *ngIf="isMenuOpen"
-    class=" opacity-0 fixed w-full h-full bg-gray-900 transition-all duration-500 ease-in-out md:hidden"
+    class=" opacity-0 fixed w-full h-full bg-gray-900 md:hidden fadeIn"
     [ngClass]="{ 'opacity-50 z-10': isMenuOpen }"
     (click)="isMenuOpen = false"
   ></div>
