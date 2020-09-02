@@ -1,4 +1,4 @@
-<div class="h-full bg-gray-900 shadow-lg px-3">
+<div class="h-full">
   <div class="py-5 px-3">
     <div class="bg-white rounded-full w-8 h-8 inline-block mr-2"></div>
     <h3 class="font-extrabold text-4xl text-white inline">Playlistr</h3>
@@ -7,6 +7,8 @@
   <div class="text-xl ">
     <a
       href="#"
+      [routerLink]=""
+      [routerLinkActive]="['text-white', 'bg-gray-800']"
       class="block px-1 py-2 px-3 rounded hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
     >
       <i class="fas fa-home inline mr-4" alt="home"></i>
@@ -14,6 +16,7 @@
     </a>
     <a
       href="#$"
+      [routerLinkActive]="['text-white', 'bg-gray-800']"
       class="block px-1 py-2 px-3 rounded hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
     >
       <i class="fas fa-user inline mr-4" alt="search"></i>
@@ -21,6 +24,7 @@
     </a>
     <a
       href="#$%"
+      [routerLinkActive]="['text-white', 'bg-gray-800']"
       class="block px-1 py-2 px-3 rounded hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
     >
       <i class="fas fa-globe inline mr-4" alt="discover"></i>

@@ -1,8 +1,8 @@
 <div class="flex h-full">
-  <div class="w-1/4 min-h-screen">
+  <div class="hidden md:block w-1/4 min-h-screen bg-gray-900 shadow-lg px-3">
     <app-sidebar></app-sidebar>
   </div>
-  <div class="w-1/3">
-    <!-- router outlet -->
+  <div class="md:w-3/4 p-8">
+    <router-outlet></router-outlet>
   </div>
 </div>
