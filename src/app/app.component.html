@@ -1,7 +1,7 @@
 <div class="flex flex-grid h-full">
   <div
     *ngIf="isMenuOpen"
-    class="absolute w-2/3 z-20 md:block md:relative md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
+    class="fixed w-2/3 z-20 md:block md:relative md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
   >
     <app-sidebar></app-sidebar>
   </div>
@@ -14,7 +14,7 @@
   </div>
   <div
     *ngIf="isMenuOpen"
-    class=" opacity-0 absolute w-full h-full bg-gray-900 transition-all duration-500 ease-in-out md:hidden"
+    class=" opacity-0 fixed w-full h-full bg-gray-900 transition-all duration-500 ease-in-out md:hidden"
     [ngClass]="{ 'opacity-50 z-10': isMenuOpen }"
     (click)="isMenuOpen = false"
   ></div>
