@@ -1,5 +1,8 @@
-<div class="flex h-full">
-  <div *ngIf="isMenuOpen" class="absolute w-2/3 z-20 md:block md:w-1/4 min-h-screen bg-gray-900 shadow-lg">
+<div class="flex flex-grid h-full">
+  <div
+    *ngIf="isMenuOpen"
+    class="absolute w-2/3 z-20 md:block md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
+  >
     <app-sidebar></app-sidebar>
   </div>
   <div class="md:w-3/4 p-8">
@@ -9,5 +12,10 @@
     </button>
     <router-outlet></router-outlet>
   </div>
-  <div *ngIf="isMenuOpen" class="absolute w-full h-full bg-gray-900 opacity-50 z-10" (click)="isMenuOpen = false"></div>
+  <div
+    *ngIf="isMenuOpen"
+    class=" opacity-0 absolute w-full h-full bg-gray-900 transition-all duration-500 ease-in-out md:hidden"
+    [ngClass]="{ 'opacity-50 z-10': isMenuOpen }"
+    (click)="isMenuOpen = false"
+  ></div>
 </div>
