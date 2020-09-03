@@ -4,8 +4,7 @@ module.exports = {
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'active'],
-    borderWidth: ['active'],
-    borderStyle: ['active']
+    borderWidth: ['active']
   },
   plugins: []
 };

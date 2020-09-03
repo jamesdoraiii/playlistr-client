@@ -7,9 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { PlaylistRowComponent } from './components/playlist-row/playlist-row.component';
 import { HomeComponent } from './views/home/home.component';
+import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
+import { HeroComponent } from './views/hero/hero.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, PlaylistCardComponent, PlaylistRowComponent, HomeComponent],
+  declarations: [AppComponent, SidebarComponent, PlaylistCardComponent, PlaylistRowComponent, HomeComponent, SpotifyEmbeddedPlayerComponent, HeroComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
