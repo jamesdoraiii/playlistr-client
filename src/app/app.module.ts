@@ -10,9 +10,10 @@ import { HomeComponent } from './views/home/home.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { HeroComponent } from './views/hero/hero.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, PlaylistCardComponent, PlaylistRowComponent, HomeComponent, SpotifyEmbeddedPlayerComponent, HeroComponent, HeroCardComponent],
+  declarations: [AppComponent, SidebarComponent, PlaylistCardComponent, PlaylistRowComponent, HomeComponent, SpotifyEmbeddedPlayerComponent, HeroComponent, HeroCardComponent, PlaylistDetailComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
