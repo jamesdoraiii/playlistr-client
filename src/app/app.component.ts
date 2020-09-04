@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,8 @@ export class AppComponent implements OnInit {
   }
   title = 'angular-tailwind-starter';
   isMenuOpen: boolean;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.checkWidth();

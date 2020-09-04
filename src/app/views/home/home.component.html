@@ -1,3 +1,5 @@
-<ng-container *ngFor="let category of categories">
-  <app-playlist-row [title]="category.title" [playlists]="category.playlists"></app-playlist-row>
-</ng-container>
+<div class="p-8">
+  <ng-container *ngFor="let category of categories">
+    <app-playlist-row [title]="category.title" [playlists]="category.playlists"></app-playlist-row>
+  </ng-container>
+</div>
