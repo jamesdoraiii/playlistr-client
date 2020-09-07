@@ -16,7 +16,8 @@
     "lib": ["es2017", "dom"],
     "paths": {
       "@models/*": ["src/models/*"],
-      "@services/*": ["src/app/services"]
+      "@services/*": ["src/app/services/*"],
+      "@environment": ["src/environments/environment.ts"]
     }
   }
 }
