@@ -11,13 +11,15 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "target": "es2015",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "lib": ["es2017", "dom", "esnext.asynciterable"],
     "paths": {
       "@models/*": ["src/models/*"],
       "@services/*": ["src/app/services/*"],
       "@environment": ["src/environments/environment.ts"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   }
 }

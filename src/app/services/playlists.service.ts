@@ -5,7 +5,7 @@ import { environment } from '@environment';
 @Injectable({
   providedIn: 'root'
 })
-export class PlaylistService {
+export class PlaylistsService {
   constructor(private http: HttpClient) {}
 
   getPlaylistById(id: string) {

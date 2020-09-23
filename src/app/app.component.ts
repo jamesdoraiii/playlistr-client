@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
+import { UsersService } from '@services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +17,16 @@ export class AppComponent implements OnInit {
   title = 'angular-tailwind-starter';
   isMenuOpen: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.checkWidth();
+    this.userService.createUser({
+      username: 'test2',
+      password: 'dsahjkasdhjk',
+      email: 'test2@gmail.com',
+      spotify_user_id: 'jimmyd233'
+    });
   }
 
   checkWidth() {

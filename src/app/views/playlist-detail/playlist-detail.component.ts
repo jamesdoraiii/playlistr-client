@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { PlaylistService } from '@services/playlist.service';
+import { PlaylistsService } from '@services/playlists.service';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -9,7 +9,7 @@ import { PlaylistService } from '@services/playlist.service';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private playlist: PlaylistService) {}
+  constructor(private route: ActivatedRoute, private playlist: PlaylistsService) {}
 
   ngOnInit() {
     this.fetchPlaylist();

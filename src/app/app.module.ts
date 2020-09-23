@@ -1,3 +1,4 @@
+import { APOLLO_OPTIONS } from 'apollo-angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,6 +6,8 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroComponent } from './views/hero/hero.component';
 import { HomeComponent } from './views/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
 import { NgModule } from '@angular/core';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
@@ -25,7 +28,20 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
     PlaylistDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory(httpLink: HttpLink) {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'http://localhost:5000'
+          })
+        };
+      },
+      deps: [HttpLink]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
