@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'angular-tailwind-starter';
   isMenuOpen: boolean;
 
-  constructor(private router: Router, private userService: UsersService) {}
+  constructor(public router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.checkWidth();
