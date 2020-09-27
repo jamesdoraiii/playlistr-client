@@ -35,7 +35,7 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'http://localhost:5000'
+            uri: 'http://localhost:5000/graphql'
           })
         };
       },
