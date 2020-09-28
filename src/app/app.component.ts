@@ -21,12 +21,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.checkWidth();
-    this.userService.createUser({
-      username: 'test2',
-      password: 'dsahjkasdhjk',
-      email: 'test2@gmail.com',
-      spotify_user_id: 'jimmyd233'
-    });
+    this.userService
+      .createUser({
+        username: 'test153351',
+        password: 'dsahjkasdhjk',
+        email: 'test6@gmail.com',
+        spotify_user_id: 'jimmyd233'
+      })
+      .subscribe(result => console.log(result));
   }
 
   checkWidth() {
