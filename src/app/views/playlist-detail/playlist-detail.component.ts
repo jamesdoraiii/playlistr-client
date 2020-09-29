@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { Playlist } from '@models/playlist';
 import { PlaylistsService } from '@services/playlists.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { PlaylistsService } from '@services/playlists.service';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private playlist: PlaylistsService) {}
+  playlist: Playlist;
+
+  constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
 
   ngOnInit() {
     this.fetchPlaylist();
@@ -18,8 +21,8 @@ export class PlaylistDetailComponent implements OnInit {
   fetchPlaylist() {
     console.log('fetching playlists');
     this.route.paramMap.subscribe(params => {
-      this.playlist.getPlaylistById(params.get('playlistId')).subscribe(result => {
-        console.log(result);
+      this.playlistsService.getPlaylistById(params.get('playlistId')).subscribe((result: Playlist) => {
+        this.playlist = result;
       });
     });
   }

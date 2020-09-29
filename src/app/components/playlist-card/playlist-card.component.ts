@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Playlist } from '@models/playlist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist-card',
@@ -10,9 +11,13 @@ import { Playlist } from '@models/playlist';
 export class PlaylistCardComponent implements OnInit {
   @Input() playlist: Playlist;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     console.log(this.playlist);
+  }
+
+  cardClicked() {
+    this.router.navigate([`/playlist/${this.playlist.id}`]);
   }
 }

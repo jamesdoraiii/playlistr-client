@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private playlistsService: PlaylistsService) {}
 
   ngOnInit() {
-    this.playlistsService.getPlaylistsForUser('jimmyd233').subscribe((response): any => {
+    this.playlistsService.getPlaylistsForUser('jimmyd233').subscribe((response: any) => {
       this.categories.unshift({ title: 'Your Playlists', playlists: response.items });
       console.log(this.categories);
     });
