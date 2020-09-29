@@ -15,6 +15,8 @@ import { PlaylistRowComponent } from './components/playlist-row/playlist-row.com
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { AuthComponent } from './views/auth/auth.component';
+import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
+import { TracklistComponent } from './components/tracklist/tracklist.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AuthComponent } from './views/auth/auth.component';
     HeroComponent,
     HeroCardComponent,
     PlaylistDetailComponent,
-    AuthComponent
+    AuthComponent,
+    PlaylistHeaderComponent,
+    TracklistComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
