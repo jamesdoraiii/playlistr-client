@@ -17,6 +17,7 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
 import { AuthComponent } from './views/auth/auth.component';
 import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TracklistComponent } from './components/tracklist/tracklist.component';
     PlaylistDetailComponent,
     AuthComponent,
     PlaylistHeaderComponent,
-    TracklistComponent
+    TracklistComponent,
+    UserProfileComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

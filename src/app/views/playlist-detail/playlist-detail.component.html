@@ -1,1 +1,4 @@
-<p>playlist-detail works!</p>
+<div class="p-4" *ngIf="playlist">
+  <app-playlist-header [playlist]="playlist"></app-playlist-header>
+  <app-tracklist></app-tracklist>
+</div>
