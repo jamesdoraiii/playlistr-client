@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
-import { UsersService } from '@services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +13,13 @@ export class AppComponent implements OnInit {
   onResize(event) {
     this.checkWidth();
   }
-  title = 'angular-tailwind-starter';
+  title = 'playlistr';
   isMenuOpen: boolean;
 
-  constructor(public router: Router, private userService: UsersService) {}
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.checkWidth();
-    this.userService
-      .createUser({
-        username: 'test153351',
-        password: 'dsahjkasdhjk',
-        email: 'test6@gmail.com',
-        spotify_user_id: 'jimmyd233'
-      })
-      .subscribe(result => console.log(result));
   }
 
   checkWidth() {
