@@ -1,6 +1,7 @@
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthComponent } from './views/auth/auth.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroComponent } from './views/hero/hero.component';
@@ -11,11 +12,10 @@ import { InMemoryCache } from '@apollo/client/core';
 import { NgModule } from '@angular/core';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
+import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
 import { PlaylistRowComponent } from './components/playlist-row/playlist-row.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
-import { AuthComponent } from './views/auth/auth.component';
-import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 

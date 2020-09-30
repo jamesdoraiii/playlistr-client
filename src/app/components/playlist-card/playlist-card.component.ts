@@ -18,6 +18,6 @@ export class PlaylistCardComponent implements OnInit {
   }
 
   cardClicked() {
-    this.router.navigate([`/playlist`, this.playlist.id]);
+    this.router.navigate([`/playlist/${this.playlist.id}`]);
   }
 }
