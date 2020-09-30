@@ -1,1 +1,61 @@
-<p>auth works!</p>
+<div class="bg-gray-900">
+  <div class="w-full" style="padding-top: 4rem;">
+    <div class="container mx-auto py-8">
+      <div class="w-5/6 lg:w-1/2 mx-auto bg-gray-900">
+        <div class="text-3xl mb-4">Sign Up</div>
+        <div class="" *ngIf="showSignup">
+          <div class="flex mb-4">
+            <div class="w-1/2 mr-1">
+              <label class="block text-grey-darker text-sm font-bold mb-2" for="first_name">First Name</label>
+              <input
+                class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200"
+                id="first_name"
+                type="text"
+                placeholder="Your first name"
+              />
+            </div>
+            <div class="w-1/2 ml-1">
+              <label class="block text-grey-darker text-sm font-bold mb-2" for="last_name">Last Name</label>
+              <input
+                class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200"
+                id="last_name"
+                type="text"
+                placeholder="Your last name"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email Address</label>
+            <input
+              class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200"
+              id="email"
+              type="email"
+              placeholder="Your email address"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
+            <input
+              class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200"
+              id="password"
+              type="password"
+              placeholder="Your secure password"
+            />
+            <p class="text-grey text-xs mt-1">At least 6 characters</p>
+          </div>
+
+          <button
+            class="mt-2 bg-green-600 hover:bg-blue-dark py-2 text-white font-bold rounded-full w-full"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </div>
+        <div class="" *ngIf="!showSignup"></div>
+      </div>
+      <p class="text-center mt-5 p-2 text-grey-dark text-sm no-underline hover:text-grey-darker cursor-pointer">
+        I already have an account
+      </p>
+    </div>
+  </div>
+</div>
