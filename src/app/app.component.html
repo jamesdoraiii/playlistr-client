@@ -1,4 +1,4 @@
-<div class="flex flex-grid h-full" *ngIf="router.url !== '/'">
+<div class="flex flex-grid h-full" *ngIf="router.url !== '/' && router.url !== '/auth'">
   <div
     *ngIf="isMenuOpen"
     class="fixed h-screen w-2/3 z-20 md:block md:relative md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
@@ -19,4 +19,4 @@
     (click)="isMenuOpen = false"
   ></div>
 </div>
-<router-outlet name="fullScreen"></router-outlet>
+<router-outlet *ngIf="router.url === '/' || router.url === '/auth'"></router-outlet>
