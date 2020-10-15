@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tracklist',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tracklist.component.css']
 })
 export class TracklistComponent implements OnInit {
+  @Input() tracks: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.tracks);
   }
-
 }
