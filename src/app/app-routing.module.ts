@@ -8,7 +8,8 @@ import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: '', component: HeroComponent },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: HeroComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'home', component: HomeComponent },
   { path: 'playlist/:playlistId', component: PlaylistDetailComponent },

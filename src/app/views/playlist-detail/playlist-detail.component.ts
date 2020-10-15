@@ -19,9 +19,10 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   fetchPlaylist() {
-    console.log('fetching playlists');
+    const playlistId = this.route.snapshot.paramMap.get('playlistId');
+
     this.route.paramMap.subscribe(params => {
-      this.playlistsService.getPlaylistById(params.get('playlistId')).subscribe((result: Playlist) => {
+      this.playlistsService.getPlaylistById(playlistId).subscribe((result: Playlist) => {
         this.playlist = result;
         console.log(result);
       });

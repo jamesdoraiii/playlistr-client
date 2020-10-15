@@ -16,8 +16,4 @@ export class PlaylistCardComponent implements OnInit {
   ngOnInit() {
     console.log(this.playlist);
   }
-
-  cardClicked() {
-    this.router.navigate([`/playlist/${this.playlist.id}`]);
-  }
 }
