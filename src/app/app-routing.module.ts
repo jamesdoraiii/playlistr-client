@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { HeroComponent } from './views/hero/hero.component';
 import { HomeComponent } from './views/home/home.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'home', component: HomeComponent },
   { path: 'playlist/:playlistId', component: PlaylistDetailComponent },
+  { path: 'artist/:artistId', component: ArtistDetailComponent },
   { path: 'user/:userId', component: UserProfileComponent }
 ];
 
