@@ -6,11 +6,11 @@
     <!-- <th class="font-hairline px-2 text-center"><i class="far fa-calendar"></i></th> -->
     <th class="font-hairline px-2 text-center"><i class="far fa-clock"></i></th>
   </tr>
-  <tr *ngFor="let track of tracks.items" class="hover:bg-gray-700" style="border-top: 1px solid rgb(88, 88, 95);">
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.track.name }}</th>
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.track.artists[0].name }}</th>
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.track.album.name }}</th>
+  <tr *ngFor="let track of tracks" class="hover:bg-gray-700" style="border-top: 1px solid rgb(88, 88, 95);">
+    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.name }}</th>
+    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.artists[0].name }}</th>
+    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.album.name }}</th>
     <!-- <th class="truncate ... text-white font-normal py-2 px-2">{{track.added_at}}</th> -->
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.track.duration_ms }}</th>
+    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.duration_ms }}</th>
   </tr>
 </table>

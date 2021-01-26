@@ -15,10 +15,7 @@ export class Playlist {
   primary_color: any;
   public: boolean;
   snapshot_id: string;
-  tracks: {
-    href: string;
-    total: number;
-  };
+  tracks: any;
   type: string;
   uri: string;
 }
