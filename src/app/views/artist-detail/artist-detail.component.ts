@@ -21,7 +21,7 @@ export class ArtistDetailComponent implements OnInit {
       this.fetchArtist(artistId);
       this.fetchArtistAlbums(artistId);
       this.fetchArtistTopTracks(artistId);
-      this.fetchRelatedArtist(artistId);
+      // this.fetchRelatedArtist(artistId);
     });
   }
 
@@ -41,13 +41,12 @@ export class ArtistDetailComponent implements OnInit {
 
   fetchArtistAlbums(artistId) {
     this.artistsService.getArtistAlbumsById(artistId).subscribe((result: any) => {
-      this.artistAlbums = result;
+      this.artistAlbums = result.items;
       console.log('this is the artist albums', result);
     });
   }
   fetchRelatedArtist(artistId) {
     this.artistsService.getArtistRelatedArtistsById(artistId).subscribe((result: any) => {
-      this.artistAlbums = result;
       console.log('this is the related artists', result);
     });
   }
