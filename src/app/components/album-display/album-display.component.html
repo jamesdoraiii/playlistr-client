@@ -1,1 +1,16 @@
-<p>album-display works!</p>
+<div class="flex">
+    <img [src]="album.images[1].url">
+    <div class="flex-col justify-between">
+        <div>
+
+            <p>{{album.release_date.split('-')[0]}}</p>
+            <h3>{{album.name}}</h3>
+        </div>
+        <div>
+            <button><i class="fas fa-heart"></i></button>
+            <button><i class="fas fa-ellipsis-h"></i></button>
+        </div>
+    </div>
+</div>
+<!-- You are going to have to fetch tracks?? -->
+<!-- <app-tracklist [tracks]=""></app-tracklist> -->
