@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-tracklist',
   templateUrl: './tracklist.component.html',

@@ -7,10 +7,10 @@
     <th class="font-hairline px-2 text-center"><i class="far fa-clock"></i></th>
   </tr>
   <tr *ngFor="let track of tracks" class="hover:bg-gray-700" style="border-top: 1px solid rgb(88, 88, 95);">
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.name }}</th>
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.artists[0].name }}</th>
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.album.name }}</th>
-    <!-- <th class="truncate ... text-white font-normal py-2 px-2">{{track.added_at}}</th> -->
-    <th class="truncate ... text-white font-normal py-2 px-2">{{ track.duration_ms }}</th>
+    <td class="truncate ... text-white font-normal py-2 px-2">{{ track.name }}</td>
+    <td class="truncate ... text-white font-normal py-2 px-2 cursor-pointer hover:underline" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
+    <td class="truncate ... text-white font-normal py-2 px-2">{{ track.album.name }}</td>
+    <!-- <td class="truncate ... text-white font-normal py-2 px-2">{{track.added_at}}</td> -->
+    <td class="truncate ... text-white font-normal py-2 px-2">{{ track.duration_ms }}</td>
   </tr>
 </table>
