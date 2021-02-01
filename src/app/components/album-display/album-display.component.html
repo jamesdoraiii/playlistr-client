@@ -1,16 +1,18 @@
+<div class="mb-8">
 <div class="flex">
-    <img [src]="album.images[1].url">
-    <div class="flex-col justify-between">
+    <img [src]="album.images[1].url" class="w-auto h-40">
+    <div class="flex flex-col justify-between ml-3">
         <div>
 
-            <p>{{album.release_date.split('-')[0]}}</p>
-            <h3>{{album.name}}</h3>
+            <p class="mb-0 text-sm text-gray-500">{{album.release_date.split('-')[0]}}</p>
+            <h3 class="font-bold text-4xl text-white">{{album.name}}</h3>
         </div>
         <div>
-            <button><i class="fas fa-heart"></i></button>
-            <button><i class="fas fa-ellipsis-h"></i></button>
+            <button class="border-2 rounded-full px-2 py-1 mr-3"><i class="fas fa-heart"></i></button>
+            <button class="border-2 rounded-full px-2 py-1"><i class="fas fa-ellipsis-h"></i></button>
         </div>
     </div>
 </div>
 <!-- You are going to have to fetch tracks?? -->
 <!-- <app-tracklist [tracks]=""></app-tracklist> -->
+</div>
