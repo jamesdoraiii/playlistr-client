@@ -21,6 +21,7 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
 import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
 import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
 import { AlbumDisplayComponent } from './components/album-display/album-display.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AlbumDisplayComponent } from './components/album-display/album-display.
     UserProfileComponent,
     ArtistDetailComponent,
     ArtistHeaderComponent,
-    AlbumDisplayComponent
+    AlbumDisplayComponent,
+    PlayerComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

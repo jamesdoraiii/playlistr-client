@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { WebPlayerService } from '@services/web-player.service';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,11 @@ export class AppComponent implements OnInit {
     this.checkWidth();
   }
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private webPlayer: WebPlayerService) {}
 
   ngOnInit() {
     this.checkWidth();
+    this.webPlayer.initializeSpotifyWebPlayer();
   }
 
   checkWidth() {
