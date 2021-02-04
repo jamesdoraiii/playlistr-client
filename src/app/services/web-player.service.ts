@@ -1,15 +1,21 @@
+///  <reference types="@types/spotify-web-playback-sdk"/>
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebPlayerService {
+  get window(): any {
+    return window;
+  }
+
   constructor() {}
 
   initializeSpotifyWebPlayer() {
-    window.onSpotifyWebPlaybackSDKReady = () => {
+    this.window.onSpotifyWebPlaybackSDKReady = () => {
       const token =
-        'BQDalBRlW1S02b3C1g-Un5yH3OuCkf7L__XB4ZO2LTq9siSQZdXPN7V6SbP0vEwu8BRvJcXtfe7SfTOGI6h6aKrNV_JpihikXxbfZa-Zc9NTP41u5vz61PwnL-ubzOcLSIDs5swTyXjW4wPDHKd_sutRxAnnuWFM3A';
+        'BQBRo3mxbYvPQ7Z6vTJfIOGhIQo7z_zZBLlXF1g_mHuqQK9xTlSDflXrAmrTWoGFpr4t2NRX5Z4Jn3FmBQGywE2N7nitXW6KDCaD0yB2CjERkCWhSVG-vdmEdkdf8iCw_Fvpg2KqZ61kzW27b6i_w1ctWy2t_xq_eQ';
+
       const player = new Spotify.Player({
         name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => {
