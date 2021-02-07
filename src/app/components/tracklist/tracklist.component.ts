@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+
+import { WebPlayerService } from '@services/web-player.service';
 @Component({
   selector: 'app-tracklist',
   templateUrl: './tracklist.component.html',
@@ -7,9 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TracklistComponent implements OnInit {
   @Input() tracks: any;
 
-  constructor() {}
+  constructor(private webPlayerService: WebPlayerService) {}
 
   ngOnInit(): void {
     console.log(this.tracks);
+  }
+
+  playTrack(uri: string) {
+    this.webPlayerService.playTrack(uri);
   }
 }
