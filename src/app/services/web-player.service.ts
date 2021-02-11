@@ -1,13 +1,16 @@
 ///  <reference types="@types/spotify-web-playback-sdk"/>
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebPlayerService {
   player: any;
+  playerStatusUpdated = new Subject<any>();
+
   token =
-    'BQDWjxgWuBRXbkRmM2pS-_xdPpGlGRuD9EUFnaMLhS4VjEtuIybY98qmCXXrkr6J0KYd_mgLIRrB1PtTzPF5CKtbhRrKQIEkc0sMMUw5z5xm934_MuDKlAj48SDHcQkqJsCRNZ-HPVw3xRYjIPw9OhFV2TmbHtEmEw';
+    'BQAVRsKKFXSA0SlMH1cIETKk1S147kYRz0PDUea2Jd2j1xgBnKiMq5maQMMg-qDMQUEIKn-7dF_1OOr0HqzeQ7TRPLvdfLZiLDfw7qbjmaXcgmMsK8AB9tsWYjWjTVS5NzcHGgwjli6wElbK6H8ZUzewz-r5_lTTug';
   get window(): any {
     return window;
   }
@@ -38,8 +41,8 @@ export class WebPlayerService {
       });
 
       // Playback status updates
-      this.player.addListener('this.player_state_changed', state => {
-        console.log(state);
+      this.player.addListener('player_state_changed', state => {
+        this.playerStatusUpdated.next(state);
       });
 
       // Ready
@@ -50,6 +53,10 @@ export class WebPlayerService {
       // Not Ready
       this.player.addListener('not_ready', ({ device_id }) => {
         console.log('Device ID has gone offline', device_id);
+      });
+
+      this.player.setName('Playlistr Web Player').then(() => {
+        console.log('Player name updated!');
       });
 
       // Connect to the this.player!
@@ -79,6 +86,66 @@ export class WebPlayerService {
     this.playRequest({
       spotify_uri: trackUri,
       playerInstance: this.player
+    });
+  }
+
+  getCurrentState() {
+    this.player.getCurrentState().then(state => {
+      if (!state) {
+        console.error('User is not playing music through the Web Playback SDK');
+        return;
+      }
+
+      let {
+        current_track,
+        next_tracks: [next_track]
+      } = state.track_window;
+
+      console.log('Currently Playing', current_track);
+      console.log('Playing Next', next_track);
+    });
+  }
+
+  getVolume() {
+    this.player.getVolume().then(volume => {
+      let volume_percentage = volume * 100;
+      console.log(`The volume of the player is ${volume_percentage}%`);
+    });
+  }
+
+  setVolume() {
+    this.player.setVolume(0.5).then(() => {
+      console.log('Volume updated!');
+    });
+  }
+
+  pause() {
+    this.player.pause().then(() => {
+      console.log('Paused!');
+    });
+  }
+
+  resume() {
+    this.player.resume().then(() => {
+      console.log('Resumed!');
+    });
+  }
+
+  seek() {
+    this.player.seek(60 * 1000).then(() => {
+      console.log('Changed position!');
+    });
+  }
+
+  previousTrack() {
+    this.player.previousTrack().then(() => {
+      console.log('Set to previous track!');
+    });
+  }
+
+  nextTrack() {
+    this.player.nextTrack().then(() => {
+      console.log('Skipped to next track!');
     });
   }
 }

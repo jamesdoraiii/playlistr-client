@@ -1,22 +1,24 @@
+
 <div class="flex flex-grid h-full" *ngIf="router.url !== '/welcome' && router.url !== '/auth'">
   <div
-    *ngIf="isMenuOpen"
-    class="fixed h-screen w-2/3 z-20 md:block md:relative md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
+  *ngIf="isMenuOpen"
+  class="fixed h-screen w-2/3 z-20 md:block md:relative md:w-1/4 min-h-screen bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
   >
-    <app-sidebar></app-sidebar>
-  </div>
-  <div class="md:w-3/4 p-8 md:p-0 h-screen overflow-y-scroll overscroll-x-none">
-    <button class="md:hidden pr-2 py-2 mb-4 focus:outline-none" (click)="isMenuOpen = !isMenuOpen">
-      <!-- Menu Button -->
-      <i class="fas fa-bars fa-2x"></i>
-    </button>
-    <router-outlet></router-outlet>
-  </div>
-  <div
-    *ngIf="isMenuOpen"
-    class=" opacity-0 fixed w-full h-full bg-gray-900 md:hidden fadeIn"
-    [ngClass]="{ 'opacity-50 z-10': isMenuOpen }"
-    (click)="isMenuOpen = false"
-  ></div>
+  <app-sidebar></app-sidebar>
+</div>
+<div class="md:w-3/4 p-8 md:p-0 h-screen overflow-y-scroll overscroll-x-none">
+  <button class="md:hidden pr-2 py-2 mb-4 focus:outline-none" (click)="isMenuOpen = !isMenuOpen">
+    <!-- Menu Button -->
+    <i class="fas fa-bars fa-2x"></i>
+  </button>
+  <router-outlet></router-outlet>
+</div>
+<div
+*ngIf="isMenuOpen"
+class=" opacity-0 fixed w-full h-full bg-gray-900 md:hidden fadeIn"
+[ngClass]="{ 'opacity-50 z-10': isMenuOpen }"
+(click)="isMenuOpen = false"
+></div>
 </div>
 <router-outlet *ngIf="router.url === '/welcome' || router.url === '/auth'"></router-outlet>
+<app-player class="bg-gray-900 w-full p-10"></app-player>

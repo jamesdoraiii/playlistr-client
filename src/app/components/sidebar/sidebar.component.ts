@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+
+import { WebPlayerService } from '@services/web-player.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  constructor() {}
+  nowPlayingImageUrl: string;
 
-  ngOnInit() {}
+  constructor(private webPlayerService: WebPlayerService, private cdRef: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.webPlayerService.playerStatusUpdated.subscribe(status => {
+      if (status.track_window.current_track.album.images[0].url != this.nowPlayingImageUrl) {
+        this.nowPlayingImageUrl = status.track_window.current_track.album.images[0].url;
+        this.cdRef.detectChanges();
+      }
+    });
+  }
 }
