@@ -1,1 +1,29 @@
-<button (click)='getPlayerState()'>test get player state</button>
+
+<div class="flex justify-between align-middle">
+    <div>
+        <ng-container *ngIf="currentTrackInfo">
+            <h2 class="text-white text-lg mb-1">{{currentTrackInfo.name}}</h2>
+            <a *ngFor="let artist of currentTrackInfo.artists; index as i" [routerLink]="['/artist', artist.uri.split(':').slice(-1)[0]]">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
+        </ng-container>
+    </div>
+
+    <div class="flex text align-middle">
+        <!-- player controls here -->
+        <div class="p-4">
+            <i class="fas fa-random"></i>
+        </div>
+        <div class="p-4">
+            <i class="fas fa-step-backward"></i>
+        </div>
+        <div class="p-4">
+            <i class="far fa-play-circle fa-2x"></i>
+        </div>
+        <div class="p-4">
+            <i class="fas fa-step-forward"></i>
+        </div>
+    </div>
+
+    <div>
+        <!-- volume and devices -->
+    </div>
+</div>
