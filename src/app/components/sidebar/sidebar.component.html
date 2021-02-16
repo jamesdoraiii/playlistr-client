@@ -34,7 +34,11 @@
   <div class="uppercase mt-10 px-6">
     Playlists
   </div>
-  <div class="absolute bottom-0 m-auto animate__animated animate__fadeIn animate__delay-1s">
-    <img [src]="nowPlayingImageUrl" width="200" height="200"/>
+  <div class="w-full absolute bottom-0 m-auto animate__animated animate__fadeIn animate__delay-1s">
+    <hr class="mt-1 border-gray-800" />
+    <div class="p-5 hover:text-white">
+      <p><i class="fas fa-plus p-1 mr-1 border-2 border-gray-400 rounded-full"></i> New Playlist</p>
+    </div>
+    <img [src]="nowPlayingImageUrl" *ngIf="nowPlayingImageUrl" class="w-full h-auto"/>
   </div>
 </div>

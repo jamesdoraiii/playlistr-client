@@ -22,9 +22,27 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  getPlayerState() {
-    this.webPlayerService.getCurrentState();
+  getVolume() {
+    return this.webPlayerService.getVolume();
   }
 
-  getVolume() {}
+  setVolume() {
+    this.webPlayerService.setVolume(0.5);
+  }
+
+  pause() {
+    this.webPlayerService.pause();
+  }
+
+  resume() {
+    this.webPlayerService.resume();
+  }
+
+  previousTrack() {
+    this.webPlayerService.previousTrack();
+  }
+
+  nextTrack() {
+    this.webPlayerService.nextTrack();
+  }
 }

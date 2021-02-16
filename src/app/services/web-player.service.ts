@@ -10,7 +10,7 @@ export class WebPlayerService {
   playerStatusUpdated = new Subject<any>();
 
   token =
-    'BQAaTWy5byXKguiMEmDPy6jM6ZVJaWir_iSlk1uIM_VNwU5sW47H_fVU3XORt8ft5h8WNUqCCQYVY9SVUxZ_-fHHSga8P89MfaQN8OXrg6zIgVpKqCYB8AxBE8U2svGPYlN2qHaAjm4ONR3xU1HILwZnM7X8ZrvP1g';
+    'BQBIenpUDqQeAoZO5HjmmYhLITSDEFxpr4WtIJY9RtN7HuXPYpU6PN3agEneyA-zCNSl_u2Ida0lMW5d1Q26TAlI6K06C1ZfGJXcOzojlXk9Gd13PWYxFOjR2E8_ubh9AvKFaVH3L0GPxtSwaaI7l-Nb6_mygfcxsg';
   get window(): any {
     return window;
   }
@@ -89,32 +89,27 @@ export class WebPlayerService {
     });
   }
 
-  getCurrentState() {
-    this.player.getCurrentState().then(state => {
-      if (!state) {
-        console.error('User is not playing music through the Web Playback SDK');
-        return;
-      }
+  // getCurrentState() {
+  //   this.player.getCurrentState().then(state => {
+  //     if (!state) {
+  //       console.error('User is not playing music through the Web Playback SDK');
+  //       return;
+  //     }
 
-      let {
-        current_track,
-        next_tracks: [next_track]
-      } = state.track_window;
+  //     let {
+  //       current_track,
+  //       next_tracks: [next_track]
+  //     } = state.track_window;
 
-      console.log('Currently Playing', current_track);
-      console.log('Playing Next', next_track);
-    });
-  }
+  //   });
+  // }
 
   getVolume() {
-    this.player.getVolume().then(volume => {
-      let volume_percentage = volume * 100;
-      console.log(`The volume of the player is ${volume_percentage}%`);
-    });
+    return this.player.getVolume();
   }
 
-  setVolume() {
-    this.player.setVolume(0.5).then(() => {
+  setVolume(volumeLevel: number) {
+    this.player.setVolume(volumeLevel).then(() => {
       console.log('Volume updated!');
     });
   }
