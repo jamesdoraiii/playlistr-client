@@ -1,0 +1,7 @@
+.hover-trigger .hide {
+  visibility: hidden;
+}
+
+.hover-trigger:hover .hide {
+  visibility: visible;
+}
