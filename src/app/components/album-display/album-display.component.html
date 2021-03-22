@@ -14,5 +14,5 @@
     </div>
 </div>
 <!-- You are going to have to fetch tracks?? -->
-<!-- <app-tracklist [tracks]=""></app-tracklist> -->
+<app-tracklist *ngIf="album.tracks" [tracks]="album.tracks"></app-tracklist>
 </div>

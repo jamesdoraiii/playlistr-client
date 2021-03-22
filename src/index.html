@@ -9,9 +9,33 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <script src="https://kit.fontawesome.com/8c7709fecf.js" crossorigin="anonymous"></script>
+    <!--Regular Datatables CSS-->
+	  <link href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet">
+	  <!--Responsive Extension Datatables CSS-->
+	  <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
   </head>
   <body class="bg-gradient-to-t from-gray-900 to-gray-800 text-gray-400 antialiased min-h-screen">
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <app-root class="h-full"></app-root>
+
+    
+  <!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		
+	<!--Datatables -->
+	<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<script>
+		$('#tracklist').ready(function() {
+      console.log("traclist ready")
+			
+			$('#tracklist').DataTable( {
+					responsive: true
+				} )
+				.columns.adjust()
+				.responsive.recalc();
+    
+		} );
+	</script>
   </body>
 </html>

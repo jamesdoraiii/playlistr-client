@@ -10,7 +10,7 @@ export class WebPlayerService {
   playerStatusUpdated = new Subject<any>();
 
   token =
-    'BQBIenpUDqQeAoZO5HjmmYhLITSDEFxpr4WtIJY9RtN7HuXPYpU6PN3agEneyA-zCNSl_u2Ida0lMW5d1Q26TAlI6K06C1ZfGJXcOzojlXk9Gd13PWYxFOjR2E8_ubh9AvKFaVH3L0GPxtSwaaI7l-Nb6_mygfcxsg';
+    'BQBuyAmYqKfmTYJacp9ArlwHP0lI7b-hQ3W_f0Z4SrNKlfvIvuAmiGyvM7xRht5dqxqUI3Ni_1n_tQtbFkZdcevnaaN1XnRwG5xTCMQ2MdXF0tSSOVHH_2lHpA342Qu1OVSvTzJxUuxJKIYO1YHPtUj7zl1dmmuRbQ';
   get window(): any {
     return window;
   }

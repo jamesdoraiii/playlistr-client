@@ -30,4 +30,10 @@ export class ArtistsService {
       endpoint: `https://api.spotify.com/v1/artists/${id}/related-artists`
     });
   }
+
+  getAlbum(href: string) {
+    return this.http.post(environment.spotifyServerBaseUrl, {
+      endpoint: href
+    });
+  }
 }
