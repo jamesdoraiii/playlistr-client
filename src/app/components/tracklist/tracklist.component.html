@@ -16,7 +16,7 @@
       <td class="truncate ... text-white font-normal py-2 px-2 cursor-pointer hover:underline" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
       <td class="truncate ... text-white font-normal py-2 px-2">{{ track.album.name }}</td>
       <!-- <td class="truncate ... text-white font-normal py-2 px-2">{{track.added_at}}</td> -->
-      <td class="truncate ... text-white font-normal py-2 px-2">{{ track.duration_ms }}</td>
+      <td class="truncate ... text-white font-normal py-2 px-2">{{convertmillisToMinutesAndSeconds(track.duration_ms) }}</td>
     </tr>
   </tbody>
 </table>
