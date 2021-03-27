@@ -13,7 +13,7 @@ export class TracklistComponent implements OnInit {
   constructor(private webPlayerService: WebPlayerService) {}
 
   ngOnInit(): void {
-    console.log(this.tracks);
+    console.log('THESE ARE THE TRACKS', this.tracks);
   }
 
   playTrack(uri: string) {

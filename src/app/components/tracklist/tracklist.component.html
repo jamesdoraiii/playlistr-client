@@ -1,4 +1,6 @@
-<table id="tracklist" class="table-auto mt-10 text-left w-full">
+
+<!-- display this if desktop width -->
+<table id="tracklist" class="table-auto mt-10 text-left w-full hidden md:block">
   <thead>
     <tr>
       <th data-priority="1"></th>
@@ -11,7 +13,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let track of tracks" class="hover:bg-gray-700 hover-trigger" style="border-top: 1px solid rgb(88, 88, 95);">
-      <td><button (click)="playTrack(track.uri)" class="hide text-xl w-8 text-center hover:text-2xl hover:text-white"><i class="fas fa-play-circle"></i></button></td>
+      <td><button (click)="playTrack(track.uri)" class="hide text-xl w-8 text-center hover:text-2xl hover:text-white focus:outline-none active:text-gray-600"><i class="fas fa-play-circle"></i></button></td>
       <td class="truncate ... text-white font-normal py-2 px-2">{{ track.name }}</td>
       <td class="truncate ... text-white font-normal py-2 px-2 cursor-pointer hover:underline" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
       <td class="truncate ... text-white font-normal py-2 px-2">{{ track.album.name }}</td>
@@ -20,3 +22,18 @@
     </tr>
   </tbody>
 </table>
+
+
+<!-- you should probably  -->
+<!-- track display if mobile width -->
+<div class="md:hidden mt-8">
+  <div *ngFor="let track of tracks flex" class="pb-4 flex items-center">
+    <img [src]="track.album.images[track.album.images.length -1].url" class="pr-3">
+    <div class="flex-grow">
+      <p class="truncate ... text-white font-semibold">{{ track.name }}</p>
+      <td class="truncate ... font-normal text-gray-300" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
+    </div>
+
+    <i class="fas fa-ellipsis-h"></i>
+  </div>
+</div>
