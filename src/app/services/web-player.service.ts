@@ -1,5 +1,6 @@
 ///  <reference types="@types/spotify-web-playback-sdk"/>
 import { Injectable } from '@angular/core';
+import { StringLiteral } from 'typescript';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -8,9 +9,9 @@ import { Subject } from 'rxjs';
 export class WebPlayerService {
   player: any;
   playerStatusUpdated = new Subject<any>();
-
+  deviceId: string;
   token =
-    'BQBuyAmYqKfmTYJacp9ArlwHP0lI7b-hQ3W_f0Z4SrNKlfvIvuAmiGyvM7xRht5dqxqUI3Ni_1n_tQtbFkZdcevnaaN1XnRwG5xTCMQ2MdXF0tSSOVHH_2lHpA342Qu1OVSvTzJxUuxJKIYO1YHPtUj7zl1dmmuRbQ';
+    'BQCx_mYRqRKlnRWXrCY8Z-TivcvC3FA1hf_DnuA-mmuZwDZRrNeP2Ale9FNDFW7zvRnIBISL6ptmHKvbhrUHxuPh0-MmzAzteXwtT-mCIUuVMbGxYxoS5YkEkG1vx9FogMHt1u4GNUFF5v2NPD7eIaE4QPz7DWugrg';
   get window(): any {
     return window;
   }
@@ -65,7 +66,7 @@ export class WebPlayerService {
   }
 
   playRequest = ({
-    spotify_uri,
+    spotify_uris,
     playerInstance: {
       _options: { getOAuthToken, id }
     }
@@ -73,7 +74,7 @@ export class WebPlayerService {
     getOAuthToken(access_token => {
       fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
         method: 'PUT',
-        body: JSON.stringify({ uris: [spotify_uri] }),
+        body: JSON.stringify({ uris: spotify_uris }),
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${access_token}`
@@ -82,9 +83,9 @@ export class WebPlayerService {
     });
   };
 
-  playTrack(trackUri: string) {
+  playTracks(trackUris: string[]) {
     this.playRequest({
-      spotify_uri: trackUri,
+      spotify_uris: trackUris,
       playerInstance: this.player
     });
   }

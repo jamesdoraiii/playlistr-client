@@ -17,7 +17,10 @@ export class TracklistComponent implements OnInit {
   }
 
   playTrack(uri: string) {
-    this.webPlayerService.playTrack(uri);
+    let filteredTracks = this.tracks.filter(track => track.uri !== uri);
+    filteredTracks = filteredTracks.map(item => item.uri);
+    filteredTracks.unshift(uri);
+    this.webPlayerService.playTracks(filteredTracks);
   }
   convertmillisToMinutesAndSeconds(millis) {
     const minutes = Math.floor(millis / 60000);
