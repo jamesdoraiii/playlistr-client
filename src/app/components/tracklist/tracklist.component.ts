@@ -12,9 +12,7 @@ export class TracklistComponent implements OnInit {
 
   constructor(private webPlayerService: WebPlayerService) {}
 
-  ngOnInit(): void {
-    console.log('THESE ARE THE TRACKS', this.tracks);
-  }
+  ngOnInit(): void {}
 
   playTrack(uri: string) {
     let filteredTracks = this.tracks.filter(track => track.uri !== uri);

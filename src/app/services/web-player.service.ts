@@ -1,6 +1,6 @@
 ///  <reference types="@types/spotify-web-playback-sdk"/>
+
 import { Injectable } from '@angular/core';
-import { StringLiteral } from 'typescript';
 import { Subject } from 'rxjs';
 
 @Injectable({

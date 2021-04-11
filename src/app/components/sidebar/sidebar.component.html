@@ -31,9 +31,10 @@
     </a>
   </div>
 
-  <div class="uppercase mt-10 px-6">
+  <div class="uppercase mt-10 px-6 pb-3">
     Playlists
   </div>
+  <a *ngFor="let playlist of userPlaylists" [routerLink]="['/playlist', playlist.id]" class="block pb-2 px-6 truncate ... hover:text-white">{{ playlist.name }}</a>
   <div class="w-full absolute bottom-0 m-auto animate__animated animate__fadeIn animate__delay-1s">
     <hr class="mt-1 border-gray-800" />
     <div class="p-5 hover:text-white">

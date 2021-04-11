@@ -21,28 +21,34 @@ export class AppComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private webPlayer: WebPlayerService,
     private base: BaseService,
+    private webPlayer: WebPlayerService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    router.events.subscribe(val => {
+      this.getAccessTokens();
+    });
+  }
 
   ngOnInit() {
     this.checkWidth();
     this.webPlayer.initializeSpotifyWebPlayer();
-
-    //this is a test, remove this
-    this.route.queryParams.subscribe(params => {
-      console.log('in the query params', params);
-      this.base.access_token = params['access_token'];
-      this.base
-        .requestWithToken('https://api.spotify.com/v1/me/playlists')
-        .subscribe(response => console.log('response from req with token', response));
-    });
   }
 
   checkWidth() {
     if (window.innerWidth > 767) {
       this.isMenuOpen = true;
     }
+  }
+
+  getAccessTokens() {
+    this.route.queryParams.subscribe(params => {
+      const paramToken = params['access_token'];
+      let serviceToken = this.base.access_token;
+      if (paramToken && paramToken != serviceToken) {
+        this.base.access_token = paramToken;
+        this.base.$access_token_received.next(paramToken);
+      }
+    });
   }
 }

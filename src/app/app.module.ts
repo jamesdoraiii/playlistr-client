@@ -1,7 +1,11 @@
 import { APOLLO_OPTIONS } from 'apollo-angular';
+import { AlbumDisplayComponent } from './components/album-display/album-display.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
+import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
 import { AuthComponent } from './views/auth/auth.component';
+import { BaseService } from '@services/base.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroComponent } from './views/hero/hero.component';
@@ -10,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { NgModule } from '@angular/core';
+import { PlayerComponent } from './components/player/player.component';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
@@ -18,10 +23,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
-import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
-import { AlbumDisplayComponent } from './components/album-display/album-display.component';
-import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [

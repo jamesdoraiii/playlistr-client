@@ -23,7 +23,6 @@ export class PlaylistDetailComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.playlistsService.getPlaylistById(playlistId).subscribe((result: Playlist) => {
-        console.log(result);
         this.formatTracks(result);
         this.playlist = result;
       });

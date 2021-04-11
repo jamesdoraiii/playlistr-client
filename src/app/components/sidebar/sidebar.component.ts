@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
+import { BaseService } from '@services/base.service';
+import { PlaylistsService } from '@services/playlists.service';
 import { WebPlayerService } from '@services/web-player.service';
 
 @Component({
@@ -10,7 +12,15 @@ import { WebPlayerService } from '@services/web-player.service';
 export class SidebarComponent implements OnInit {
   nowPlayingImageUrl: string;
 
-  constructor(private webPlayerService: WebPlayerService, private cdRef: ChangeDetectorRef) {}
+  get userPlaylists(): any[] {
+    return this.playlistsService.userPlaylists;
+  }
+
+  constructor(
+    private webPlayerService: WebPlayerService,
+    private cdRef: ChangeDetectorRef,
+    private playlistsService: PlaylistsService
+  ) {}
 
   ngOnInit() {
     this.webPlayerService.playerStatusUpdated.subscribe(status => {

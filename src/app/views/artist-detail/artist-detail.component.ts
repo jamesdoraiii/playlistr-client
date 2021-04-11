@@ -28,34 +28,29 @@ export class ArtistDetailComponent implements OnInit {
   fetchArtist(artistId) {
     this.artistsService.getArtistById(artistId).subscribe((result: any) => {
       this.artist = result;
-      console.log('This is the artist', result);
     });
   }
 
   fetchArtistTopTracks(artistId) {
     this.artistsService.getArtistTopTracksById(artistId).subscribe((result: any) => {
       this.artistTopTracks = result.tracks;
-      console.log('This is the artist top tracks', result);
     });
   }
 
   fetchArtistAlbums(artistId) {
     this.artistsService.getArtistAlbumsById(artistId).subscribe((result: any) => {
       this.artistAlbums = result.items;
-      console.log('this is the artist albums', result);
+
       this.fetchAlbumTracks();
     });
   }
   fetchRelatedArtist(artistId) {
-    this.artistsService.getArtistRelatedArtistsById(artistId).subscribe((result: any) => {
-      console.log('this is the related artists', result);
-    });
+    this.artistsService.getArtistRelatedArtistsById(artistId).subscribe((result: any) => {});
   }
 
   fetchAlbumTracks() {
     for (let album of this.artistAlbums) {
       this.artistsService.getAlbum(album.href).subscribe((result: any) => {
-        console.log('this is a result', result);
         result.tracks.items.forEach(track => {
           track.album = album;
         });

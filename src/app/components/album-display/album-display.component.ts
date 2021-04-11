@@ -10,7 +10,5 @@ export class AlbumDisplayComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.album);
-  }
+  ngOnInit(): void {}
 }
