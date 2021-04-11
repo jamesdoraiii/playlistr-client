@@ -1,5 +1,6 @@
 ///  <reference types="@types/spotify-web-playback-sdk"/>
 
+import { BaseService } from '@services/base.service';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -11,17 +12,21 @@ export class WebPlayerService {
   playerStatusUpdated = new Subject<any>();
   deviceId: string;
   token =
-    'BQCx_mYRqRKlnRWXrCY8Z-TivcvC3FA1hf_DnuA-mmuZwDZRrNeP2Ale9FNDFW7zvRnIBISL6ptmHKvbhrUHxuPh0-MmzAzteXwtT-mCIUuVMbGxYxoS5YkEkG1vx9FogMHt1u4GNUFF5v2NPD7eIaE4QPz7DWugrg';
+    'BQCjvoGn6iQFQb2MzaDlrrDxbEx_5WuIGLOJ_K-Hv_6nZCIOuk90uhUQiD8bzB7l5-LV4LLcQSJk9N_AKULGEnmyP_v6kBxZAq9ycYEGbucH-HVBk5V7zuPMDgnxs1_Wkmchxv5tfBcupGIfMIMtN46ZC8_JLCxI6g';
   get window(): any {
     return window;
   }
 
-  constructor() {}
+  constructor(base: BaseService) {
+    base.$access_token_received.subscribe(token => {
+      this.initializeSpotifyWebPlayer();
+    });
+  }
 
   initializeSpotifyWebPlayer() {
     this.window.onSpotifyWebPlaybackSDKReady = () => {
       this.player = new Spotify.Player({
-        name: 'Web Playback SDK Quick Start Player',
+        name: 'Playlistr Web Player',
         getOAuthToken: cb => {
           cb(this.token);
         }
@@ -49,6 +54,7 @@ export class WebPlayerService {
       // Ready
       this.player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id);
+        this.player._options.id = device_id;
       });
 
       // Not Ready
@@ -56,9 +62,9 @@ export class WebPlayerService {
         console.log('Device ID has gone offline', device_id);
       });
 
-      this.player.setName('Playlistr Web Player').then(() => {
-        console.log('Player name updated!');
-      });
+      // this.player.setName('Playlistr Web Player').then(() => {
+      //   console.log('Player name updated!');
+      // });
 
       // Connect to the this.player!
       this.player.connect();
@@ -72,6 +78,7 @@ export class WebPlayerService {
     }
   }) => {
     getOAuthToken(access_token => {
+      console.log(id);
       fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
         method: 'PUT',
         body: JSON.stringify({ uris: spotify_uris }),
@@ -84,6 +91,7 @@ export class WebPlayerService {
   };
 
   playTracks(trackUris: string[]) {
+    console.log('about to try to play tracks', this.player);
     this.playRequest({
       spotify_uris: trackUris,
       playerInstance: this.player
