@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Playlist } from '@models/playlist';
 import { PlaylistsService } from '@services/playlists.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -15,17 +16,18 @@ export class PlaylistDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
 
   ngOnInit() {
-    this.fetchPlaylist();
+    this.route.paramMap.subscribe(params => {
+      this.fetchPlaylist();
+    });
   }
 
   fetchPlaylist() {
+    this.playlist = undefined;
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
-    this.route.paramMap.subscribe(params => {
-      this.playlistsService.getPlaylistById(playlistId).subscribe((result: Playlist) => {
-        this.formatTracks(result);
-        this.playlist = result;
-      });
+    this.playlistsService.getPlaylistById(playlistId).subscribe((result: Playlist) => {
+      this.formatTracks(result);
+      this.playlist = result;
     });
   }
 
