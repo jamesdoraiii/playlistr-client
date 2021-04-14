@@ -11,13 +11,11 @@ export class WebPlayerService {
   player: any;
   playerStatusUpdated = new Subject<any>();
   deviceId: string;
-  token =
-    'BQCjvoGn6iQFQb2MzaDlrrDxbEx_5WuIGLOJ_K-Hv_6nZCIOuk90uhUQiD8bzB7l5-LV4LLcQSJk9N_AKULGEnmyP_v6kBxZAq9ycYEGbucH-HVBk5V7zuPMDgnxs1_Wkmchxv5tfBcupGIfMIMtN46ZC8_JLCxI6g';
   get window(): any {
     return window;
   }
 
-  constructor(base: BaseService) {
+  constructor(private base: BaseService) {
     base.$access_token_received.subscribe(token => {
       this.initializeSpotifyWebPlayer();
     });
@@ -28,7 +26,7 @@ export class WebPlayerService {
       this.player = new Spotify.Player({
         name: 'Playlistr Web Player',
         getOAuthToken: cb => {
-          cb(this.token);
+          cb(this.base.access_token);
         }
       });
 
