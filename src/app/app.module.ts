@@ -23,6 +23,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     ArtistDetailComponent,
     ArtistHeaderComponent,
     AlbumDisplayComponent,
-    PlayerComponent
+    PlayerComponent,
+    NavComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

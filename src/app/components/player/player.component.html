@@ -1,10 +1,10 @@
 
 <div class="flex justify-between align-middle bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
-    <div>
-        <ng-container>
+    <div class="w-1/4">
+      
             <h2 class="text-white text-lg mb-1">{{currentTrackInfo.name}}</h2>
             <a *ngFor="let artist of currentTrackInfo.artists; index as i" [routerLink]="['/artist', artist.uri.split(':').slice(-1)[0]]">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
-        </ng-container>
+
     </div>
 
     <div class="flex text align-middle">

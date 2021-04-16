@@ -29,5 +29,5 @@ module.exports = {
     borderWidth: ['active'],
     textColor: ['hover', 'active']
   },
-  plugins: []
+  plugins: [require('tailwindcss-debug-screens')]
 };
