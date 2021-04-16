@@ -55,7 +55,7 @@ export class BaseService {
 
   refreshTokens() {
     console.log('refreshing the tokens');
-    window.location.href = environment.spotifyServerBaseUrl + 'refresh_token';
+    // window.location.href = environment.spotifyServerBaseUrl + 'refresh_token';
     // this.http.get(environment.spotifyServerBaseUrl + 'refresh_token').subscribe(response => console.log(response));
   }
 }

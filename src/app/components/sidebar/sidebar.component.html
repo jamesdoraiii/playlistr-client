@@ -1,4 +1,4 @@
-<div class="h-full">
+<div class="h-full flex flex-col">
   <div class="py-5 px-6 text-white">
     <i class="fas fa-compact-disc fa-2x mr-1"></i>
     <h3 class="font-extrabold text-4xl inline">Playlistr</h3>
@@ -31,15 +31,15 @@
     </a>
   </div>
 
-  <div class="uppercase mt-10 px-6 pb-3">
-    Playlists
-  </div>
-  <a *ngFor="let playlist of userPlaylists" [routerLink]="['/playlist', playlist.id]" class="block pb-2 px-6 truncate ... hover:text-white">{{ playlist.name }}</a>
-  <div class="w-full absolute bottom-0 m-auto animate__animated animate__fadeIn animate__delay-1s">
-    <hr class="mt-1 border-gray-800" />
-    <div class="p-5 hover:text-white">
-      <p><i class="fas fa-plus p-1 mr-1 border-2 border-gray-400 rounded-full"></i> New Playlist</p>
+  <div class="flex flex-col justify-between flex-grow">
+    <div class="">
+      <h5 class="uppercase mt-10 px-6 pb-3">
+        Playlists
+      </h5>
+      <a *ngFor="let playlist of userPlaylists" [routerLink]="['/playlist', playlist.id]" class="block pb-2 px-6 truncate ... hover:text-white">{{ playlist.name }}</a>
     </div>
-    <img [src]="nowPlayingImageUrl" *ngIf="nowPlayingImageUrl" class="w-full h-auto"/>
+    <div class="w-full animate__animated animate__fadeIn animate__delay-1s">
+      <img [src]="nowPlayingImageUrl" *ngIf="nowPlayingImageUrl" class="w-full h-auto"/>
+    </div>
   </div>
 </div>
