@@ -16,13 +16,20 @@ export class ArtistDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private artistsService: ArtistsService) {}
 
   ngOnInit(): void {
-    const artistId = this.route.snapshot.paramMap.get('artistId');
     this.route.paramMap.subscribe(params => {
+      this.clearArtistInfo();
+      const artistId = this.route.snapshot.paramMap.get('artistId');
       this.fetchArtist(artistId);
       this.fetchArtistAlbums(artistId);
       this.fetchArtistTopTracks(artistId);
       // this.fetchRelatedArtist(artistId);
     });
+  }
+
+  clearArtistInfo() {
+    this.artist = undefined;
+    this.artistTopTracks = undefined;
+    this.artistAlbums = undefined;
   }
 
   fetchArtist(artistId) {
@@ -40,7 +47,6 @@ export class ArtistDetailComponent implements OnInit {
   fetchArtistAlbums(artistId) {
     this.artistsService.getArtistAlbumsById(artistId).subscribe((result: any) => {
       this.artistAlbums = result.items;
-
       this.fetchAlbumTracks();
     });
   }

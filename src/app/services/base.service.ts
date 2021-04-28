@@ -34,6 +34,7 @@ export class BaseService {
   getTokenFromRouteParams() {
     this.route.queryParams.subscribe(params => {
       const paramToken = params['access_token'];
+      console.log('this is the param token', paramToken);
       if (paramToken && paramToken != this.access_token) {
         this.access_token = paramToken;
         localStorage.setItem('access_token', paramToken);

@@ -8,7 +8,7 @@ import { PlaylistsService } from '@services/playlists.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  categories = [];
+  playlists = [''];
 
   get userPlaylists(): any[] {
     return this.playlistsService.userPlaylists;

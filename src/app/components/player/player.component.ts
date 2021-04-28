@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
 import { WebPlayerService } from '@services/web-player.service';
 
 @Component({
@@ -10,12 +11,16 @@ import { WebPlayerService } from '@services/web-player.service';
 export class PlayerComponent implements OnInit {
   currentTrackInfo: any;
 
-  constructor(private webPlayerService: WebPlayerService, private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private webPlayerService: WebPlayerService,
+    private cdRef: ChangeDetectorRef,
+    private router: Router,
+    private zone: NgZone
+  ) {}
 
   ngOnInit(): void {
     this.webPlayerService.playerStatusUpdated.subscribe(status => {
       if (status.track_window.current_track != this.currentTrackInfo) {
-       
         this.currentTrackInfo = status.track_window.current_track;
         this.cdRef.detectChanges();
       }
@@ -44,5 +49,16 @@ export class PlayerComponent implements OnInit {
 
   nextTrack() {
     this.webPlayerService.nextTrack();
+  }
+
+  test() {
+    console.log(this.currentTrackInfo);
+  }
+
+  navigateToArtist(artist: any) {
+    console.log(artist);
+    this.zone.run(() => {
+      this.router.navigate(['artist/', artist.uri.split(':').slice(-1)[0]]);
+    });
   }
 }

@@ -24,6 +24,7 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { NavComponent } from './components/nav/nav.component';
+import { PlaylistsComponent } from './views/playlists/playlists.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NavComponent } from './components/nav/nav.component';
     ArtistHeaderComponent,
     AlbumDisplayComponent,
     PlayerComponent,
-    NavComponent
+    NavComponent,
+    PlaylistsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
