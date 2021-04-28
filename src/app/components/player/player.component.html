@@ -5,29 +5,32 @@
         <a class="truncate ..." *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
     </div>
 
-    <div class="flex text align-middle justify-center w-6/12">
+    <div class="flex text align-middle justify-center w-6/12 text-gray-500">
         <!-- player controls here -->
         <div class="p-4 hover:text-white">
-                <i class="fas fa-random"></i>
+                <i class="fas fa-random align-middle"></i>
         </div>
         <div class="p-4 hover:text-white">
             <button (click)="previousTrack()">
-                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-step-backward align-middle"></i>
             </button>
         </div>
         <div class="p-4 hover:text-white">
-            <button (click)="pause()">
-                <i class="far fa-play-circle fa-2x"></i>
+            <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
+                <i class="far fa-pause-circle fa-2x align-middle"></i>
+            </button>
+            <button (click)="resume()" *ngIf="playerStatus && playerStatus.paused">
+                <i class="far fa-play-circle fa-2x align-middle"></i>
             </button>
         </div>
         <div class="p-4 hover:text-white">
             <button (click)="nextTrack()">
-                <i class="fas fa-step-forward"></i>
+                <i class="fas fa-step-forward align-middle"></i>
             </button>
         </div>
         <div class="p-4 hover:text-white">
            
-                <i class="fas fa-sync-alt"></i>
+                <i class="fas fa-sync-alt align-middle"></i>
        
         </div>
     </div>

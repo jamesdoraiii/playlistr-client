@@ -10,6 +10,7 @@ import { WebPlayerService } from '@services/web-player.service';
 })
 export class PlayerComponent implements OnInit {
   currentTrackInfo: any;
+  playerStatus: any;
 
   constructor(
     private webPlayerService: WebPlayerService,
@@ -24,6 +25,8 @@ export class PlayerComponent implements OnInit {
         this.currentTrackInfo = status.track_window.current_track;
         this.cdRef.detectChanges();
       }
+      this.playerStatus = status;
+      this.cdRef.detectChanges();
     });
   }
 
@@ -36,10 +39,12 @@ export class PlayerComponent implements OnInit {
   }
 
   pause() {
+    console.log('pause clicked');
     this.webPlayerService.pause();
   }
 
   resume() {
+    console.log('resume clicked');
     this.webPlayerService.resume();
   }
 
