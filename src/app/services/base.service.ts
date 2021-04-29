@@ -13,32 +13,43 @@ import { environment } from '@environment';
 })
 export class BaseService {
   public access_token: string;
+  public refresh_token: string;
   public $access_token_received: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(protected http: HttpClient, private router: Router, private route: ActivatedRoute) {
-    this.retreiveAccessTokenFromStorage();
+    this.retreiveTokensFromStorage();
 
     router.events.subscribe(val => {
-      this.getTokenFromRouteParams();
+      this.getTokensFromRouteParams();
     });
   }
 
-  retreiveAccessTokenFromStorage() {
-    const storedToken = localStorage.getItem('access_token');
-    if (storedToken) {
-      this.access_token = storedToken;
-      this.$access_token_received.next(storedToken);
+  retreiveTokensFromStorage() {
+    const storedAccessToken = localStorage.getItem('access_token');
+    if (storedAccessToken) {
+      this.access_token = storedAccessToken;
+      this.$access_token_received.next(storedAccessToken);
+    }
+    const storedRefreshToken = localStorage.getItem('refresh_token');
+    if (storedRefreshToken) {
+      this.refresh_token = storedRefreshToken;
     }
   }
 
-  getTokenFromRouteParams() {
+  getTokensFromRouteParams() {
     this.route.queryParams.subscribe(params => {
-      const paramToken = params['access_token'];
-      console.log('this is the param token', paramToken);
-      if (paramToken && paramToken != this.access_token) {
-        this.access_token = paramToken;
-        localStorage.setItem('access_token', paramToken);
-        this.$access_token_received.next(paramToken);
+      const paramAccessToken = params['access_token'];
+      const paramRefreshToken = params['refresh_token'];
+
+      if (paramAccessToken && paramAccessToken != this.access_token) {
+        this.access_token = paramAccessToken;
+        localStorage.setItem('access_token', paramAccessToken);
+        this.$access_token_received.next(paramAccessToken);
+      }
+      if (paramRefreshToken && paramRefreshToken != this.access_token) {
+        this.access_token = paramRefreshToken;
+        localStorage.setItem('refresh_token', paramRefreshToken);
+        this.$access_token_received.next(paramRefreshToken);
       }
     });
   }
@@ -56,7 +67,12 @@ export class BaseService {
 
   refreshTokens() {
     console.log('refreshing the tokens');
-    // window.location.href = environment.spotifyServerBaseUrl + 'refresh_token';
-    // this.http.get(environment.spotifyServerBaseUrl + 'refresh_token').subscribe(response => console.log(response));
+    this.http
+      .post(environment.spotifyServerBaseUrl + 'refresh_token', { refresh_key: this.refresh_token })
+      .subscribe((response: any) => {
+        this.access_token = response.access_token;
+        localStorage.setItem('access_token', response.access_token);
+        this.$access_token_received.next(response.access_token);
+      });
   }
 }
