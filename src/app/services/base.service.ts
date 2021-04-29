@@ -66,7 +66,6 @@ export class BaseService {
   }
 
   refreshTokens() {
-    console.log('refreshing the tokens');
     this.http
       .post(environment.spotifyServerBaseUrl + 'refresh_token', { refresh_key: this.refresh_token })
       .subscribe((response: any) => {

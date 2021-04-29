@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit {
         this.cdRef.detectChanges();
       }
       this.playerStatus = status;
+      console.log(status);
       this.cdRef.detectChanges();
     });
   }
@@ -54,10 +55,6 @@ export class PlayerComponent implements OnInit {
 
   nextTrack() {
     this.webPlayerService.nextTrack();
-  }
-
-  test() {
-    console.log(this.currentTrackInfo);
   }
 
   navigateToArtist(artist: any) {

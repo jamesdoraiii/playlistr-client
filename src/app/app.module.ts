@@ -25,6 +25,7 @@ import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PlaylistsComponent } from './views/playlists/playlists.component';
+import { SearchComponent } from './views/search/search.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PlaylistsComponent } from './views/playlists/playlists.component';
     AlbumDisplayComponent,
     PlayerComponent,
     NavComponent,
-    PlaylistsComponent
+    PlaylistsComponent,
+    SearchComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
