@@ -26,6 +26,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { ViewAllItemsComponent } from './views/view-all-items/view-all-items.component';
+import { ItemRowComponent } from './components/item-row/item-row.component';
+import { ItemCardComponent } from './components/item-card/item-card.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     PlayerComponent,
     NavComponent,
     PlaylistsComponent,
-    SearchComponent
+    SearchComponent,
+    ViewAllItemsComponent,
+    ItemRowComponent,
+    ItemCardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
