@@ -1,4 +1,4 @@
-<a class="w-full" [routerLink]="['/playlist', item.id]">
+<a class="w-full" [routerLink]="['/playlist', item.id]" (click)="routeToItemDetail(item)">
     <img class="cursor-pointer" [src]="item.images[0].url" />
     <h4 class="text-white font-bold text-md pt-2 py-1 hover:underline cursor-pointer">
       {{ item.name }}
