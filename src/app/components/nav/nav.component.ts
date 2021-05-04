@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
 
   search() {
     this.searchService
-      .search(this.searchInputText.replace(/ /g, '%20'), '&type=artist,playlist,track')
+      .search(this.searchInputText.replace(/ /g, '%20'), '&type=artist,playlist,track,album')
       .subscribe(response => {
         console.log(response);
       });

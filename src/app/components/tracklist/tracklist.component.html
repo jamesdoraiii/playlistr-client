@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let track of tracks" class="hover:bg-gray-700 hover-trigger" style="border-top: 1px solid rgb(88, 88, 95);">
+      <tr *ngFor="let track of tracks; index as i" class="hover:bg-gray-700 hover-trigger" style="border-top: 1px solid rgb(88, 88, 95);" [ngClass]="{'hidden xl:block': numberOfTracksToDisplay && i > numberOfTracksToDisplay}">
         <td class=""><button (click)="playTrack(track.uri)" class="hide h-full w-full flex align-middle justify-center text-xl text-center hover:text-2xl hover:text-white focus:outline-none active:text-gray-600"><i class="fas fa-play-circle"></i></button></td>
         <td class="truncate ... text-white font-normal py-2 px-2">{{ track.name }}</td>
         <td class="truncate ... text-white font-normal py-2 px-2 cursor-pointer hover:underline" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
