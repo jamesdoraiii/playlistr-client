@@ -5,10 +5,8 @@
     </div>
   
     <hr class="mt-1 mb-4 border-gray-700" />
-    <div class="grid grid-cols-3 xl:grid-cols-5 mb-10 -mx-2">
-      <div class="w-full px-2" *ngFor="let item of items; index as i" [ngClass]="{'hidden xl:block': i > 2}">
-          <app-item-card [item]="item"></app-item-card>
-      </div>
+    <div class="grid gap-x-8 grid-cols-3 xl:grid-cols-5 mb-10 -mx-2">
+          <app-item-card [item]="item" *ngFor="let item of items; index as i"></app-item-card>
     </div>
   </div>
   
