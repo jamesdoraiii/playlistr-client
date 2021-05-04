@@ -13,13 +13,13 @@ import { HomeComponent } from './views/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { ItemCardComponent } from './components/item-card/item-card.component';
+import { ItemRowComponent } from './components/item-row/item-row.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { PlayerComponent } from './components/player/player.component';
-import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { PlaylistHeaderComponent } from './components/playlist-header/playlist-header.component';
-import { PlaylistRowComponent } from './components/playlist-row/playlist-row.component';
 import { PlaylistsComponent } from './views/playlists/playlists.component';
 import { SearchComponent } from './views/search/search.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -27,15 +27,11 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { ViewAllItemsComponent } from './views/view-all-items/view-all-items.component';
-import { ItemRowComponent } from './components/item-row/item-row.component';
-import { ItemCardComponent } from './components/item-card/item-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    PlaylistCardComponent,
-    PlaylistRowComponent,
     HomeComponent,
     SpotifyEmbeddedPlayerComponent,
     HeroComponent,

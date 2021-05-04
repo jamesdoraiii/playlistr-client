@@ -1,5 +1,6 @@
 <div class="xl:p-6">
-  <app-playlist-row *ngIf="userPlaylists" title="Your Playlists" [playlists]="userPlaylists"></app-playlist-row>
+  <!-- <app-playlist-row *ngIf="userPlaylists" title="Your Playlists" [playlists]="userPlaylists"></app-playlist-row> -->
+  <app-item-row *ngIf="userPlaylists" title="Your Playlists" [items]="userPlaylists"></app-item-row>
   <!-- <ng-container *ngFor="let category of categories">
     <app-playlist-row [title]="category.title" [playlists]="category.playlists"></app-playlist-row>
   </ng-container> -->

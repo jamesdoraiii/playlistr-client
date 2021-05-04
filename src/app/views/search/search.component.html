@@ -1,1 +1,6 @@
-<p>search works!</p>
+<div class="xl:p-6" *ngIf="searchData">
+    <app-tracklist *ngIf="searchData.tracks" [tracks]="searchData.tracks.items"></app-tracklist>
+    <app-item-row *ngIf="searchData.artists" title="Artists" [items]="searchData.artists.items"></app-item-row>
+    <app-item-row *ngIf="searchData.artists" title="Albums" [items]="searchData.playlists.items"></app-item-row>
+  </div>
+  
