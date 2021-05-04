@@ -15,16 +15,18 @@ export class SearchService {
   }
 
   search(queryString: string, searchTypeString: string) {
-    // return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + queryString + searchTypeString).pipe(
-    //   tap(response => {
-    //     this.searchResults = response;
-    //   })
-    // );
-    return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + 'glass' + searchTypeString).pipe(
+    return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + queryString + searchTypeString).pipe(
       tap(response => {
-        console.log(JSON.stringify(response));
         this.searchResults = response;
       })
     );
+
+    // the below was for rapid ui development and should be removed
+    // return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + 'glass' + searchTypeString).pipe(
+    //   tap(response => {
+    //     console.log(JSON.stringify(response));
+    //     this.searchResults = response;
+    //   })
+    // );
   }
 }

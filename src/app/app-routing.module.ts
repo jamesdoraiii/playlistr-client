@@ -7,6 +7,7 @@ import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { SearchComponent } from './views/search/search.component';
+import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'playlist/:playlistId', component: PlaylistDetailComponent },
   { path: 'artist/:artistId', component: ArtistDetailComponent },
   { path: 'user/:userId', component: UserProfileComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'see-all-items', component: SeeAllItemsComponent }
 ];
 
 @NgModule({
