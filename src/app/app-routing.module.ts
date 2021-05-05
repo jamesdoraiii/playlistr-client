@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AlbumDetailComponent } from './views/album-detail/album-detail.component';
 import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { HeroComponent } from './views/hero/hero.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'artist/:artistId', component: ArtistDetailComponent },
   { path: 'user/:userId', component: UserProfileComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'see-all-items', component: SeeAllItemsComponent }
+  { path: 'see-all-items', component: SeeAllItemsComponent },
+  { path: 'album/:albumId', component: AlbumDetailComponent }
 ];
 
 @NgModule({

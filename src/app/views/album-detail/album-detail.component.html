@@ -1,0 +1,6 @@
+
+<div class="container mx-auto" *ngIf="album">
+    <app-playlist-header [playlist]="album"></app-playlist-header>
+    <app-tracklist [tracks]="album.tracks"></app-tracklist>
+  </div>
+  

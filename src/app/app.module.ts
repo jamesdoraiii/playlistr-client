@@ -27,6 +27,7 @@ import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-pl
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
+import { AlbumDetailComponent } from './views/album-detail/album-detail.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
     SearchComponent,
     ItemRowComponent,
     ItemCardComponent,
-    SeeAllItemsComponent
+    SeeAllItemsComponent,
+    AlbumDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
