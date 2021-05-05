@@ -4,7 +4,7 @@
       <a class="text-white uppercase hover:underline cursor-pointer flex" style="align-items: flex-end;"  (click)="seeAll()">See All</a>
     </div>
   
-    <div class="grid gap-x-4 grid-cols-3 xl:grid-cols-5 mb-10 items-stretch">
+    <div class="grid gap-x-4 grid-cols-3 xl:grid-cols-5 mb-10 items-stretch" [ngClass]="{'gap-y-8' : showAllItems}">
       <div *ngFor="let item of items; index as i">
         <app-item-card [item]="item" *ngIf="i < getListLength()"></app-item-card>
       </div>
