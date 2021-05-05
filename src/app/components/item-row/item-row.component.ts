@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-item-row',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class ItemRowComponent implements OnInit {
   @Input() title: string;
   @Input() items: any[];
+  @Input() showAllItems: boolean;
 
   constructor(private router: Router) {}
 
@@ -18,5 +20,16 @@ export class ItemRowComponent implements OnInit {
   seeAll() {
     localStorage.setItem('allItems', JSON.stringify(this.items));
     this.router.navigate(['/see-all-items']);
+  }
+
+  getListLength() {
+    if (this.showAllItems) {
+      return 100;
+    }
+    if (window.innerWidth <= 1280) {
+      return 3;
+    } else {
+      return 5;
+    }
   }
 }

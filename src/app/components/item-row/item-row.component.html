@@ -1,12 +1,13 @@
 <div>
     <div class="flex justify-between align-baseline mb-4">
       <h4 class="text-white font-bold text-2xl sm:text-lg">{{ title }}</h4>
-      <a class="text-white uppercase hover:text-white hover:underline cursor-pointer flex" style="align-items: flex-end;"  (click)="seeAll()">See All</a>
+      <a class="text-white uppercase hover:underline cursor-pointer flex" style="align-items: flex-end;"  (click)="seeAll()">See All</a>
     </div>
   
-    <!-- <hr class="mt-1 mb-4 border-gray-700" /> -->
-    <div class="grid gap-8 grid-cols-3 xl:grid-cols-5 mb-10 -mx-2 items-stretch">
-          <app-item-card [item]="item" *ngFor="let item of items; index as i"></app-item-card>
+    <div class="grid gap-x-4 grid-cols-3 xl:grid-cols-5 mb-10 items-stretch">
+      <div *ngFor="let item of items; index as i">
+        <app-item-card [item]="item" *ngIf="i < getListLength()"></app-item-card>
+      </div>
     </div>
   </div>
   

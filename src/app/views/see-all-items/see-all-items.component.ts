@@ -16,6 +16,7 @@ export class SeeAllItemsComponent implements OnInit {
     if (!localStorage.getItem('allItems')) {
       this.router.navigate(['/home']);
     }
+    window.scrollTo(0, 0);
     this.items = JSON.parse(localStorage.getItem('allItems'));
   }
 }

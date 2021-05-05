@@ -16,13 +16,13 @@
 
 .play-icon {
   position: absolute;
-  right: 25px;
+  right: 5px;
   /* bottom: 60px; */
 }
 
 #playButtonSlider .play-icon {
   opacity: 0;
-  bottom: 50px;
+  bottom: -10px;
   transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
@@ -30,7 +30,7 @@
 
 #playButtonSlider:hover .play-icon {
   opacity: 1;
-  bottom: 60px;
+  bottom: 0px;
 }
 
 .play-icon:hover {

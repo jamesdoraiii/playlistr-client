@@ -2,8 +2,8 @@
   <div class="relative w-full" style="padding-bottom: 100%;">
     <img class="cursor-pointer absolute w-full h-full shadow-xl" *ngIf="item.images[0]" [src]="item.images[0].url" [ngClass]="item.type == 'artist' ? 'rounded-full' : 'rounded-md'"/>
     <div class="bg-gray-700 absolute w-full h-full shadow-xl flex items-center justify-center" *ngIf="!item.images[0]" [ngClass]="item.type == 'artist' ? 'rounded-full' : 'rounded-md'"><i class="far fa-user fa-4x"></i></div>
+    <i class="fas fa-play fa-sm rounded-full bg-green-700 p-3 play-icon shadow-xl"></i>
   </div>
-    <i class="fas fa-play fa-xs rounded-full bg-green-600 p-2 play-icon shadow-xl"></i>
     <h4 class="text-white font-bold text-md pt-2 py-1 hover:underline cursor-pointer title-text">
       {{ item.name }}
     </h4>
