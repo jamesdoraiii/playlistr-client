@@ -3,13 +3,18 @@
       <div class="m-auto max-w-3/4 mb-3 md:m-0 md:max-w-full md:w-1/5">
         <img class="w-full h-full object-cover" [src]="item.images[0].url" />
       </div>
-      <div class=" md:w-4/5 md:px-3">
-        <p class="-mb-2 text-sm hidden font-medium md:block">{{item.type}}</p>
-        <h2 class="text-white font-bold text-4xl mb-2">{{ item.name }}</h2>
+      <div class="md:w-4/5 md:px-3 flex flex-col justify-end" >
+        <p class="text-xs hidden font-medium md:block -mb-4">{{item.type.toUpperCase()}}</p>
+        <h2 class="text-white font-bold text-6xl sm:text-4xl -mb-3">{{ item.name }}</h2>
         <p class="mb-2">{{ item.description }}</p>
-        <!-- <p>
-          Created by <span>{{ playlist.owner.display_name }}</span>
-        </p> -->
+        <p  class="flex items-center">
+          <a *ngIf="item.type == 'album'" class="text-white font-bold hover:underline cursor-pointer mr-1" [routerLink]="['/artist', item.artists[0].id]">{{ item.artists[0].name }}</a>
+          <a *ngIf="item.type == 'playlist'" class="text-white font-bold hover:underline cursor-pointer mr-1">{{ item.owner.display_name }}</a>
+          <i class="fas fa-circle mr-1" style='font-size: 4px;' *ngIf="item.type == 'album'"></i>
+          <span class="mr-1" *ngIf="item.type == 'album'">{{ item.release_date.split('-')[0] }}</span>
+          <i class="fas fa-circle mr-1" style='font-size: 4px;'></i>
+          <span>{{item.type == 'album' ? item.total_tracks : item.tracks.length}} songs</span>
+        </p>
       </div>
     </div>
   </div>

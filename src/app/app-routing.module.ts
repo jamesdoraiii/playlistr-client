@@ -12,7 +12,7 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'welcome', component: HeroComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'home', component: HomeComponent },

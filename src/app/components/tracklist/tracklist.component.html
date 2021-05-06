@@ -32,7 +32,7 @@
     <img [src]="track.album.images[track.album.images.length -1].url" class="pr-3">
     <div class="flex-grow">
       <p class="truncate ... text-white font-semibold">{{ track.name }}</p>
-      <td class="truncate ... font-normal text-gray-300" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
+      <td class="truncate ... font-normal text-gray-300 hover:underline cursor-pointer" [routerLink]="['/artist', track.artists[0].id]">{{ track.artists[0].name }}</td>
     </div>
 
     <i class="fas fa-ellipsis-h"></i>
