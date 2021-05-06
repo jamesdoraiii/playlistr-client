@@ -28,6 +28,8 @@ import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { AlbumDetailComponent } from './views/album-detail/album-detail.component';
+import { ItemDetailComponent } from './views/item-detail/item-detail.component';
+import { ItemHeaderComponent } from './components/item-header/item-header.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AlbumDetailComponent } from './views/album-detail/album-detail.componen
     ItemRowComponent,
     ItemCardComponent,
     SeeAllItemsComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    ItemDetailComponent,
+    ItemHeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

@@ -74,4 +74,8 @@ export class BaseService {
         this.$access_token_received.next(response.access_token);
       });
   }
+
+  getItemDetail(type: string, id: string) {
+    return this.http.post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/${type}/${id}` });
+  }
 }
