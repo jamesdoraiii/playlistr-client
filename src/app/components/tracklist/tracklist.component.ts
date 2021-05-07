@@ -10,6 +10,7 @@ import { WebPlayerService } from '@services/web-player.service';
 export class TracklistComponent implements OnInit {
   @Input() tracks: any;
   @Input() numberOfTracksToDisplay: number;
+  @Input() showTrackArt: boolean;
 
   constructor(private webPlayerService: WebPlayerService) {}
 
