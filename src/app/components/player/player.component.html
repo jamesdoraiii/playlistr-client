@@ -1,42 +1,42 @@
 
-<div class="flex justify-between align-middle bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
+<div class="flex justify-between items-center bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
     <div class="w-3/12">
         <h2 class="text-lg mb-1 truncate ...">{{currentTrackInfo.name}}</h2>
         <a class="truncate ... hover:underline hover:text-white cursor-pointer" *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
     </div>
 
-    <div class="flex text align-middle justify-center w-6/12 text-gray-500">
-        <!-- player controls here -->
-        <div class="p-4 hover:text-white">
-                <i class="fas fa-random align-middle"></i>
+    <div class="flex flex-col items-center">
+        <div class="flex text align-middle justify-center w-6/12 text-gray-500 px-10 mb-3">
+            <div class="px-4 hover:text-white">
+                    <i class="fas fa-random align-middle"></i>
+            </div>
+            <div class="px-4 hover:text-white">
+                <button (click)="previousTrack()">
+                    <i class="fas fa-step-backward align-middle"></i>
+                </button>
+            </div>
+            <div class="px-4 hover:text-white">
+                <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
+                    <i class="far fa-pause-circle fa-2x align-middle"></i>
+                </button>
+                <button (click)="resume()" *ngIf="playerStatus && playerStatus.paused">
+                    <i class="far fa-play-circle fa-2x align-middle"></i>
+                </button>
+            </div>
+            <div class="px-4 hover:text-white">
+                <button (click)="nextTrack()">
+                    <i class="fas fa-step-forward align-middle"></i>
+                </button>
+            </div>
+            <div class="px-4 hover:text-white">
+                    <i class="fas fa-sync-alt align-middle"></i>
+            </div>
         </div>
-        <div class="p-4 hover:text-white">
-            <button (click)="previousTrack()">
-                <i class="fas fa-step-backward align-middle"></i>
-            </button>
-        </div>
-        <div class="p-4 hover:text-white">
-            <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
-                <i class="far fa-pause-circle fa-2x align-middle"></i>
-            </button>
-            <button (click)="resume()" *ngIf="playerStatus && playerStatus.paused">
-                <i class="far fa-play-circle fa-2x align-middle"></i>
-            </button>
-        </div>
-        <div class="p-4 hover:text-white">
-            <button (click)="nextTrack()">
-                <i class="fas fa-step-forward align-middle"></i>
-            </button>
-        </div>
-        <div class="p-4 hover:text-white">
-           
-                <i class="fas fa-sync-alt align-middle"></i>
-       
-        </div>
+        <input type="range" min="1" max="100" value="0" class="seek_slider" (change)="seekTo($event)">
     </div>
 
-    <div class="w-3/12">
-        <!-- volume and devices -->
-     
+    <div class="w-2/12 flex items-center px-3">
+        <i class="fas fa-volume-up p-2"></i>
+        <input type="range" min="1" max="100" value="0" class="seek_slider" (change)="changeVolume($event)">
     </div>
 </div>

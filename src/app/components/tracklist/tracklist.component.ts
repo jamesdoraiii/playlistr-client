@@ -11,6 +11,7 @@ export class TracklistComponent implements OnInit {
   @Input() tracks: any;
   @Input() numberOfTracksToDisplay: number;
   @Input() showTrackArt: boolean;
+  @Input() showTrackNumber: boolean;
 
   constructor(private webPlayerService: WebPlayerService) {}
 

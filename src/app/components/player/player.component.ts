@@ -63,4 +63,12 @@ export class PlayerComponent implements OnInit {
       this.router.navigate(['artist/', artist.uri.split(':').slice(-1)[0]]);
     });
   }
+
+  seekTo(event) {
+    console.log(event);
+  }
+
+  changeVolume(event) {
+    console.log(event);
+  }
 }
