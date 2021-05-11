@@ -133,8 +133,8 @@ export class WebPlayerService {
     });
   }
 
-  seek() {
-    this.player.seek(60 * 1000).then(() => {
+  seek(position: number) {
+    this.player.seek(position).then(() => {
       console.log('Changed position!');
     });
   }

@@ -70,7 +70,7 @@ export class PlayerComponent implements OnInit {
   }
 
   seekTo(event) {
-    console.log(event);
+    this.webPlayerService.seek(event.target.value);
   }
 
   changeVolume(event) {

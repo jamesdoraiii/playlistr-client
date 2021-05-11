@@ -32,9 +32,9 @@
                     <i class="fas fa-sync-alt"></i>
             </div>
         </div>
-        <div class="flex items-center w-full">
+        <div class="flex items-center w-full" >
             <span *ngIf='playerStatus' class="px-2">{{convertmillisToMinutesAndSeconds(playerStatus.position)}}</span>
-            <input type="range" min="1" [max]="playerStatus.duration" value="0" class="seek_slider" (change)="seekTo($event)" [(ngModel)]="playerStatus.duration">
+            <input type="range" min="0" [max]="playerStatus.duration" class="seek_slider" (change)="seekTo($event)" [(ngModel)]="playerStatus.duration">
             <span *ngIf='playerStatus' class="px-2">{{convertmillisToMinutesAndSeconds(playerStatus.duration)}}</span>
         </div>
     </div>
