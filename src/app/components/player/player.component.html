@@ -6,30 +6,30 @@
     </div>
 
     <div class="flex flex-col items-center">
-        <div class="flex text align-middle justify-center w-6/12 text-gray-500 px-10 mb-3">
+        <div class="flex items-center justify-center w-6/12 text-gray-500 px-10 mb-3">
             <div class="px-4 hover:text-white">
-                    <i class="fas fa-random align-middle"></i>
+                <i class="fas fa-random"></i>
             </div>
             <div class="px-4 hover:text-white">
                 <button (click)="previousTrack()">
-                    <i class="fas fa-step-backward align-middle"></i>
+                    <i class="fas fa-step-backward"></i>
                 </button>
             </div>
             <div class="px-4 hover:text-white">
                 <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
-                    <i class="far fa-pause-circle fa-2x align-middle"></i>
+                    <i class="far fa-pause-circle fa-2x"></i>
                 </button>
                 <button (click)="resume()" *ngIf="playerStatus && playerStatus.paused">
-                    <i class="far fa-play-circle fa-2x align-middle"></i>
+                    <i class="far fa-play-circle fa-2x"></i>
                 </button>
             </div>
             <div class="px-4 hover:text-white">
                 <button (click)="nextTrack()">
-                    <i class="fas fa-step-forward align-middle"></i>
+                    <i class="fas fa-step-forward"></i>
                 </button>
             </div>
             <div class="px-4 hover:text-white">
-                    <i class="fas fa-sync-alt align-middle"></i>
+                    <i class="fas fa-sync-alt"></i>
             </div>
         </div>
         <input type="range" min="1" max="100" value="0" class="seek_slider" (change)="seekTo($event)">
@@ -37,6 +37,6 @@
 
     <div class="w-2/12 flex items-center px-3">
         <i class="fas fa-volume-up p-2"></i>
-        <input type="range" min="1" max="100" value="0" class="seek_slider" (change)="changeVolume($event)">
+        <input type="range" min="0" max="100" value="0" class="seek_slider" (change)="changeVolume($event)">
     </div>
 </div>

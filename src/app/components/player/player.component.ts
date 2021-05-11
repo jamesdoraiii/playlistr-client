@@ -69,6 +69,7 @@ export class PlayerComponent implements OnInit {
   }
 
   changeVolume(event) {
-    console.log(event);
+    console.log(event.target.value / 100);
+    this.webPlayerService.setVolume(event.target.value / 100);
   }
 }
