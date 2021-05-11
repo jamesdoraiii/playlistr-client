@@ -11,6 +11,7 @@ import { WebPlayerService } from '@services/web-player.service';
 export class PlayerComponent implements OnInit {
   currentTrackInfo: any;
   playerStatus: any;
+  playerVolume: number = 100;
 
   constructor(
     private webPlayerService: WebPlayerService,
@@ -23,16 +24,20 @@ export class PlayerComponent implements OnInit {
     this.webPlayerService.playerStatusUpdated.subscribe(status => {
       if (status.track_window.current_track != this.currentTrackInfo) {
         this.currentTrackInfo = status.track_window.current_track;
-        this.cdRef.detectChanges();
       }
-      this.playerStatus = status;
       console.log(status);
+      this.playerStatus = status;
       this.cdRef.detectChanges();
     });
   }
 
   getVolume() {
-    return this.webPlayerService.getVolume();
+    // this may be unnecessary since the player always initiates at full volume but I will keep it around for now;
+    this.playerVolume = this.webPlayerService.getVolume().then(response => {
+      console.log('Volume Gotten!', response);
+      this.playerVolume = response * 100;
+      this.cdRef.detectChanges();
+    });
   }
 
   setVolume() {
@@ -71,5 +76,11 @@ export class PlayerComponent implements OnInit {
   changeVolume(event) {
     console.log(event.target.value / 100);
     this.webPlayerService.setVolume(event.target.value / 100);
+  }
+
+  convertmillisToMinutesAndSeconds(millis) {
+    const minutes = Math.floor(millis / 60000);
+    const seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ':' + (parseInt(seconds) < 10 ? '0' : '') + seconds;
   }
 }
