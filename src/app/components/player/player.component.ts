@@ -30,11 +30,11 @@ export class PlayerComponent implements OnInit {
       this.playerStatus = status;
       this.cdRef.detectChanges();
     });
-    interval(1000).subscribe(tick => {
+    interval(500).subscribe(tick => {
       // may need to unsubscribe from this to prevent memory leak? Keep an eye on it
       if (this.playerStatus && !this.playerStatus.paused) {
         console.log('tick');
-        this.playerStatus.position += 1000;
+        this.playerStatus.position += 500;
       }
     });
   }
