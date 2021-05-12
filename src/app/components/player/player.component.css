@@ -1,3 +1,7 @@
+#player {
+  border-top: 1px solid #282828;
+}
+
 input[type='range'] {
   height: 22px;
   -webkit-appearance: none;

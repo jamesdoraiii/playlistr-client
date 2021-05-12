@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { WebPlayerService } from '@services/web-player.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-player',
@@ -28,6 +29,13 @@ export class PlayerComponent implements OnInit {
       console.log(status);
       this.playerStatus = status;
       this.cdRef.detectChanges();
+    });
+    interval(1000).subscribe(tick => {
+      // may need to unsubscribe from this to prevent memory leak? Keep an eye on it
+      if (this.playerStatus && !this.playerStatus.paused) {
+        console.log('tick');
+        this.playerStatus.position += 1000;
+      }
     });
   }
 
