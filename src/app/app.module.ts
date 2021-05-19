@@ -7,6 +7,7 @@ import { ArtistDetailComponent } from './views/artist-detail/artist-detail.compo
 import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { FormsModule } from '@angular/forms';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroComponent } from './views/hero/hero.component';
@@ -26,7 +27,6 @@ import { PlaylistsComponent } from './views/playlists/playlists.component';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SpotifyEmbeddedPlayerComponent } from './components/spotify-embedded-player/spotify-embedded-player.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
@@ -35,7 +35,6 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     AppComponent,
     SidebarComponent,
     HomeComponent,
-    SpotifyEmbeddedPlayerComponent,
     HeroComponent,
     HeroCardComponent,
     PlaylistDetailComponent,
@@ -54,7 +53,8 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     SeeAllItemsComponent,
     AlbumDetailComponent,
     ItemDetailComponent,
-    ItemHeaderComponent
+    ItemHeaderComponent,
+    ContextMenuComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

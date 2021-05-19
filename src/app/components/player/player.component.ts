@@ -26,14 +26,12 @@ export class PlayerComponent implements OnInit {
       if (status.track_window.current_track != this.currentTrackInfo) {
         this.currentTrackInfo = status.track_window.current_track;
       }
-      console.log(status);
       this.playerStatus = status;
       this.cdRef.detectChanges();
     });
     interval(500).subscribe(tick => {
       // may need to unsubscribe from this to prevent memory leak? Keep an eye on it
       if (this.playerStatus && !this.playerStatus.paused) {
-        console.log('tick');
         this.playerStatus.position += 500;
       }
     });
@@ -42,7 +40,6 @@ export class PlayerComponent implements OnInit {
   getVolume() {
     // this may be unnecessary since the player always initiates at full volume but I will keep it around for now;
     this.playerVolume = this.webPlayerService.getVolume().then(response => {
-      console.log('Volume Gotten!', response);
       this.playerVolume = response * 100;
       this.cdRef.detectChanges();
     });
@@ -53,12 +50,10 @@ export class PlayerComponent implements OnInit {
   }
 
   pause() {
-    console.log('pause clicked');
     this.webPlayerService.pause();
   }
 
   resume() {
-    console.log('resume clicked');
     this.webPlayerService.resume();
   }
 
@@ -71,7 +66,6 @@ export class PlayerComponent implements OnInit {
   }
 
   navigateToArtist(artist: any) {
-    console.log(artist);
     this.zone.run(() => {
       this.router.navigate(['artist/', artist.uri.split(':').slice(-1)[0]]);
     });
@@ -82,7 +76,6 @@ export class PlayerComponent implements OnInit {
   }
 
   changeVolume(event) {
-    console.log(event.target.value / 100);
     this.webPlayerService.setVolume(event.target.value / 100);
   }
 

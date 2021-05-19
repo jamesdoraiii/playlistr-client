@@ -1,8 +1,8 @@
 
 <div id="player" class="flex justify-between items-center bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
     <div class="w-3/12">
-        <h2 class="text-lg mb-1 truncate ...">{{currentTrackInfo.name}}</h2>
-        <a class="truncate ... hover:underline hover:text-white cursor-pointer" *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
+        <h2 class="text-lg text-white mb-0 truncate ... tracking-tighter ">{{currentTrackInfo.name}}</h2>
+        <a class="truncate ... hover:underline hover:text-white cursor-pointer font-hairline" *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
     </div>
 
     <div class="flex flex-col items-center flex-grow px-12">
