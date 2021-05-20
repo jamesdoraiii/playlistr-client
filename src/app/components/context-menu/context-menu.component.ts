@@ -11,12 +11,15 @@ export class ContextMenuComponent implements OnInit {
   get isContextMenuOpen(): boolean {
     return this.contextMenuService.isContextMenuOpen;
   }
+  set isContextMenuOpen(value: boolean) {
+    this.contextMenuService.isContextMenuOpen = value;
+  }
 
-  get positionX(): boolean {
+  get positionX() {
     return this.contextMenuService.positionX;
   }
 
-  get positionY(): boolean {
+  get positionY() {
     return this.contextMenuService.positionY;
   }
 
@@ -24,9 +27,22 @@ export class ContextMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addToQueue() {}
+  hideContextMenu() {
+    this.isContextMenuOpen = false;
+  }
 
-  goToArtist() {}
+  addToQueue() {
+    this.contextMenuService.addToQueue();
+    this.hideContextMenu();
+  }
 
-  goToAlbum() {}
+  goToArtist() {
+    this.contextMenuService.goToArtist();
+    this.hideContextMenu();
+  }
+
+  goToAlbum() {
+    this.contextMenuService.goToAlbum();
+    this.hideContextMenu();
+  }
 }

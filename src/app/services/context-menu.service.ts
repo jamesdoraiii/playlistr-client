@@ -1,26 +1,35 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { WebPlayerService } from '@services/web-player.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContextMenuService {
-  positionX;
-  positionY;
+  positionX = 0;
+  positionY = 0;
   isContextMenuOpen;
+  item: any;
 
-  constructor() {}
+  constructor(private router: Router, private webPlayer: WebPlayerService) {}
 
-  openContextMenu(event: any) {
+  openContextMenu(event: MouseEvent, item: any) {
     this.positionX = event.clientX;
-    this.positionX = event.clientY;
-    var menu = document.getElementById('contextMenu');
-    menu.style.top = event.clienty;
-    menu.style.left = event.clientX;
+    this.positionY = event.clientY;
+    this.item = item;
+    console.log(item);
+    this.isContextMenuOpen = true;
   }
 
-  addToQueue() {}
+  addToQueue() {
+    // this.webPlayer.
+  }
 
-  goToArtist() {}
+  goToArtist() {
+    this.router.navigate(['/artist/' + this.item.artists[0].id]);
+  }
 
-  goToAlbum() {}
+  goToAlbum() {
+    this.router.navigate(['/album/' + this.item.album.id]);
+  }
 }

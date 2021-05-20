@@ -29,6 +29,7 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     AlbumDetailComponent,
     ItemDetailComponent,
     ItemHeaderComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    ClickOutsideDirective
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

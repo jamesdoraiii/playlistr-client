@@ -30,8 +30,8 @@ export class TracklistComponent implements OnInit {
     return minutes + ':' + (parseInt(seconds) < 10 ? '0' : '') + seconds;
   }
 
-  openContextMenu(event: MouseEvent, track: any) {
+  openContextMenu(event: MouseEvent, item: any) {
     event.preventDefault();
-    this.contextMenuService.openContextMenu(event);
+    this.contextMenuService.openContextMenu(event, item);
   }
 }
