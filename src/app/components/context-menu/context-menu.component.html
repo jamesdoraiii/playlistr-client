@@ -1,4 +1,4 @@
-<div id="contextMenu" class="shadow-2xl absolute bg-gray-900 p-1 rounded-sm" [ngStyle]="{'left.px': positionX, 'top.px': positionY}" *ngIf='isContextMenuOpen' (clickOutside)="hideContextMenu()">
+<div id="contextMenu" class="shadow-2xl fixed bg-gray-900 p-1 rounded-sm" [ngStyle]="{'left.px': positionX, 'top.px': positionY}" *ngIf='isContextMenuOpen' (clickOutside)="hideContextMenu()">
     <div class="p-4 hover:bg-gray-700 rounded-sm cursor-pointer" (click)="addToQueue()">Add to Queue</div>
     <div class="p-4 hover:bg-gray-700 rounded-sm cursor-pointer" (click)="goToArtist()">Go To Artist</div>
     <div class="p-4 hover:bg-gray-700 rounded-sm cursor-pointer" (click)="goToAlbum()">Go To Album</div>
