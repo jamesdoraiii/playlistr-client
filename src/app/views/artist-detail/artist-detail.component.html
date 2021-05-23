@@ -1,6 +1,6 @@
 <div>
     <app-artist-header [artist]="artist" *ngIf="artist"></app-artist-header>
-    <div class="main-content-padding">
+    <div class="main-content-padding pt-6">
       <app-tracklist [tracks]="artistTopTracks" *ngIf="artistTopTracks"></app-tracklist>
       <div class="mt-5" *ngIf="artistAlbums">
         <app-album-display *ngFor="let album of artistAlbums" [album]="album"></app-album-display>
