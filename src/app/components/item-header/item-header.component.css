@@ -1,0 +1,4 @@
+.image-shadow {
+  -webkit-box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+  box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+}

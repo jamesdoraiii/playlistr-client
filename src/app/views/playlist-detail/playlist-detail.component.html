@@ -1,4 +1,6 @@
-<div class="container mx-auto" *ngIf="playlist">
+<div *ngIf="playlist">
   <app-item-header [item]="playlist"></app-item-header>
-  <app-tracklist [tracks]="playlist.tracks"></app-tracklist>
+  <div class="main-content-padding">
+    <app-tracklist [tracks]="playlist.tracks"></app-tracklist>
+  </div>
 </div>

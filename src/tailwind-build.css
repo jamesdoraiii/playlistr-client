@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  @media screen {
+    .main-content-padding {
+      @apply px-5;
+    }
+  }
+  @media ony screen and (min-width: 768px) {
+    .main-content-padding {
+      @apply px-8;
+    }
+  }
+}
