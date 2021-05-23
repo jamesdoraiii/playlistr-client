@@ -1,8 +1,1 @@
-
-<div *ngIf="album">
-    <app-item-header [item]="album"></app-item-header>
-    <div class="main-content-padding">
-      <app-tracklist [tracks]="album.tracks.items"></app-tracklist>
-    </div>
-</div>
-  
+<app-item-detail [item]="album" [tracks]="album.tracks.items" *ngIf="album"></app-item-detail>

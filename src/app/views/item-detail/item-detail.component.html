@@ -1,7 +1,4 @@
-<div *ngIf="item">
-    <app-item-header [item]="item"></app-item-header>
-    <div class="main-content-padding">
-      <app-tracklist [tracks]="item.tracks"></app-tracklist>
-    </div>
-  </div>
-  
+<app-item-header [item]="item" [headerBackground]="getHeaderBackground()"></app-item-header>
+<div class="main-content-padding pt-6" [ngStyle]="getTracklistBackground()">
+    <app-tracklist [tracks]="tracks"></app-tracklist>
+</div>

@@ -9,6 +9,7 @@ const Vibrant = require('node-vibrant');
 })
 export class ItemDetailComponent implements OnChanges {
   @Input() item: any;
+  @Input() tracks: any;
   palette: any;
 
   constructor() {}
@@ -23,10 +24,20 @@ export class ItemDetailComponent implements OnChanges {
     });
   }
 
-  styleContainer(): any {
+  getHeaderBackground(): any {
     if (this.palette && this.palette.Vibrant) {
       return {
         background: 'linear-gradient(transparent 0,rgba(0,0,0,.5) 100%),' + this.palette.Vibrant.getHex()
+      };
+    } else {
+      return {};
+    }
+  }
+
+  getTracklistBackground(): any {
+    if (this.palette && this.palette.Vibrant) {
+      return {
+        background: 'linear-gradient(rgba(0,0,0,.6) 0,rgba(45, 55, 72) 100px),' + this.palette.Vibrant.getHex()
       };
     } else {
       return {};
