@@ -1,4 +1,4 @@
-<div class="xl:p-6 main-content-padding pt-24" *ngIf="searchData">
+<div class="main-content-padding pt-24" *ngIf="searchData">
   <div class="mb-10">
     <h4 class="text-white font-bold text-2xl sm:text-lg mb-4">Songs</h4>
     <app-tracklist *ngIf="searchData.tracks" [tracks]="searchData.tracks.items" [numberOfTracksToDisplay]="5"></app-tracklist>

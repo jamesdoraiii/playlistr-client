@@ -28,7 +28,7 @@
 <!-- you should probably  -->
 <!-- track display if mobile width -->
 
-  <div *ngFor="let track of tracks; index as i" class="flex items-center hover:bg-gray-700 rounded-sm p-2 rounded-md" [ngClass]="{'hidden xl:block': numberOfTracksToDisplay && i > numberOfTracksToDisplay}" (click)="playTrack(track.uri)" (contextmenu)="openContextMenu($event, track)">
+  <div *ngFor="let track of tracks; index as i" class="flex items-center hover:bg-gray-700 rounded-sm p-2 rounded-md" [ngClass]="{'hidden': numberOfTracksToDisplay && i > numberOfTracksToDisplay}" (click)="playTrack(track.uri)" (contextmenu)="openContextMenu($event, track)">
     <img [src]="track.album.images[track.album.images.length -1].url" class="pr-3">
     <div class="flex-grow">
       <p class="truncate ... text-white font-semibold">{{ track.name }}</p>

@@ -1,7 +1,7 @@
 <div>
     <div class="flex justify-between align-baseline mb-4">
       <h4 class="text-white font-bold text-2xl sm:text-lg">{{ title }}</h4>
-      <a class="text-white uppercase hover:underline cursor-pointer flex" style="align-items: flex-end;"  (click)="seeAll()">See All</a>
+      <a class="text-white uppercase hover:underline cursor-pointer flex" style="align-items: flex-end;"  (click)="seeAll()" *ngIf="!showAllItems">See All</a>
     </div>
   
     <div class="grid gap-x-4 grid-cols-3 xl:grid-cols-5 mb-10 items-stretch" [ngClass]="{'gap-y-8' : showAllItems}">

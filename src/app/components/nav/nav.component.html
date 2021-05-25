@@ -1,11 +1,13 @@
-<div class="mb-8 mt-5 flex justify-between align-middle main-content-padding absolute w-full" if="nav">
-    <div>
+<div class="mb-8 mt-8 flex justify-between align-middle main-content-padding absolute w-full" if="nav">
+    <div class="flex">
+        <div class="mr-4">
         <button class="mr-4" (click)="back()"><i class="fas fa-chevron-circle-left text-4xl hover:text-gray-500 active:text-gray-600"></i></button>
         <button (click)="forward()"><i class="fas fa-chevron-circle-right text-4xl hover:text-gray-500 active:text-gray-600"></i></button>
-    </div>
-    <div class="flex flex-grow bg-white rounded-full mx-4 px-3 py-1 overflow-hidden" style="align-items: center;">
-        <i class="fas fa-search" style="height: fit-content;"></i>
-        <input class="w-full text-gray-900 mx-3 focus:outline-none" placeholder="Artists, songs, or playlists" [(ngModel)]="searchInputText" (ngModelChange)="searchInputUpdate.next($event)" (keyup)="searchKeyUp()"/>
+        </div>
+        <div class="flex flex-grow bg-white rounded-full mx-4 px-3 py-1 overflow-hidden items-center" style="max-width: 500px;">
+            <i class="fas fa-search" style="height: fit-content;"></i>
+            <input class="w-full text-gray-900 mx-3 focus:outline-none" placeholder="Artists, songs, or playlists" [(ngModel)]="searchInputText" (ngModelChange)="searchInputUpdate.next($event)" (keyup)="searchKeyUp()"/>
+        </div>
     </div>
     <a href="http://localhost:4000/login" class='rounded-full px-8 py-2 bg-green-700 inline-block'>SPOTIFY LOGIN</a>
 </div>
