@@ -2,6 +2,11 @@
 
 This is the client app for Playlistr, it is meant to be used with the server app found [here](https://github.com/jamesdoraiii/playlistr-spotify-server).
 
+## Tech/Framework Used
+
+- Angular 10
+- Tailwind CSS
+
 ## Getting Started
 
 ```
