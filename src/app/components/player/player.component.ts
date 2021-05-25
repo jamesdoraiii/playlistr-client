@@ -27,6 +27,7 @@ export class PlayerComponent implements OnInit {
         this.currentTrackInfo = status.track_window.current_track;
       }
       this.playerStatus = status;
+      console.log(status);
       this.cdRef.detectChanges();
     });
     interval(500).subscribe(tick => {
@@ -77,6 +78,10 @@ export class PlayerComponent implements OnInit {
 
   changeVolume(event) {
     this.webPlayerService.setVolume(event.target.value / 100);
+  }
+
+  shuffle() {
+    this.webPlayerService.shuffle();
   }
 
   convertmillisToMinutesAndSeconds(millis) {

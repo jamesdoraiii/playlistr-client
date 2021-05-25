@@ -7,15 +7,15 @@
 
     <div class="flex flex-col items-center flex-grow px-12">
         <div class="flex items-center justify-center w-6/12 text-gray-500 px-10 mb-3">
-            <div class="px-4 hover:text-white">
+            <!-- <div class="px-4 hover:text-white">
                 <i class="fas fa-random"></i>
-            </div>
-            <div class="px-4 hover:text-white">
+            </div> -->
+            <div class="px-6 hover:text-white">
                 <button (click)="previousTrack()">
                     <i class="fas fa-step-backward"></i>
                 </button>
             </div>
-            <div class="px-4 hover:text-white">
+            <div class="px-6 hover:text-white">
                 <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
                     <i class="far fa-pause-circle fa-2x"></i>
                 </button>
@@ -23,14 +23,14 @@
                     <i class="far fa-play-circle fa-2x"></i>
                 </button>
             </div>
-            <div class="px-4 hover:text-white">
+            <div class="px-6 hover:text-white">
                 <button (click)="nextTrack()">
                     <i class="fas fa-step-forward"></i>
                 </button>
             </div>
-            <div class="px-4 hover:text-white">
-                    <i class="fas fa-sync-alt"></i>
-            </div>
+            <!-- <div class="px-4 hover:text-white">
+                    <i class="fas fa-sync-alt" (click)="shuffle()"></i>
+            </div> -->
         </div>
         <div class="flex items-center w-full" >
             <span *ngIf='playerStatus' class="px-2">{{convertmillisToMinutesAndSeconds(playerStatus.position)}}</span>

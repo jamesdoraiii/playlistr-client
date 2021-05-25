@@ -150,4 +150,10 @@ export class WebPlayerService {
       console.log('Skipped to next track!');
     });
   }
+
+  shuffle() {
+    this.player.toggleShuffle().then(() => {
+      console.log('Shuffle turned on');
+    });
+  }
 }
