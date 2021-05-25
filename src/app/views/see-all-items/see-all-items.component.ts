@@ -23,6 +23,12 @@ export class SeeAllItemsComponent implements OnInit {
     if (!this.items) {
       this.router.navigate(['/home']);
     }
-    window.scrollTo(0, 0);
+    console.log('scrolling to top');
+    const elmnt = document.getElementById('nav');
+    elmnt.scrollIntoView({ behavior: 'smooth' });
+    // setTimeout(() => {
+    //   console.log('scrolling to top again');
+    //   window.scrollTo(0, 0);
+    // }, 2000);
   }
 }
