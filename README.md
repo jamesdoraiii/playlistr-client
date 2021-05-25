@@ -1,12 +1,12 @@
-# Angular Tailwind Starter
+# Playlistr Client App
 
-This is a starter repo for Angular projects that wish to use Tailwindcss with Purgecss. This reduces the amount of boilerplate and Googling to get everything working together.
+This is the client app for Playlistr, it is meant to be used with the server app found [here](https://github.com/jamesdoraiii/playlistr-spotify-server).
 
 ## Getting Started
 
 ```
-git clone https://github.com/wbroberts/angular-tailwind-starter.git
-cd angular-tailwind-starter
+git clone https://github.com/jamesdoraiii/playlistr-client.git
+cd playlistr-client
 npm install
 npm start
 ```
