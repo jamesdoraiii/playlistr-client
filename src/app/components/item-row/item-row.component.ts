@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { SeeAllItemsService } from '@services/see-all-items.service';
 
 @Component({
   selector: 'app-item-row',
@@ -13,12 +13,13 @@ export class ItemRowComponent implements OnInit {
   @Input() items: any[];
   @Input() showAllItems: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seeAllItemsService: SeeAllItemsService) {}
 
   ngOnInit(): void {}
 
   seeAll() {
-    localStorage.setItem('allItems', JSON.stringify(this.items));
+    this.seeAllItemsService.setItems(this.items);
+    this.seeAllItemsService.setTitle(this.title);
     this.router.navigate(['/see-all-items']);
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { SeeAllItemsService } from '@services/see-all-items.service';
 
 @Component({
   selector: 'app-see-all-items',
@@ -8,15 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./see-all-items.component.css']
 })
 export class SeeAllItemsComponent implements OnInit {
-  items: any;
+  get title(): string {
+    return this.seeAllItemsService.title;
+  }
 
-  constructor(private router: Router) {}
+  get items(): any[] {
+    return this.seeAllItemsService.items;
+  }
+
+  constructor(private router: Router, private seeAllItemsService: SeeAllItemsService) {}
 
   ngOnInit(): void {
-    if (!localStorage.getItem('allItems')) {
+    if (!this.items) {
       this.router.navigate(['/home']);
     }
     window.scrollTo(0, 0);
-    this.items = JSON.parse(localStorage.getItem('allItems'));
   }
 }
