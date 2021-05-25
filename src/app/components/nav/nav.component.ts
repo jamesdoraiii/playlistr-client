@@ -38,10 +38,8 @@ export class NavComponent implements OnInit {
   }
 
   search() {
-    this.searchService
-      .search(this.searchInputText.replace(/ /g, '%20'), '&type=artist,playlist,track,album')
-      .subscribe(response => {
-        console.log(response);
-      });
+    this.searchService.search(this.searchInputText, '&type=artist,playlist,track,album').subscribe(response => {
+      console.log(response);
+    });
   }
 }

@@ -3,8 +3,8 @@
     <h4 class="text-white font-bold text-2xl sm:text-lg mb-4">Songs</h4>
     <app-tracklist *ngIf="searchData.tracks" [tracks]="searchData.tracks.items" [numberOfTracksToDisplay]="5"></app-tracklist>
   </div>
-    <app-item-row *ngIf="searchData.albums" title="Albums" [items]="searchData.albums.items"></app-item-row>
-    <app-item-row *ngIf="searchData.artists" title="Artists" [items]="searchData.artists.items"></app-item-row>
-    <app-item-row *ngIf="searchData.artists" title="Playlists" [items]="searchData.playlists.items"></app-item-row>
+    <app-item-row *ngIf="searchData.albums" title="Albums" [seeAllTitle]="getSeeAllTitle('Albums')" [items]="searchData.albums.items"></app-item-row>
+    <app-item-row *ngIf="searchData.artists" title="Artists" [seeAllTitle]="getSeeAllTitle('Artists')" [items]="searchData.artists.items"></app-item-row>
+    <app-item-row *ngIf="searchData.artists" title="Playlists" [seeAllTitle]="getSeeAllTitle('Tracks')" [items]="searchData.playlists.items"></app-item-row>
   </div>
   

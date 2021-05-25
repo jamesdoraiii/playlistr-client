@@ -3,11 +3,13 @@ import { catchError, tap } from 'rxjs/operators';
 import { BaseService } from '@services/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { query } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
+  querystring: string;
   searchResults: any;
 
   constructor(protected http: HttpClient, private base: BaseService) {
@@ -15,18 +17,14 @@ export class SearchService {
   }
 
   search(queryString: string, searchTypeString: string) {
-    return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + queryString + searchTypeString).pipe(
-      tap(response => {
-        this.searchResults = response;
-      })
-    );
-
-    // the below was for rapid ui development and should be removed
-    // return this.base.requestWithToken(`https://api.spotify.com/v1/search?q=` + 'glass' + searchTypeString).pipe(
-    //   tap(response => {
-    //     console.log(JSON.stringify(response));
-    //     this.searchResults = response;
-    //   })
-    // );
+    this.querystring = queryString;
+    const formattedQueryString = queryString.replace(/ /g, '%20');
+    return this.base
+      .requestWithToken(`https://api.spotify.com/v1/search?q=` + formattedQueryString + searchTypeString)
+      .pipe(
+        tap(response => {
+          this.searchResults = response;
+        })
+      );
   }
 }

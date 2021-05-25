@@ -12,11 +12,7 @@ export class ItemCardComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    if (this.item.type == 'album') {
-      console.log(this.item);
-    }
-  }
+  ngOnInit(): void {}
 
   routeToItemDetail(item) {
     this.router.navigate(['/' + item.type + '/' + item.id]);

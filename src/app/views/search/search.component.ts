@@ -15,4 +15,8 @@ export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {}
+
+  getSeeAllTitle(type: string) {
+    return 'Albums for "' + this.searchService.querystring + '"';
+  }
 }
