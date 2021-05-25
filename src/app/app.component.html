@@ -2,11 +2,11 @@
   <div class="flex-1 overflow-y-auto flex flex-grid" *ngIf="router.url !== '/welcome' && router.url !== '/auth'">
     <div
     *ngIf="isMenuOpen"
-    class="fixed md:w-2/3 lg:w-2/6 xl:w-2/12 z-20 md:block md:relative md:w-1/4 bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
+    class="fixed md:w-2/3 lg:w-3/12 xl:w-1/12 z-20 md:block md:relative md:w-1/4 bg-gray-900 shadow-lg animate__animated animate__slideInLeft animate__faster"
     >
     <app-sidebar></app-sidebar>
   </div>
-  <div class="w-full overflow-y-scroll overscroll-x-none h-full relative">
+  <div class="w-full overflow-y-auto overscroll-x-auto h-full relative">
     <app-nav></app-nav>
     <button class="md:hidden pr-2 py-2 mb-4 focus:outline-none" (click)="isMenuOpen = !isMenuOpen">
       <!-- Menu Button -->
