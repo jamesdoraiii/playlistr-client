@@ -1,9 +1,6 @@
 // import { Apollo } from 'apollo-angular';
 import { Apollo } from 'apollo-angular';
-import { CreateUserRequest } from '@models/create-user-request';
 import { Injectable } from '@angular/core';
-import { User } from '@models/user';
-import { create } from 'domain';
 import gql from 'graphql-tag';
 
 @Injectable({
@@ -11,4 +8,22 @@ import gql from 'graphql-tag';
 })
 export class UsersService {
   constructor(private apollo: Apollo) {}
+
+  createUser(createUserRequest: { email: string; password: string; spotifyUserId: string }): any {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreateUser {
+          createUser(
+            input: {
+              user: { email: "${createUserRequest.email}", passwordHash: "${createUserRequest.password}", spotifyUserId: "${createUserRequest.spotifyUserId}" }
+            }
+          ) {
+            user {
+              email
+            }
+          }
+        }
+      `
+    });
+  }
 }

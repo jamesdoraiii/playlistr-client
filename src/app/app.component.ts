@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { UsersService } from '@services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,13 @@ export class AppComponent implements OnInit {
     this.checkWidth();
   }
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.checkWidth();
+    // this.userService
+    //   .createUser({ email: 'test@gmail.com', password: '1234', spotifyUserId: 'jimmyd233' })
+    //   .subscribe(response => console.log('this is the response from create user', response));
   }
 
   checkWidth() {
