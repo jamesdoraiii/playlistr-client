@@ -2,8 +2,6 @@ import { Apollo } from 'apollo-angular';
 import { CreateUserRequest } from '@models/create-user-request';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '@models/user';
-import { create } from 'domain';
 import { environment } from '@environment';
 import gql from 'graphql-tag';
 
@@ -13,29 +11,11 @@ import gql from 'graphql-tag';
 export class AuthService {
   constructor(private apollo: Apollo, private http: HttpClient) {}
 
-  createUser(createUserRequest: CreateUserRequest): any {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation MyMutation {
-          createUser(
-            input: {
-              user: { email: "${createUserRequest.email}", passwordHash: "${createUserRequest.password}", spotifyUserId: "${createUserRequest.spotify_user_id}", username: "${createUserRequest.username}" }
-            }
-          ) {
-            user {
-              email
-            }
-          }
-        }
-      `
-    });
+  signUp(signUpInfo: { email: string; password: string; spotifyUsername: string }) {
+    return this.http.post(environment.spotifyServerBaseUrl + 'sign-up', signUpInfo);
   }
 
-  updateUser(): any {}
-
-  login() {}
-
-  spotifyLogin() {
-    return this.http.get(environment.spotifyServerBaseUrl + 'login');
+  signIn(signInInfo: { email: string; password: string }) {
+    return this.http.post(environment.spotifyServerBaseUrl + 'sign-in', signInInfo);
   }
 }
