@@ -30,6 +30,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     ItemDetailComponent,
     ItemHeaderComponent,
     ContextMenuComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    PostPlaylistComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

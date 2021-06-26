@@ -7,6 +7,7 @@ import { HeroComponent } from './views/hero/hero.component';
 import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
+import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'user/:userId', component: UserProfileComponent },
   { path: 'search', component: SearchComponent },
   { path: 'see-all-items', component: SeeAllItemsComponent },
-  { path: 'album/:albumId', component: AlbumDetailComponent }
+  { path: 'album/:albumId', component: AlbumDetailComponent },
+  { path: 'post-playlist', component: PostPlaylistComponent }
 ];
 
 @NgModule({
