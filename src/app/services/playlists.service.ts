@@ -1,7 +1,10 @@
+import { Apollo } from 'apollo-angular';
+import { AuthService } from '@services/auth.service';
 import { BaseService } from '@services/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment';
+import gql from 'graphql-tag';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,12 @@ import { environment } from '@environment';
 export class PlaylistsService {
   userPlaylists: any[];
 
-  constructor(protected http: HttpClient, private base: BaseService) {
+  constructor(
+    protected http: HttpClient,
+    private base: BaseService,
+    private apollo: Apollo,
+    private auth: AuthService
+  ) {
     this.base.$access_token_received.subscribe(result => {
       this.getPlaylistsForUser();
     });
@@ -30,5 +38,15 @@ export class PlaylistsService {
         // }
       }
     );
+  }
+
+  postPlaylist(spotifyPlaylistId: string, genreTags: string[]) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreatePlaylist {
+          createPlaylist(input: { playlist: { ownerId: 10, spotifyPlaylistId: "", genreTags: "", isValid: true } })
+        }
+      `
+    });
   }
 }
