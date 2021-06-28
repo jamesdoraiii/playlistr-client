@@ -44,7 +44,9 @@ export class PlaylistsService {
     return this.apollo.mutate({
       mutation: gql`
         mutation CreatePlaylist {
-          createPlaylist(input: { playlist: { ownerId: 10, spotifyPlaylistId: "", genreTags: "", isValid: true } })
+          createPlaylist(input: {playlist: {ownerId: 1, spotifyPlaylistId: "${spotifyPlaylistId}", genreTags: "['TEST', 'TEST']", isValid: false}}) {
+            clientMutationId
+          }
         }
       `
     });

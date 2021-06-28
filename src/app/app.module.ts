@@ -6,7 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ArtistDetailComponent } from './views/artist-detail/artist-detail.component';
 import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
 import { AuthComponent } from './views/auth/auth.component';
+import { AutocompleteInputComponent } from './components/autocomplete-input/autocomplete-input.component';
+import { AutocompleteModule } from 'ng2-input-autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { FormsModule } from '@angular/forms';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
@@ -24,13 +27,12 @@ import { NgModule } from '@angular/core';
 import { PlayerComponent } from './components/player/player.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { PlaylistsComponent } from './views/playlists/playlists.component';
+import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { ClickOutsideDirective } from './directives/click-outside.directive';
-import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 
 @NgModule({
   declarations: [
@@ -58,9 +60,10 @@ import { PostPlaylistComponent } from './views/post-playlist/post-playlist.compo
     ItemHeaderComponent,
     ContextMenuComponent,
     ClickOutsideDirective,
-    PostPlaylistComponent
+    PostPlaylistComponent,
+    AutocompleteInputComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, AutocompleteModule.forRoot()],
   providers: [
     {
       provide: APOLLO_OPTIONS,
