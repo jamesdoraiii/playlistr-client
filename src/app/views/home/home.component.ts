@@ -9,6 +9,7 @@ import { PlaylistsService } from '@services/playlists.service';
 })
 export class HomeComponent implements OnInit {
   playlists = [''];
+  allPlaylistsFromYourServer = [];
 
   get userPlaylists(): any[] {
     return this.playlistsService.userPlaylists;
@@ -16,5 +17,14 @@ export class HomeComponent implements OnInit {
 
   constructor(private playlistsService: PlaylistsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getAllPlaylists();
+  }
+
+  getAllPlaylists() {
+    this.playlistsService.getAllPlaylists().subscribe((response: any) => {
+      console.log('this is the response from get all playlists', response.data);
+      this.allPlaylistsFromYourServer = response.data.allPlaylists.nodes;
+    });
+  }
 }

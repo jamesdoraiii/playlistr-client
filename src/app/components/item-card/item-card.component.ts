@@ -15,6 +15,10 @@ export class ItemCardComponent implements OnInit {
   ngOnInit(): void {}
 
   routeToItemDetail(item) {
+    if (item.__typename) {
+      this.router.navigate(['/playlist/' + item.spotifyPlaylistId]);
+      return;
+    }
     this.router.navigate(['/' + item.type + '/' + item.id]);
   }
 

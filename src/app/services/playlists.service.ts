@@ -40,6 +40,23 @@ export class PlaylistsService {
     );
   }
 
+  getAllPlaylists() {
+    return this.apollo.query({
+      query: gql`
+        query AllPlaylists {
+          allPlaylists {
+            nodes {
+              spotifyPlaylistId
+              playlistId
+              ownerId
+              genreTags
+            }
+          }
+        }
+      `
+    });
+  }
+
   postPlaylist(spotifyPlaylistId: string, genreTags: string[]) {
     return this.apollo.mutate({
       mutation: gql`
