@@ -23,8 +23,34 @@ export class PlaylistsService {
     });
   }
 
-  getPlaylistById(id: string) {
+  getSpotifyPlaylistInfoById(id: string) {
     return this.http.post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/playlists/${id}` });
+  }
+
+  getPlaylistrDetailsById(id: string) {
+    return this.apollo.query({
+      query: gql`
+        query GetPlaylistDetailFromSpotifyPlaylistId {
+          playlistBySpotifyPlaylistId(spotifyPlaylistId: "${id}") {
+            createdAt
+            genreTags
+            name
+            ownerUsername
+            spotifyPlaylistId
+            commentsByParentPlaylistId {
+              nodes {
+                content
+                createdAt
+                userByOwnerId {
+                  email
+                  spotifyUserId
+                }
+              }
+            }
+          }
+        }
+      `
+    });
   }
 
   getPlaylistsForUser() {

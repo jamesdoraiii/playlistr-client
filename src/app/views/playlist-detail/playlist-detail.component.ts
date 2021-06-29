@@ -25,9 +25,13 @@ export class PlaylistDetailComponent implements OnInit {
     this.playlist = undefined;
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
-    this.playlistsService.getPlaylistById(playlistId).subscribe((result: Playlist) => {
+    this.playlistsService.getSpotifyPlaylistInfoById(playlistId).subscribe((result: Playlist) => {
       this.formatTracks(result);
       this.playlist = result;
+    });
+
+    this.playlistsService.getPlaylistrDetailsById(playlistId).subscribe((result: any) => {
+      console.log('This is the result from the playlist detail graphql call', result);
     });
   }
 
