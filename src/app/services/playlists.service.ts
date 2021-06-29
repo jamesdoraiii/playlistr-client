@@ -30,7 +30,14 @@ export class PlaylistsService {
   getPlaylistsForUser() {
     this.base.requestWithToken(`https://api.spotify.com/v1/me/playlists`).subscribe(
       (playlists: any) => {
-        this.userPlaylists = playlists.items;
+        console.log('this is the response from /me/playlists', playlists);
+        this.userPlaylists = playlists.items.map(item => {
+          if (item.images && item.images[0]) {
+            item.imageUrl = item.images[0].url;
+          }
+          item.ownerUsername = item.owner.display_name;
+          return item;
+        });
       },
       err => {
         // if (err.status == 401) {
@@ -48,7 +55,12 @@ export class PlaylistsService {
             nodes {
               spotifyPlaylistId
               playlistId
+              ownerUsername
               ownerId
+              nodeId
+              name
+              isValid
+              imageUrl
               genreTags
             }
           }

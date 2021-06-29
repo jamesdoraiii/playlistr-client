@@ -27,13 +27,17 @@ export class ItemCardComponent implements OnInit {
       case 'artist':
         return 'Artist';
       case 'playlist':
-        return this.item.owner.display_name;
+        return this.item.ownerUsername;
     }
   }
 
-  getBackgroundImageStyle() {
-    if (this.item.images[0]) {
-      return 'background-image: url("' + this.item.images[0].url + '");';
+  getItemImageSrc() {
+    if (this.item.imageUrl) {
+      return this.item.imageUrl;
     }
+    if (this.item.images && this.item.images[0]) {
+      return this.item.images[0].url;
+    }
+    return undefined;
   }
 }
