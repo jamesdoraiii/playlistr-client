@@ -1,1 +1,5 @@
-<p>comment-display works!</p>
+<div class="w-full rounded-md bg-gray-700 p-3 mb-3" *ngFor="let comment of comments">
+    <p>{{comment.userByOwnerId.spotifyUserId}}</p>
+    <p>{{comment.createdAt}}</p>
+    <p>{{comment.content}}</p>
+</div>

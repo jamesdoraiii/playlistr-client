@@ -14,11 +14,7 @@ export class CommentsComponent implements OnInit {
 
   constructor(private commentsService: CommentsService) {}
 
-  ngOnInit(): void {
-    console.log(this.parentItemType);
-    console.log(this.parentItemType);
-    console.log(this.comments);
-  }
+  ngOnInit(): void {}
 
   postComment(commentContent: string) {
     console.log('in post comment of the parent', commentContent);
