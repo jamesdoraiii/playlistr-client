@@ -33,6 +33,9 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { CommentCreatorComponent } from './components/comment-creator/comment-creator.component';
+import { CommentDisplayComponent } from './components/comment-display/comment-display.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     ContextMenuComponent,
     ClickOutsideDirective,
     PostPlaylistComponent,
-    AutocompleteInputComponent
+    AutocompleteInputComponent,
+    CommentCreatorComponent,
+    CommentDisplayComponent,
+    CommentsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, AutocompleteModule.forRoot()],
   providers: [

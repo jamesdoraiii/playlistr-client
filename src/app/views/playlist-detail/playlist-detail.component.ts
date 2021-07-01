@@ -12,6 +12,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class PlaylistDetailComponent implements OnInit {
   playlist: Playlist;
+  playlistrDetails: any;
+  comments: any[];
 
   constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
 
@@ -30,8 +32,10 @@ export class PlaylistDetailComponent implements OnInit {
       this.playlist = result;
     });
 
-    this.playlistsService.getPlaylistrDetailsById(playlistId).subscribe((result: any) => {
+    this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
       console.log('This is the result from the playlist detail graphql call', result);
+      this.playlistrDetails = result.data.playlistBySpotifyPlaylistId;
+      this.comments = result.data.playlistBySpotifyPlaylistId.commentsByParentPlaylistId.nodes;
     });
   }
 

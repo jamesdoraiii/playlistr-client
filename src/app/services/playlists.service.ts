@@ -27,12 +27,13 @@ export class PlaylistsService {
     return this.http.post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/playlists/${id}` });
   }
 
-  getPlaylistrDetailsById(id: string) {
+  getPlaylistrPlaylistInfoById(id: string) {
     return this.apollo.query({
       query: gql`
         query GetPlaylistDetailFromSpotifyPlaylistId {
           playlistBySpotifyPlaylistId(spotifyPlaylistId: "${id}") {
             createdAt
+            playlistId
             genreTags
             name
             ownerUsername
@@ -100,7 +101,7 @@ export class PlaylistsService {
     return this.apollo.mutate({
       mutation: gql`
         mutation CreatePlaylist {
-          createPlaylist(input: {playlist: {ownerId: 1, spotifyPlaylistId: "${spotifyPlaylistId}", genreTags: "['TEST', 'TEST']", isValid: false}}) {
+          createPlaylist(input: {playlist: {ownerId: 7, spotifyPlaylistId: "${spotifyPlaylistId}", genreTags: "TEST, TEST", isValid: false, name: "Test Playlist", ownerUsername: "jimmyd233", imageUrl: "https://d29rinwu2hi5i3.cloudfront.net/article_media/78a90e8c-b043-426f-a87e-f79d6de6c62e/cdj-2000nexus-screen_copy.jpg"}}) {
             clientMutationId
           }
         }

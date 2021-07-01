@@ -1,1 +1,2 @@
 <app-item-detail [item]="playlist" [tracks]="playlist.tracks" *ngIf="playlist"></app-item-detail>
+<app-comments *ngIf="playlist && playlistrDetails" parentItemType="playlist" [parentId]="playlistrDetails.playlistId" [comments]="comments"></app-comments>
