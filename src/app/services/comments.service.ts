@@ -35,7 +35,14 @@ export class CommentsService {
       mutation: gql`
         mutation CreateCommentForPlaylist {
           createComment(input: { comment: { ownerId: 7, parentPlaylistId: ${playlistId}, content: "${content}" } }) {
-            clientMutationId
+            comment {
+              content
+              createdAt
+              userByOwnerId {
+                email
+                spotifyUserId
+              }
+            }
           }
         }
       `
@@ -47,7 +54,14 @@ export class CommentsService {
       mutation: gql`
       mutation CreateChildComment {
         createComment(input: {comment: {ownerId: 10, content: "${content}", parentCommentId: ${commentId}}}) {
-          clientMutationId
+          comment {
+            content
+            createdAt
+            userByOwnerId {
+              email
+              spotifyUserId
+            }
+          }
         }
       }
       `

@@ -18,8 +18,9 @@ export class CommentsComponent implements OnInit {
 
   postComment(commentContent: string) {
     console.log('in post comment of the parent', commentContent);
-    this.commentsService
-      .postCommentToPlaylist(this.parentId, commentContent)
-      .subscribe(res => console.log('comment posted', res));
+    this.commentsService.postCommentToPlaylist(this.parentId, commentContent).subscribe((res: any) => {
+      console.log('comment posted', res);
+      this.comments = this.comments.concat(res.data.createComment.comment);
+    });
   }
 }
