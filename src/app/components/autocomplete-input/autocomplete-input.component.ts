@@ -1,35 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-autocomplete-input',
   templateUrl: './autocomplete-input.component.html',
   styleUrls: ['./autocomplete-input.component.css']
 })
-export class AutocompleteInputComponent implements OnInit {
+export class AutocompleteInputComponent {
   @Input() options: any[];
-  selectedItem: any = '';
-  inputChanged: any = '';
-
-  items2: any[] = [
-    { id: 0, payload: { label: 'Tom' } },
-    { id: 1, payload: { label: 'John' } },
-    { id: 2, payload: { label: 'Lisa' } },
-    { id: 3, payload: { label: 'Js' } },
-    { id: 4, payload: { label: 'Java' } },
-    { id: 5, payload: { label: 'c' } },
-    { id: 6, payload: { label: 'vc' } }
-  ];
-  config2: any = { placeholder: 'test', sourceField: ['payload', 'label'] };
+  @Output() selected = new EventEmitter<string>();
 
   onSelect(item: any) {
-    this.selectedItem = item;
-  }
-
-  onInputChangedEvent(val: string) {
-    this.inputChanged = val;
+    this.selected.emit(item);
+    var input: any = document.getElementById('tag1');
+    input.value = '';
   }
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

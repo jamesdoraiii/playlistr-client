@@ -36,14 +36,14 @@ export class PostPlaylistComponent implements OnInit {
 
   playlistUrl: string;
 
-  tagsForPlaylist = ['Tech House', 'test'];
+  tagsForPlaylist = [];
 
   constructor(private playlistService: PlaylistsService) {}
 
   ngOnInit(): void {}
 
   removeTag(tagForRemoval: any) {
-    this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval)
+    this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval);
   }
 
   submit() {

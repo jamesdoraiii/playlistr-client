@@ -13,7 +13,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="tag-input">Genre Tags</label>
-            <app-autocomplete-input [options]="availableGenreTags"></app-autocomplete-input>
+            <app-autocomplete-input [options]="availableGenreTags" (selected)="tagsForPlaylist.push($event.name)"></app-autocomplete-input>
             <p class="text-grey text-xs mt-1"></p>
           </div>  
           
