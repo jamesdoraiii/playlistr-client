@@ -1,36 +1,36 @@
-ng2-input-autocomplete {
-  position: relative !important;
-  top: -40px !important;
-  height: 0px !important;
+.form-control,
+.dropdown-content,
+.suggestion-active,
+.dropdown-content a {
+  width: 100%;
+  --text-opacity: 1;
+  color: rgba(237, 242, 247, var(--text-opacity)) !important;
+  border-radius: 0.25rem !important;
+  --bg-opacity: 1;
+  background-color: #4a5568 !important;
+  background-color: rgba(74, 85, 104, var(--bg-opacity)) !important;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0px !important;
 }
 
-ng2-input-autocomplete div input {
-  --text-opacity: 1;
-  color: #edf2f7;
-  color: rgba(237, 242, 247, var(--text-opacity));
-  width: 100% !important;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 0.25rem;
-  --bg-opacity: 1;
-  background-color: #4a5568;
-  background-color: rgba(74, 85, 104, var(--bg-opacity));
-  --text-opacity: 1;
-  color: #edf2f7;
-  color: rgba(237, 242, 247, var(--text-opacity));
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 0.25rem;
-  --bg-opacity: 1;
-  background-color: #4a5568;
-  background-color: rgba(74, 85, 104, var(--bg-opacity));
+.form-control {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
-app-autocomplete-input div {
-  width: 100%;
+.position-relative {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  margin-top: 4px !important;
+}
+
+.dropdown-content a,
+.suggestion-active {
+  color: rgba(237, 242, 247, var(--text-opacity)) !important;
 }

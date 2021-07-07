@@ -7,9 +7,11 @@ import { ArtistDetailComponent } from './views/artist-detail/artist-detail.compo
 import { ArtistHeaderComponent } from './components/artist-header/artist-header.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { AutocompleteInputComponent } from './components/autocomplete-input/autocomplete-input.component';
-import { AutocompleteModule } from 'ng2-input-autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { CommentCreatorComponent } from './components/comment-creator/comment-creator.component';
+import { CommentDisplayComponent } from './components/comment-display/comment-display.component';
+import { CommentsComponent } from './components/comments/comments.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { FormsModule } from '@angular/forms';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
@@ -24,6 +26,7 @@ import { ItemHeaderComponent } from './components/item-header/item-header.compon
 import { ItemRowComponent } from './components/item-row/item-row.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
+import { NgxAutocompleteModule } from 'ngx-angular-autocomplete';
 import { PlayerComponent } from './components/player/player.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { PlaylistsComponent } from './views/playlists/playlists.component';
@@ -33,9 +36,6 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { CommentCreatorComponent } from './components/comment-creator/comment-creator.component';
-import { CommentDisplayComponent } from './components/comment-display/comment-display.component';
-import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,7 @@ import { CommentsComponent } from './components/comments/comments.component';
     CommentDisplayComponent,
     CommentsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, AutocompleteModule.forRoot()],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,

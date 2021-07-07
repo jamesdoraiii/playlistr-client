@@ -42,7 +42,9 @@ export class PostPlaylistComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  removeTag(tag: any) {}
+  removeTag(tagForRemoval: any) {
+    this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval)
+  }
 
   submit() {
     var playlistId = this.playlistUrl.substring(
