@@ -31,6 +31,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail.component';
 import { PlaylistsComponent } from './views/playlists/playlists.component';
 import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
+import { PostPlaylistPreviewComponent } from './components/post-playlist-preview/post-playlist-preview.component';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -67,7 +68,8 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     AutocompleteInputComponent,
     CommentCreatorComponent,
     CommentDisplayComponent,
-    CommentsComponent
+    CommentsComponent,
+    PostPlaylistPreviewComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule],
   providers: [

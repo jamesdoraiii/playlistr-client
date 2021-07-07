@@ -1,5 +1,5 @@
 <div class="main-content-padding pt-48 h-screen">
-    <div class="w-5/6 lg:w-2/3 mx-auto bg-gray-900 p-8 rounded-md shadow-xl" style="max-width: 700px;">
+    <div class="w-5/6 lg:w-2/3 mx-auto bg-gray-900 p-8 rounded-md shadow-xl" style="max-width: 700px;" *ngIf="!playlistPreviewInfo">
       <h1 class="text-4xl mb-6">Post a Playlist</h1>
         <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Playlist URL</label>
@@ -29,6 +29,7 @@
         >
         Post Playlist
         </button>
-        </div>
+    </div>
 
+    <app-post-playlist-preview *ngIf="playlistPreviewInfo" [playlist]="playlistPreviewInfo"></app-post-playlist-preview>
 </div>

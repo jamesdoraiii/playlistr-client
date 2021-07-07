@@ -33,10 +33,10 @@ export class PostPlaylistComponent implements OnInit {
     { id: 22, name: 'US Garage' },
     { id: 23, name: 'Vocal House' }
   ];
-
   playlistUrl: string;
-
   tagsForPlaylist = [];
+  playlistId: string;
+  playlistPreviewInfo: any;
 
   constructor(private playlistService: PlaylistsService) {}
 
@@ -51,10 +51,29 @@ export class PostPlaylistComponent implements OnInit {
       this.playlistUrl.lastIndexOf('/') + 1,
       this.playlistUrl.lastIndexOf('?')
     );
-    console.log('preparing to submit playlist', playlistId);
+
+    this.playlistService.getSpotifyPlaylistInfoById(playlistId).subscribe(response => {
+      console.log('This is the response from get playlist info by id', response);
+      this.playlistPreviewInfo = this.formatTracks(response);
+    });
+  }
+
+  submitPlaylist() {
+    var playlistId = this.playlistUrl.substring(
+      this.playlistUrl.lastIndexOf('/') + 1,
+      this.playlistUrl.lastIndexOf('?')
+    );
 
     this.playlistService.postPlaylist(playlistId, this.tagsForPlaylist).subscribe(response => {
       console.log('This is the response from post playlist', response);
     });
+  }
+
+  formatTracks(playlist: any) {
+    playlist.tracks = playlist.tracks.items.map(item => {
+      return item.track;
+    });
+
+    return playlist;
   }
 }
