@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PlaylistsService } from '@services/playlists.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-playlist',
@@ -38,12 +39,16 @@ export class PostPlaylistComponent implements OnInit {
   playlistId: string;
   playlistPreviewInfo: any;
 
-  constructor(private playlistService: PlaylistsService) {}
+  constructor(private playlistService: PlaylistsService, private router: Router) {}
 
   ngOnInit(): void {}
 
   removeTag(tagForRemoval: any) {
     this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval);
+  }
+
+  clearPlaylistPreview() {
+    this.playlistPreviewInfo = undefined;
   }
 
   submit() {
@@ -64,9 +69,20 @@ export class PostPlaylistComponent implements OnInit {
       this.playlistUrl.lastIndexOf('?')
     );
 
-    this.playlistService.postPlaylist(playlistId, this.tagsForPlaylist).subscribe(response => {
-      console.log('This is the response from post playlist', response);
-    });
+    this.playlistService.postPlaylist(playlistId, this.tagsForPlaylist).subscribe(
+      response => {
+        console.log('This is the response from post playlist', response);
+        if (response.data) {
+          this.router.navigate(['/playlist/' + playlistId]);
+        }
+      },
+      err => {
+        alert(
+          'There was an issue while trying to submit your playlist. It is possible that this playlist has already been submitted by another user.'
+        );
+        this.clearPlaylistPreview();
+      }
+    );
   }
 
   formatTracks(playlist: any) {

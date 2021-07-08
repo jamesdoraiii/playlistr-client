@@ -31,5 +31,7 @@
         </button>
     </div>
 
-    <app-post-playlist-preview *ngIf="playlistPreviewInfo" [playlist]="playlistPreviewInfo"></app-post-playlist-preview>
+    <div class="w-5/6 lg:w-2/3 mx-auto" style="max-width: 900px;">
+      <app-post-playlist-preview *ngIf="playlistPreviewInfo" [playlist]="playlistPreviewInfo" (submit)="submitPlaylist()" (cancel)="clearPlaylistPreview()"></app-post-playlist-preview>
+    </div>
 </div>

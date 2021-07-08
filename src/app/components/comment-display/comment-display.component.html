@@ -1,4 +1,4 @@
-<div class="w-full rounded-md bg-gray-700 p-3 mb-3" *ngFor="let comment of comments">
+<div class="w-full rounded-md bg-gray-700 p-3 mb-3 shadow" *ngFor="let comment of comments">
     <p class="font-semibold text-lg mb-1 hover:underline">{{comment.userByOwnerId.spotifyUserId}}</p>
     <p>{{comment.content}}</p>
     <!-- <p>{{comment.createdAt}}</p> -->

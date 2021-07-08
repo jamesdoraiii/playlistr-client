@@ -1,8 +1,12 @@
+
+<h1 class="text-5xl text-white font-bold mb-10 text-center">Post Preview</h1>
 <app-item-header [item]="playlist"></app-item-header>
 <div class="main-content-padding pt-10">
     <app-tracklist [tracks]="playlist.tracks"></app-tracklist>
 </div>
 
-<button class="btn bg-gray-600">Go Back</button>
-<button class="btn bg-green-600">Submit</button>
+<div class="flex justify-between main-content-padding">
+    <button class="btn bg-gray-600 text-xl" (click)="cancel.emit()">Go Back</button>
+    <button class="btn bg-green-600 text-xl" (click)="submit.emit()">Submit</button>
+</div>
 
