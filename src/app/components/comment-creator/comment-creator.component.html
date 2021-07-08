@@ -1,4 +1,4 @@
-<div class="w-full rounded-md bg-gray-700 p-3 mb-3 flex shadow">
-    <textarea class="mr-3 rounded-md focus:outline-none p-2 flex-grow text-black" placeholder="Add a comment..." rows="2" [(ngModel)]="commentContent"></textarea>
+<div class="w-full rounded-md bg-gray-700 p-2 mb-3 flex shadow">
+    <textarea class="mr-3 rounded-md focus:outline-none p-2 flex-grow text-black bg-gray-200" placeholder="Add a comment..." rows="2" [(ngModel)]="commentContent" style="min-height: 64px;"></textarea>
     <button class="bg-green-600 hover:bg-blue-dark p-3 rounded-md text-white font-bold" style="max-height: 64px;" (click)="createComment()">Post</button>
 </div>
