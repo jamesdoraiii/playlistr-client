@@ -13,4 +13,13 @@
       @apply px-8;
     }
   }
+
+  .btn {
+    @apply py-2;
+    @apply px-8;
+    @apply font-bold;
+    @apply rounded-full;
+    @apply text-white;
+    @apply shadow;
+  }
 }

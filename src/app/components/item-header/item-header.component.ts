@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ItemHeaderComponent {
   @Input() item: any;
   @Input() headerBackground: any;
+  @Input() padTop: boolean;
 
   constructor() {}
 }
