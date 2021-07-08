@@ -2,11 +2,13 @@
 <h1 class="text-5xl text-white font-bold mb-10 text-center">Post Preview</h1>
 <app-item-header [item]="playlist"></app-item-header>
 <div class="main-content-padding pt-10">
-    <app-tracklist [tracks]="playlist.tracks"></app-tracklist>
+    <app-tracklist [tracks]="playlist.tracks" *ngIf="isPlaylistLengthValid()"></app-tracklist>
+    <h2 class="text-2xl text-red-700 font-bold mb-2" *ngIf="!isPlaylistLengthValid()">Error:</h2>
+    <p class="text-xl font-semibold mb-12" *ngIf="!isPlaylistLengthValid()">This playlist contains too many tracks to be posted to Playlistr. Please adjust your playlist to be {{environment.maxPlaylistLength}} tracks or fewer and then try submitting again.</p>
 </div>
 
 <div class="flex justify-between main-content-padding">
     <button class="btn bg-gray-600 text-xl" (click)="cancel.emit()">Go Back</button>
-    <button class="btn bg-green-600 text-xl" (click)="submit.emit()">Submit</button>
+    <button class="btn bg-green-600 text-xl" (click)="submit.emit()" *ngIf="isPlaylistLengthValid()">Submit</button>
 </div>
 

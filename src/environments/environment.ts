@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   spotifyServerBaseUrl: 'http://localhost:4000/',
-  gqlServerUrl: 'http://localhost:5000/graphql'
+  gqlServerUrl: 'http://localhost:5000/graphql',
+  maxPlaylistLength: 7
 };
 
 /*
