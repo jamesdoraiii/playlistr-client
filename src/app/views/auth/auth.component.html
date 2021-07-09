@@ -15,8 +15,8 @@
               class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-              formControlName="email"
               placeholder="Your email address"
+              formControlName="email"
               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -48,8 +48,9 @@
             formControlName="passwordConf"
             [ngClass]="{ 'is-invalid': submitted && f.passwordConf.errors }"
           />
-          <div *ngIf="submitted && f.passwordConf.errors" class="invalid-feedback">
-            <div *ngIf="f.passwordConf.errors.required">Password Confirmation is required.</div>
+          <div *ngIf="submitted" class="invalid-feedback">
+            <div *ngIf="f.passwordConf.errors && f.passwordConf.errors.required">Password Confirmation is required.</div>
+            <div *ngIf="loginForm.hasError('notSame')">Passwords must match.</div>
           </div>
           </div>
         </div>
@@ -60,8 +61,13 @@
               class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
+              formControlName="email"
               placeholder="Your email address"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
           </div>
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
@@ -70,8 +76,12 @@
               id="password"
               type="password"
               placeholder="Your secure password"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
             />
-            <p class="text-grey text-xs mt-1"></p>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
           </div>
         </div>
         <button
@@ -81,7 +91,7 @@
       >
       {{showSignup ? 'Sign Up' : 'Sign In'}}
       </button>
-        <p class="text-center mt-5 p-2 text-grey-dark text-sm no-underline hover:text-grey-darker cursor-pointer" (click)="showSignup = !showSignup">
+        <p class="text-center mt-5 p-2 text-grey-dark text-sm no-underline hover:text-grey-darker cursor-pointer" (click)="switchForm()">
           {{showSignup ? 'I already have an account' : 'I want to create an account'}}
         </p>
       </form>

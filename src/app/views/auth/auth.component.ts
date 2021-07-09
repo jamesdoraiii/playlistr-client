@@ -1,5 +1,5 @@
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '@services/auth.service';
 import { environment } from '@environment';
@@ -20,22 +20,50 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      passwordConf: ['', Validators.required]
-    });
+    this.loginForm = this.formBuilder.group(
+      {
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        passwordConf: ['', Validators.required]
+      },
+      { validators: this.checkPasswords }
+    );
   }
 
   get f() {
     return this.loginForm.controls;
   }
 
+  switchForm() {
+    this.showSignup = !this.showSignup;
+    if (!this.showSignup) {
+      this.loginForm = this.formBuilder.group({
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+    } else {
+      this.loginForm = this.formBuilder.group(
+        {
+          email: ['', Validators.required],
+          password: ['', Validators.required],
+          passwordConf: ['', Validators.required]
+        },
+        { validators: this.checkPasswords }
+      );
+    }
+  }
+
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let pass = group.get('password').value;
+    let confirmPass = group.get('passwordConf').value;
+    return pass === confirmPass ? null : { notSame: true };
+  };
+
   onSubmit() {
-    console.log('SUBMITTING');
+    console.log('SUBMITTING', this.f);
     this.submitted = true;
     if (this.loginForm.invalid) {
-      console.log('FORM IS INVALID');
+      console.log('FORM IS INVALID', this.loginForm);
       return;
     }
 
@@ -45,6 +73,6 @@ export class AuthComponent implements OnInit {
     if (!this.showSignup) {
       //login
     }
-    window.location.href = environment.spotifyServerBaseUrl + 'login';
+    // window.location.href = environment.spotifyServerBaseUrl + 'login';
   }
 }
