@@ -22,4 +22,15 @@
     @apply text-white;
     @apply shadow;
   }
+
+  .invalid-feedback {
+    @apply text-red-600;
+    @apply mt-1;
+    @apply text-sm;
+  }
+
+  .is-invalid {
+    @apply border-2;
+    @apply border-red-500;
+  }
 }

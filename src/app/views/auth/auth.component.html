@@ -1,5 +1,12 @@
-<div class="bg-gray-900 h-screen flex items-center">
-      <div class="w-5/6 lg:w-1/2 mx-auto" style="max-width: 700px;">
+<div class="bg-gray-900 h-screen flex flex-col items-center">
+
+  <div class="py-5 px-6 text-white mb-10 lg:mb-16">
+    <i class="fas fa-compact-disc fa-4x mr-1"></i>
+    <h3 class="font-extrabold text-6xl inline">Playlistr</h3>
+  </div>
+
+  <div class="w-5/6 lg:w-1/2 mx-auto" style="max-width: 700px;">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="text-4xl mb-6">{{showSignup ? 'Sign Up' : 'Sign In'}}</div>
         <div class="" *ngIf="showSignup">
           <div class="mb-6">
@@ -8,8 +15,13 @@
               class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
+              formControlName="email"
               placeholder="Your email address"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
           </div>
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
@@ -18,19 +30,27 @@
               id="password"
               type="password"
               placeholder="Your secure password"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
             />
-            <p class="text-grey text-xs mt-1"></p>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
           </div>
 
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Confirm Password</label>
             <input
-              class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="Your secure password"
-            />
-            <p class="text-grey text-xs mt-1"></p>
+            class="appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline"
+            id="passwordConf"
+            type="password"
+            placeholder="Confirm your password"
+            formControlName="passwordConf"
+            [ngClass]="{ 'is-invalid': submitted && f.passwordConf.errors }"
+          />
+          <div *ngIf="submitted && f.passwordConf.errors" class="invalid-feedback">
+            <div *ngIf="f.passwordConf.errors.required">Password Confirmation is required.</div>
+          </div>
           </div>
         </div>
         <div class="" *ngIf="!showSignup">
@@ -57,13 +77,14 @@
         <button
         class="mt-6 bg-green-600 hover:bg-blue-dark py-2 text-white font-bold rounded-full w-full"
         type="submit"
-        (click)="buttonAction()"
+      
       >
       {{showSignup ? 'Sign Up' : 'Sign In'}}
       </button>
         <p class="text-center mt-5 p-2 text-grey-dark text-sm no-underline hover:text-grey-darker cursor-pointer" (click)="showSignup = !showSignup">
           {{showSignup ? 'I already have an account' : 'I want to create an account'}}
         </p>
+      </form>
       </div>
     </div>
 

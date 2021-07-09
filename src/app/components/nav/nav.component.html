@@ -9,4 +9,6 @@
             <input class="w-full text-gray-900 mx-3 focus:outline-none bg-gray-200" placeholder="Artists, songs, or playlists" [(ngModel)]="searchInputText" (ngModelChange)="searchInputUpdate.next($event)" (keyup)="searchKeyUp()"/>
         </div>
     </div>
+
+    <a class="btn bg-green-600" routerLink="/auth">Login</a>
 </div>

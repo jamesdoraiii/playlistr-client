@@ -32,6 +32,7 @@ import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail
 import { PlaylistsComponent } from './views/playlists/playlists.component';
 import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 import { PostPlaylistPreviewComponent } from './components/post-playlist-preview/post-playlist-preview.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -71,7 +72,7 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     CommentsComponent,
     PostPlaylistPreviewComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule, ReactiveFormsModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
