@@ -38,6 +38,7 @@ import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-up-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     CommentCreatorComponent,
     CommentDisplayComponent,
     CommentsComponent,
-    PostPlaylistPreviewComponent
+    PostPlaylistPreviewComponent,
+    SignUpConfirmationComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule, ReactiveFormsModule],
   providers: [

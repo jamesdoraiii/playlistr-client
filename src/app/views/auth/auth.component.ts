@@ -35,6 +35,7 @@ export class AuthComponent implements OnInit {
   }
 
   switchForm() {
+    this.submitted = false;
     this.showSignup = !this.showSignup;
     if (!this.showSignup) {
       this.loginForm = this.formBuilder.group({
@@ -60,19 +61,39 @@ export class AuthComponent implements OnInit {
   };
 
   onSubmit() {
-    console.log('SUBMITTING', this.f);
     this.submitted = true;
+    console.log('SUBMITTING', this.f);
     if (this.loginForm.invalid) {
       console.log('FORM IS INVALID', this.loginForm);
       return;
     }
 
     if (this.showSignup) {
-      //sign up
+      this.submitSignup();
     }
     if (!this.showSignup) {
-      //login
+      this.submitLogin();
     }
     // window.location.href = environment.spotifyServerBaseUrl + 'login';
+  }
+
+  submitSignup() {
+    const signInInfo = {
+      email: this.f.email.value,
+      password: this.f.password.value
+    };
+    localStorage.setItem('signInInfo', JSON.stringify(signInInfo));
+    window.location.href = environment.spotifyServerBaseUrl + 'login';
+    // redirect to spotify web api
+  }
+
+  submitLogin() {
+    const signInInfo = {
+      email: this.f.email.value,
+      password: this.f.password.value
+    };
+    this.auth.signIn(signInInfo).subscribe(response => {
+      console.log('This is the response from the sign in call', response);
+    });
   }
 }

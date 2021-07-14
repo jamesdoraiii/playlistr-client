@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { UsersService } from '@services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,7 @@ export class AppComponent implements OnInit {
     this.checkWidth();
   }
 
-  constructor(public router: Router, private userService: UsersService) {}
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.checkWidth();

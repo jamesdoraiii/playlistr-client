@@ -10,6 +10,7 @@ import { PlaylistDetailComponent } from './views/playlist-detail/playlist-detail
 import { PostPlaylistComponent } from './views/post-playlist/post-playlist.component';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
+import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-up-confirmation.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'see-all-items', component: SeeAllItemsComponent },
   { path: 'album/:albumId', component: AlbumDetailComponent },
-  { path: 'post-playlist', component: PostPlaylistComponent }
+  { path: 'post-playlist', component: PostPlaylistComponent },
+  { path: 'sign-up-confirmation', component: SignUpConfirmationComponent }
 ];
 
 @NgModule({
