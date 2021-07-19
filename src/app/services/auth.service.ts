@@ -11,7 +11,11 @@ import gql from 'graphql-tag';
 export class AuthService {
   //POSSIBLY RENAME THIS SERVICE TO 'USER SERVICE'???
 
-  constructor(private apollo: Apollo, private http: HttpClient, private base: BaseService) {}
+  constructor(private apollo: Apollo, private http: HttpClient, private base: BaseService) {
+    this.base.$access_token_received.subscribe(result => {
+      this.getUserProfileFromSpotify();
+    });
+  }
 
   signUp(signUpInfo: { email: string; password: string }) {
     return this.http.post(environment.spotifyServerBaseUrl + 'sign-up', signUpInfo);
@@ -34,7 +38,9 @@ export class AuthService {
   }
 
   getUserProfileFromSpotify() {
-    return this.base.requestWithToken(`https://api.spotify.com/v1/me`);
+    return this.base.requestWithToken(`https://api.spotify.com/v1/me`).subscribe(response => {
+      console.log('This is the response from spotify /me hit', response);
+    });
   }
 
   signIn(signInInfo: { email: string; password: string }) {

@@ -22,11 +22,6 @@ export class SignUpConfirmationComponent implements OnInit {
 
       if (paramAccessToken && paramAccessToken) {
         alert('The spotify login worked you can now submit your user.');
-        this.auth.getUserProfileFromSpotify().subscribe(response => {
-          console.log('This is the repsonse from get user profile from spotify', response);
-          //  here is where you will update user profile
-          // in the subscribe of update user profile is where you know if the user is succesfully created.
-        });
       } else {
         alert('there was an error signing you up, your information has not been saved please try again');
       }
