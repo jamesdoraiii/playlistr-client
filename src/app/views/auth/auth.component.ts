@@ -74,7 +74,6 @@ export class AuthComponent implements OnInit {
     if (!this.showSignup) {
       this.submitLogin();
     }
-    // window.location.href = environment.spotifyServerBaseUrl + 'login';
   }
 
   submitSignup() {
@@ -82,9 +81,13 @@ export class AuthComponent implements OnInit {
       email: this.f.email.value,
       password: this.f.password.value
     };
-    localStorage.setItem('signInInfo', JSON.stringify(signInInfo));
-    window.location.href = environment.spotifyServerBaseUrl + 'login';
-    // redirect to spotify web api
+    this.auth.signUp(signInInfo).subscribe(
+      response => {
+        console.log('This is the response from the sign in call', response);
+        window.location.href = environment.spotifyServerBaseUrl + 'login';
+      },
+      err => alert('There was an error trying to sign you up. Please try again.')
+    );
   }
 
   submitLogin() {
