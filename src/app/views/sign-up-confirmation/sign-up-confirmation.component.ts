@@ -22,6 +22,9 @@ export class SignUpConfirmationComponent implements OnInit {
 
       if (paramAccessToken && paramAccessToken) {
         alert('The spotify login worked you can now submit your user.');
+        this.auth.getUserProfileFromSpotify().subscribe(res => {
+          console.log('CHECK THIS RES', res);
+        });
       } else {
         alert('there was an error signing you up, your information has not been saved please try again');
       }

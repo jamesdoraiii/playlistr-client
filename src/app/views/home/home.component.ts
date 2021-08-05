@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
 
   getAllPlaylists() {
     this.playlistsService.getAllPlaylists().subscribe((response: any) => {
-      console.log('this is the response from get all playlists', response.data);
       this.allPlaylistsFromYourServer = response.data.allPlaylists.nodes;
     });
   }

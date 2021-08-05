@@ -38,9 +38,7 @@ export class AuthService {
   }
 
   getUserProfileFromSpotify() {
-    return this.base.requestWithToken(`https://api.spotify.com/v1/me`).subscribe(response => {
-      console.log('This is the response from spotify /me hit', response);
-    });
+    return this.base.requestWithToken(`https://api.spotify.com/v1/me`);
   }
 
   signIn(signInInfo: { email: string; password: string }) {

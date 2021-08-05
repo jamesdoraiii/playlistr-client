@@ -34,7 +34,10 @@ export class PlaylistDetailComponent implements OnInit {
     this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
       console.log('This is the result from the playlist detail graphql call', result);
       this.playlistrDetails = result.data.playlistBySpotifyPlaylistId;
-      this.comments = result.data.playlistBySpotifyPlaylistId.commentsByParentPlaylistId.nodes;
+
+      if (this.playlistrDetails) {
+        this.comments = result.data.playlistBySpotifyPlaylistId.commentsByParentPlaylistId.nodes;
+      }
     });
   }
 }

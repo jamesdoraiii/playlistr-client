@@ -64,7 +64,6 @@ export class PlaylistsService {
   getPlaylistsForUser() {
     this.base.requestWithToken(`https://api.spotify.com/v1/me/playlists`).subscribe(
       (playlists: any) => {
-        console.log('this is the response from /me/playlists', playlists);
         this.userPlaylists = playlists.items.map(item => {
           if (item.images && item.images[0]) {
             item.imageUrl = item.images[0].url;

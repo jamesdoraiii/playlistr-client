@@ -1,8 +1,7 @@
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -18,7 +17,6 @@ export class BaseService {
 
   constructor(protected http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.retreiveTokensFromStorage();
-
     router.events.subscribe(val => {
       this.getTokensFromRouteParams();
     });
@@ -41,21 +39,24 @@ export class BaseService {
       const paramAccessToken = params['access_token'];
       const paramRefreshToken = params['refresh_token'];
 
+      // THIS IS WHERE YOUR ISSUES ARE
       if (paramAccessToken && paramAccessToken != this.access_token) {
         this.access_token = paramAccessToken;
         localStorage.setItem('access_token', paramAccessToken);
         this.$access_token_received.next(paramAccessToken);
       }
-      if (paramRefreshToken && paramRefreshToken != this.access_token) {
-        this.access_token = paramRefreshToken;
+      if (paramRefreshToken && paramRefreshToken != this.refresh_token) {
+        this.refresh_token = paramRefreshToken;
         localStorage.setItem('refresh_token', paramRefreshToken);
-        this.$access_token_received.next(paramRefreshToken);
       }
     });
   }
 
   requestWithToken(endpoint: string) {
     return this.http.get(endpoint, { headers: { Authorization: 'Bearer ' + this.access_token } }).pipe(
+      map(response => {
+        return response;
+      }),
       catchError(err => {
         if (err.status == 401) {
           this.refreshTokens();
