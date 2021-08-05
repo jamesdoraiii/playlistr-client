@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment';
 import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,13 @@ export class PlaylistsService {
   }
 
   getSpotifyPlaylistInfoById(id: string) {
-    return this.http.post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/playlists/${id}` });
+    return this.http
+      .post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/playlists/${id}` })
+      .pipe(
+        map(res => {
+          return this.formatTracks(res);
+        })
+      );
   }
 
   getPlaylistrPlaylistInfoById(id: string) {
@@ -109,5 +116,13 @@ export class PlaylistsService {
         }
       `
     });
+  }
+
+  formatTracks(playlist: any) {
+    playlist.tracks = playlist.tracks.items.map(item => {
+      return item.track;
+    });
+
+    return playlist;
   }
 }

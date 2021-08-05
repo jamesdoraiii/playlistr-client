@@ -59,7 +59,7 @@ export class PostPlaylistComponent implements OnInit {
 
     this.playlistService.getSpotifyPlaylistInfoById(playlistId).subscribe(response => {
       console.log('This is the response from get playlist info by id', response);
-      this.playlistPreviewInfo = this.formatTracks(response);
+      this.playlistPreviewInfo = response;
     });
   }
 
@@ -83,13 +83,5 @@ export class PostPlaylistComponent implements OnInit {
         this.clearPlaylistPreview();
       }
     );
-  }
-
-  formatTracks(playlist: any) {
-    playlist.tracks = playlist.tracks.items.map(item => {
-      return item.track;
-    });
-
-    return playlist;
   }
 }

@@ -28,7 +28,6 @@ export class PlaylistDetailComponent implements OnInit {
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
     this.playlistsService.getSpotifyPlaylistInfoById(playlistId).subscribe((result: Playlist) => {
-      this.formatTracks(result);
       this.playlist = result;
     });
 
@@ -36,12 +35,6 @@ export class PlaylistDetailComponent implements OnInit {
       console.log('This is the result from the playlist detail graphql call', result);
       this.playlistrDetails = result.data.playlistBySpotifyPlaylistId;
       this.comments = result.data.playlistBySpotifyPlaylistId.commentsByParentPlaylistId.nodes;
-    });
-  }
-
-  formatTracks(playlist: Playlist) {
-    playlist.tracks = playlist.tracks.items.map(item => {
-      return item.track;
     });
   }
 }
