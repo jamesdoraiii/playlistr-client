@@ -10,8 +10,10 @@ import gql from 'graphql-tag';
 })
 export class AuthService {
   //POSSIBLY RENAME THIS SERVICE TO 'USER SERVICE'???
+  userInfo: any;
 
   constructor(private apollo: Apollo, private http: HttpClient, private base: BaseService) {
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
     this.base.$access_token_received.subscribe(result => {
       this.getUserProfileFromSpotify();
     });
@@ -21,10 +23,10 @@ export class AuthService {
     return this.http.post(environment.spotifyServerBaseUrl + 'sign-up', signUpInfo);
   }
 
-  updateUserWithSpotifyUsername(userId: number, spotifyUsername: string) {
+  updateUserWithSpotifyUsername(spotifyUsername: string) {
     return this.apollo.mutate({
       mutation: gql`mutation UpdateUserSpotifyUserIdByUserId {
-        updateUserByUserId(input: {userPatch: {spotifyUserId: "${spotifyUsername}"}, userId: ${userId}}) {
+        updateUserByUserId(input: {userPatch: {spotifyUserId: "${spotifyUsername}"}, userId: ${this.userInfo.userId}}) {
           user {
             email
             spotifyUserId

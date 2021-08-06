@@ -82,8 +82,12 @@ export class AuthComponent implements OnInit {
       password: this.f.password.value
     };
     this.auth.signUp(signInInfo).subscribe(
-      response => {
-        console.log('This is the response from the sign in call', response);
+      (response: any) => {
+        if (response.errors) {
+          alert('An account already exists with this username.');
+          return;
+        }
+        this.storeUserInfo(response.data.createUser.user);
         window.location.href = environment.spotifyServerBaseUrl + 'login';
       },
       err => alert('There was an error trying to sign you up. Please try again.')
@@ -98,5 +102,10 @@ export class AuthComponent implements OnInit {
     this.auth.signIn(signInInfo).subscribe(response => {
       console.log('This is the response from the sign in call', response);
     });
+  }
+
+  storeUserInfo(user: any) {
+    this.auth.userInfo = user;
+    localStorage.setItem('userInfo', JSON.stringify(user));
   }
 }
