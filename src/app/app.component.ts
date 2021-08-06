@@ -11,6 +11,12 @@ export class AppComponent implements OnInit {
   isMenuOpen: boolean;
   title = 'playlistr';
 
+  fullScreenViews = ['/sign-up-confirmation', '/auth', '/welcome'];
+
+  get currentRoute() {
+    return this.router.url.split('?')[0];
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.checkWidth();

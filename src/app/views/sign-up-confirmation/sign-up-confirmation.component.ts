@@ -23,7 +23,7 @@ export class SignUpConfirmationComponent implements OnInit {
       const paramRefreshToken = params['refresh_token'];
 
       if (paramAccessToken && paramRefreshToken) {
-        alert('The spotify login worked you can now submit your user.');
+        // alert('The spotify login worked you can now submit your user.');
         this.updateUserSpotifyID();
       } else {
         alert('there was an error signing you up, your information has not been saved please try again');
