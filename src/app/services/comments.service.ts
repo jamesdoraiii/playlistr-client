@@ -34,7 +34,7 @@ export class CommentsService {
     return this.apollo.mutate({
       mutation: gql`
         mutation CreateCommentForPlaylist {
-          createComment(input: { comment: { ownerId: 7, parentPlaylistId: ${playlistId}, content: "${content}" } }) {
+          createComment(input: { comment: { ownerId: ${this.auth.userInfo.userId}, parentPlaylistId: ${playlistId}, content: "${content}" } }) {
             comment {
               content
               createdAt

@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
-import { BaseService } from '@services/base.service';
 import { PlaylistsService } from '@services/playlists.service';
 import { WebPlayerService } from '@services/web-player.service';
 
