@@ -1,4 +1,4 @@
-<div class="w-full h-full p-4 bg-gray-800 rounded-sm hover:bg-gray-700 relative" (click)="routeToItemDetail(item)" id="playButtonSlider">
+<div class="w-full h-full p-1 md:p-4 bg-gray-800 rounded-sm hover:bg-gray-700 relative" (click)="routeToItemDetail(item)" id="playButtonSlider">
   <div class="relative w-full" style="padding-bottom: 100%;">
     <img class="cursor-pointer absolute w-full h-full shadow-xl" *ngIf="getItemImageSrc()" [src]="getItemImageSrc()" [ngClass]="item.type == 'artist' ? 'rounded-full' : 'rounded-md'"/>
     <div class="bg-gray-700 absolute w-full h-full shadow-xl flex items-center justify-center" *ngIf="!getItemImageSrc()" [ngClass]="item.type == 'artist' ? 'rounded-full' : 'rounded-md'"><i class="far fa-user fa-4x"></i></div>

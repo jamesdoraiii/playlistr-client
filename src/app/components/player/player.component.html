@@ -1,6 +1,6 @@
 
 <!-- Large Screen Layout -->
-<div id="player" class="flex justify-between items-center bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
+<div id="player" class="hidden justify-between items-center bg-gray-900 w-full py-6 px-4 shadow-md md:flex" *ngIf="currentTrackInfo">
     <div class="w-3/12">
         <h2 class="text-lg text-white mb-0 truncate ... tracking-tighter ">{{currentTrackInfo.name}}</h2>
         <a class="truncate ... hover:underline hover:text-white cursor-pointer font-hairline" *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
@@ -48,8 +48,7 @@
 
 
 <!-- Mobile layout -->
-
-<div id="player" class="bg-gray-800 w-full py-6 px-4 shadow-md" *ngIf="currentTrackInfo">
+<div id="player" class="bg-gray-900 w-full py-2 px-2 shadow-md md:hidden" *ngIf="currentTrackInfo">
     <div class="flex justify-between mb-4">
         <div class="w-3/12">
             <h2 class="text-lg text-white mb-0 truncate ... tracking-tighter ">{{currentTrackInfo.name}}</h2>
