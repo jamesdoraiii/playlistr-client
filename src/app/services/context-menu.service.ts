@@ -17,6 +17,7 @@ export class ContextMenuService {
     this.positionX = event.clientX;
     this.positionY = event.clientY;
     this.item = item;
+    console.log('These are the current values that I have', this.item, this.positionX, this.positionY);
     this.isContextMenuOpen = true;
   }
 
