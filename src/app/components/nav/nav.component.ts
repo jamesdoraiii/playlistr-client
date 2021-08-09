@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
@@ -14,6 +14,7 @@ import { SearchService } from '@services/search.service';
 export class NavComponent implements OnInit {
   searchInputText: string;
   searchInputUpdate = new Subject<string>();
+  @Output() openMenu = new EventEmitter<any>();
 
   constructor(private location: Location, private router: Router, private searchService: SearchService) {
     this.searchInputUpdate.pipe(debounceTime(400), distinctUntilChanged()).subscribe(value => {
