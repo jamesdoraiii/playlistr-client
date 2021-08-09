@@ -39,6 +39,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-up-confirmation.component';
+import { VotingUtilityComponent } from './components/voting-utility/voting-utility.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-u
     CommentDisplayComponent,
     CommentsComponent,
     PostPlaylistPreviewComponent,
-    SignUpConfirmationComponent
+    SignUpConfirmationComponent,
+    VotingUtilityComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule, ReactiveFormsModule],
   providers: [
