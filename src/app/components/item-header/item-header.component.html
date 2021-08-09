@@ -1,9 +1,9 @@
 <div class="main-content-padding pt-40 pb-5" [ngClass]="{'pt-40': padTop}"  [ngStyle]="headerBackground">
     <div class="block md:flex">
-      <div class="w-full md:w-2/6 xl:w-1/6">
+      <div class="w-2/3 mx-auto md:w-2/6 xl:w-1/6 mb-8 md:mb-0">
         <img class="w-full h-auto object-cover image-shadow" [src]="item.images[0].url" />
       </div>
-      <div class="w-full md:w-4/6 pl-10 pr-4 flex flex-col justify-end" >
+      <div class="w-full md:w-4/6 md:pl-10 pr-4 flex flex-col justify-end" >
         <p class="text-xs hidden font-medium md:block text-white">{{item.type.toUpperCase()}}</p>
         <h2 class="text-white font-bold text-5xl sm:text-4xl leading-none mb-2">{{ item.name }}</h2>
         <p class="mb-2 truncate">{{ item.description }}</p>
