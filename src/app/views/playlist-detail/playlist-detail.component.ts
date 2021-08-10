@@ -10,11 +10,9 @@ import { PlaylistsService } from '@services/playlists.service';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
-  playlist: any;
+  spotifyPlaylistDetails: any;
   playlistrDetails: any;
   comments: any[];
-  userVoteDetails: any;
-  playlistVoteCount: number;
 
   constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
 
@@ -25,11 +23,11 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   fetchPlaylist() {
-    this.playlist = undefined;
+    this.spotifyPlaylistDetails = undefined;
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
     this.playlistsService.getSpotifyPlaylistInfoById(playlistId).subscribe((result: Playlist) => {
-      this.playlist = result;
+      this.spotifyPlaylistDetails = result;
     });
 
     this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
@@ -44,7 +42,7 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   formatVoteInformation() {
-    this.playlist.voteInfo = {
+    this.spotifyPlaylistDetails.voteInfo = {
       userVote: this.playlistrDetails.userVote.nodes,
       voteCount: this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount
     };

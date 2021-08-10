@@ -12,15 +12,18 @@ export class VotingUtilityComponent implements OnInit {
   @Input() itemType: string;
   @Input() itemId: string;
   @Input() voteCount: number;
+  @Input() userVoteInfo: any;
 
   constructor(private voteService: VoteService) {}
 
   ngOnInit(): void {
-    console.log('this is the on init of the voting utility compontnt', { voteinfo: this.voteInfo });
+    console.log('this is the on init of the voting utility compontnt', { voteinfo: this.userVoteInfo });
   }
 
   castVote(isUpvote: boolean) {
-    this.voteService.createVote(this.itemId, isUpvote).subscribe(response => {});
+    this.voteService.createVote(this.itemId, isUpvote).subscribe(response => {
+      alert('vote has been created');
+    });
   }
 
   // updateVote() {
