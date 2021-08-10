@@ -7,14 +7,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class CommentCreatorComponent implements OnInit {
   commentContent: string;
-  @Output() postComment = new EventEmitter<string>();
+  @Output() postCommentEvent = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   createComment() {
-    this.postComment.emit(this.commentContent);
+    this.postCommentEvent.emit(this.commentContent);
     this.commentContent = '';
   }
 }

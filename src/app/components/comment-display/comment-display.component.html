@@ -3,6 +3,6 @@
         <p class="font-semibold text-lg mb-1 hover:underline">{{comment.userByOwnerId.spotifyUserId}}</p>
         <p>{{comment.content}}</p>
     </div>
-    <i class="fas fa-trash-alt cursor-pointer p-2" *ngIf="isOwner(comment)" (click)="deleteComment()"></i>
+    <i class="fas fa-trash-alt cursor-pointer p-2" *ngIf="isOwner(comment)" (click)="deleteComment(comment)"></i>
     <!-- <p>{{comment.createdAt}}</p> -->
 </div>

@@ -8,8 +8,10 @@
     <app-item-row *ngIf="searchData.artists" title="Playlists" [seeAllTitle]="getSeeAllTitle('Tracks')" [items]="searchData.playlists.items"></app-item-row>
   </div>
 
-  <!-- <div class='main-content-padding pt-24 h-screen flex justify-center items-center' *ngIf="!searchData">
-    <i class="fas fa-search fa-5x mb-56 text-gray-700 text-6xl"></i>
-    <p>Use the search input located above.</p>
-  </div> -->
+  <div class='main-content-padding h-screen flex justify-center items-center' *ngIf="!searchData">
+    <div class="text-center">
+      <i class="fas fa-search fa-5x mb-5 text-gray-700 text-6xl"></i>
+      <p>Use the search input located above to find what you are looking for.</p>
+    </div>
+  </div>
   

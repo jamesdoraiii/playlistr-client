@@ -1,5 +1,5 @@
 <div class="main-content-padding mb-10">
     <h1 class="text-3xl font-bold mb-3 text-white">Comments:</h1>
-    <app-comment-creator (postComment)="postComment($event)"></app-comment-creator>
-    <app-comment-display [comments]="comments"></app-comment-display>
+    <app-comment-creator (postCommentEvent)="postComment($event)"></app-comment-creator>
+    <app-comment-display (deleteCommentEvent)="deleteComment($event)" [comments]="comments"></app-comment-display>
 </div>

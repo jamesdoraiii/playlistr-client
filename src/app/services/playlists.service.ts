@@ -49,6 +49,7 @@ export class PlaylistsService {
               nodes {
                 content
                 createdAt
+                commentId
                 userByOwnerId {
                   email
                   spotifyUserId

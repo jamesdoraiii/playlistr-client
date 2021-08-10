@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { AuthService } from '@services/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '@services/auth.service';
 })
 export class CommentDisplayComponent implements OnInit {
   @Input() comments: any[];
+  @Output() deleteCommentEvent = new EventEmitter<string>();
 
   constructor(private auth: AuthService) {}
 
@@ -23,7 +24,7 @@ export class CommentDisplayComponent implements OnInit {
     return false;
   }
 
-  deleteComment() {
-    alert('Deleting comment');
+  deleteComment(comment) {
+    this.deleteCommentEvent.emit(comment.commentId);
   }
 }

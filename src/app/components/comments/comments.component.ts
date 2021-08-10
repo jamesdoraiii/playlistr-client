@@ -23,4 +23,11 @@ export class CommentsComponent implements OnInit {
       this.comments = newCommentArr.concat(this.comments);
     });
   }
+
+  deleteComment(commentId: string) {
+    this.commentsService.deleteComment(commentId).subscribe((res: any) => {
+      this.comments = this.comments.filter(comment => comment.commentId != commentId);
+      alert('comment deleted!');
+    });
+  }
 }
