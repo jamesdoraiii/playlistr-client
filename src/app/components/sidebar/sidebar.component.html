@@ -10,7 +10,7 @@
       routerLink="/home"
       [routerLinkActive]="['text-white', 'border-l-4', 'border-green-500', 'pl-4']"
       class="block px-1 py-2 px-6 hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
-      (click)="closeMenu.emit()"
+      (click)="closeMenuOnMobileWidth()"
     >
       <i class="fas fa-home inline mr-4" alt="home"></i>
       Home
@@ -19,7 +19,7 @@
       routerLink="/search"
       [routerLinkActive]="['text-white', 'border-l-4', 'border-green-400', 'pl-4']"
       class="block px-1 py-2 px-6 hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
-      (click)="closeMenu.emit()"
+      (click)="closeMenuOnMobileWidth()"
     >
       <i class="fas fa-search inline mr-4" alt="search"></i>
       Search
@@ -28,7 +28,7 @@
       routerLink="/post-playlist"
       [routerLinkActive]="['text-white', 'border-l-4', 'border-green-400', 'pl-4']"
       class="block px-1 py-2 px-6 hover:text-white cursor-pointer focus:outline-none focus:shadow-outline active:bg-gray-800"
-      (click)="closeMenu.emit()"
+      (click)="closeMenuOnMobileWidth()"
     >
       <i class="fas fa-plus-square inline mr-4" alt="post"></i>
       Post a Playlist

@@ -30,4 +30,11 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+
+  closeMenuOnMobileWidth() {
+    if (window.innerWidth < 767) {
+      alert('Closing menu');
+      this.closeMenu.emit();
+    }
+  }
 }
