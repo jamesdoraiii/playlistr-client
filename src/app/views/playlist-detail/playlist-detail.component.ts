@@ -10,7 +10,7 @@ import { PlaylistsService } from '@services/playlists.service';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
-  playlist: Playlist;
+  playlist: any;
   playlistrDetails: any;
   comments: any[];
   userVoteDetails: any;
@@ -38,10 +38,15 @@ export class PlaylistDetailComponent implements OnInit {
 
       if (this.playlistrDetails) {
         this.comments = this.playlistrDetails.commentsByParentPlaylistId.nodes;
-        this.userVoteDetails = this.playlistrDetails.userVote.nodes;
-        this.playlistVoteCount =
-          this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount;
+        this.formatVoteInformation();
       }
     });
+  }
+
+  formatVoteInformation() {
+    this.playlist.voteInfo = {
+      userVote: this.playlistrDetails.userVote.nodes,
+      voteCount: this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount
+    };
   }
 }

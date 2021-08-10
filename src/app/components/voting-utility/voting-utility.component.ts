@@ -9,19 +9,22 @@ import { isPunctuatorToken } from 'graphql/language/lexer';
   styleUrls: ['./voting-utility.component.css']
 })
 export class VotingUtilityComponent implements OnInit {
-  @Input() playlistId: string;
+  @Input() itemType: string;
+  @Input() itemId: string;
+  @Input() voteCount: number;
 
   constructor(private voteService: VoteService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('this is the on init of the voting utility compontnt', { voteinfo: this.voteInfo });
+  }
 
   castVote(isUpvote: boolean) {
-    this.voteService.createVote(this.playlistId, isUpvote).subscribe(response => {});
+    this.voteService.createVote(this.itemId, isUpvote).subscribe(response => {});
   }
 
   // updateVote() {
   //   this.voteService.updateVote().subscribe(response => {
-
   //   })
   // }
 
