@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { VoteService } from '@services/vote.service';
+import { isPunctuatorToken } from 'graphql/language/lexer';
 
 @Component({
   selector: 'app-voting-utility',
@@ -6,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./voting-utility.component.css']
 })
 export class VotingUtilityComponent implements OnInit {
+  @Input() playlistId: string;
 
-  constructor() { }
+  constructor(private voteService: VoteService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  castVote(isUpvote: boolean) {
+    this.voteService.createVote(this.playlistId, isUpvote).subscribe(response => {});
   }
 
+  // updateVote() {
+  //   this.voteService.updateVote().subscribe(response => {
+
+  //   })
+  // }
+
+  // removeVote() {
+  //   this.voteService.removeVote().subscribe(response => {
+
+  //   })
+  // }
 }

@@ -1,4 +1,4 @@
-<div class="mb-8 mt-8 flex justify-between align-middle main-content-padding absolute w-full" if="nav">
+<div class="my-6 md:my-8 main-content-padding absolute w-full" if="nav">
     <div class="flex w-full justify-between">
         <button class="md:hidden focus:outline-none" (click)="openMenu.emit()">
             <!-- Menu Button -->
@@ -13,5 +13,11 @@
             <input class="w-full text-gray-900 mx-3 focus:outline-none bg-gray-200" placeholder="Artists, songs, or playlists" [(ngModel)]="searchInputText" (ngModelChange)="searchInputUpdate.next($event)" (keyup)="searchKeyUp()"/>
         </div>
     </div>
+
+    <div class="bg-gray-200 rounded-full px-3 py-1 mt-4 overflow-hidden items-center flex md:hidden">
+        <i class="fas fa-search" style="height: fit-content;"></i>
+        <input class="w-full text-gray-900 mx-3 focus:outline-none bg-gray-200" placeholder="Artists, songs, or playlists" [(ngModel)]="searchInputText" (ngModelChange)="searchInputUpdate.next($event)" (keyup)="searchKeyUp()"/>
+    </div>
+
     <!-- <a class="btn bg-green-600" routerLink="/auth">Login</a> -->
 </div>

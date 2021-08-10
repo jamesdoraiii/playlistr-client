@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Playlist } from '@models/playlist';
 import { PlaylistsService } from '@services/playlists.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -14,6 +13,8 @@ export class PlaylistDetailComponent implements OnInit {
   playlist: Playlist;
   playlistrDetails: any;
   comments: any[];
+  userVoteDetails: any;
+  playlistVoteCount: number;
 
   constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
 
@@ -36,7 +37,10 @@ export class PlaylistDetailComponent implements OnInit {
       this.playlistrDetails = result.data.playlistBySpotifyPlaylistId;
 
       if (this.playlistrDetails) {
-        this.comments = result.data.playlistBySpotifyPlaylistId.commentsByParentPlaylistId.nodes;
+        this.comments = this.playlistrDetails.commentsByParentPlaylistId.nodes;
+        this.userVoteDetails = this.playlistrDetails.userVote.nodes;
+        this.playlistVoteCount =
+          this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount;
       }
     });
   }

@@ -37,28 +37,44 @@ export class PlaylistsService {
   getPlaylistrPlaylistInfoById(id: string) {
     return this.apollo.query({
       query: gql`
-        query GetPlaylistDetailFromSpotifyPlaylistId {
-          playlistBySpotifyPlaylistId(spotifyPlaylistId: "${id}") {
-            createdAt
-            playlistId
-            genreTags
-            name
-            ownerUsername
-            spotifyPlaylistId
-            commentsByParentPlaylistId(orderBy: CREATED_AT_DESC) {
-              nodes {
-                content
-                createdAt
-                commentId
-                userByOwnerId {
-                  email
-                  spotifyUserId
-                  userId
-                }
+      query GetPlaylistDetailFromSpotifyPlaylistId {
+        playlistBySpotifyPlaylistId(spotifyPlaylistId: "${id}") {
+          createdAt
+          playlistId
+          genreTags
+          name
+          ownerUsername
+          spotifyPlaylistId
+          commentsByParentPlaylistId(orderBy: CREATED_AT_DESC) {
+            nodes {
+              content
+              createdAt
+              commentId
+              userByOwnerId {
+                email
+                spotifyUserId
+                userId
               }
             }
           }
+          userVote: votesByParentPlaylistId(condition: {ownerId: ${this.auth.userInfo.userId}}, first: 1) {
+            nodes {
+              ownerId
+              parentPlaylistId
+              isUpvote
+              createdAt
+              voteId
+            }
+          }
+          upVoteCount: votesByParentPlaylistId(condition: {isUpvote: true}) {
+            totalCount
+          }
+          downVoteCount: votesByParentPlaylistId(condition: {isUpvote: false}) {
+            totalCount
+          }
         }
+      }
+      
       `
     });
   }
