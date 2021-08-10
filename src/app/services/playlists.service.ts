@@ -52,6 +52,7 @@ export class PlaylistsService {
                 userByOwnerId {
                   email
                   spotifyUserId
+                  userId
                 }
               }
             }

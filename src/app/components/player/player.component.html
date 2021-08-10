@@ -49,19 +49,27 @@
 
 <!-- Mobile layout -->
 <div id="player" class="bg-gray-900 w-full py-2 px-2 shadow-md md:hidden" *ngIf="currentTrackInfo">
-    <div class="flex justify-between mb-4">
-        <div class="w-3/12">
+    <div class="flex justify-between mb-4" (click)="isOpen = !isOpen">
+        <div [ngClass]="isOpen ? 'w-4/12' : 'w-8/12'">
             <h2 class="text-lg text-white mb-0 truncate ... tracking-tighter ">{{currentTrackInfo.name}}</h2>
             <a class="truncate ... hover:underline hover:text-white cursor-pointer font-hairline" *ngFor="let artist of currentTrackInfo.artists; index as i"  (click)="navigateToArtist(artist)">{{artist.name}}{{currentTrackInfo.artists.length > 1 && i + 1 < currentTrackInfo.artists.length ? ", ": ""}}</a>
         </div>
     
-        <div class="flex items-center px-3">
+        <div class="flex items-center px-3" *ngIf="isOpen">
             <i class="fas fa-volume-up p-2"></i>
             <input type="range" min="1" max="100" class="seek_slider"  (change)="changeVolume($event)" [(ngModel)]="playerVolume">
         </div>
+        <div class="px-6 hover:text-white flex items-center" *ngIf="!isOpen">
+            <button (click)="pause()" *ngIf="playerStatus && !playerStatus.paused">
+                <i class="far fa-pause-circle fa-2x"></i>
+            </button>
+            <button (click)="resume()" *ngIf="playerStatus && playerStatus.paused">
+                <i class="far fa-play-circle fa-2x"></i>
+            </button>
+        </div>
     </div>
 
-    <div class="flex flex-col items-center flex-grow px-12">
+    <div class="flex flex-col items-center flex-grow px-12" *ngIf="isOpen">
         <div class="flex items-center justify-center w-6/12 text-gray-500 px-10 mb-3">
             <!-- <div class="px-4 hover:text-white">
                 <i class="fas fa-random"></i>

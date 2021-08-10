@@ -1,5 +1,8 @@
-<div class="w-full rounded-md bg-gray-700 p-3 mb-3 shadow" *ngFor="let comment of comments">
-    <p class="font-semibold text-lg mb-1 hover:underline">{{comment.userByOwnerId.spotifyUserId}}</p>
-    <p>{{comment.content}}</p>
+<div class="w-full rounded-md bg-gray-700 p-3 mb-3 shadow flex justify-between items-center" *ngFor="let comment of comments">
+    <div>
+        <p class="font-semibold text-lg mb-1 hover:underline">{{comment.userByOwnerId.spotifyUserId}}</p>
+        <p>{{comment.content}}</p>
+    </div>
+    <i class="fas fa-trash-alt cursor-pointer p-2" *ngIf="isOwner(comment)" (click)="deleteComment()"></i>
     <!-- <p>{{comment.createdAt}}</p> -->
 </div>

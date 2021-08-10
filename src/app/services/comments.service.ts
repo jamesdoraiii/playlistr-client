@@ -40,6 +40,7 @@ export class CommentsService {
               createdAt
               userByOwnerId {
                 email
+                userId
                 spotifyUserId
               }
             }
@@ -59,9 +60,23 @@ export class CommentsService {
             createdAt
             userByOwnerId {
               email
+              userId
               spotifyUserId
             }
           }
+        }
+      }
+      `
+    });
+  }
+
+  deleteComment(commentId: string) {
+    return this.apollo.mutate({
+      mutation: gql`
+      mutation DeleteComment {
+        __typename
+        deleteCommentByCommentId(input: {commentId: ${commentId}}) {
+          clientMutationId
         }
       }
       `

@@ -13,6 +13,7 @@ export class PlayerComponent implements OnInit {
   currentTrackInfo: any;
   playerStatus: any;
   playerVolume: number = 100;
+  isOpen: boolean;
 
   constructor(
     private webPlayerService: WebPlayerService,
