@@ -45,7 +45,7 @@ export class PlaylistsService {
             name
             ownerUsername
             spotifyPlaylistId
-            commentsByParentPlaylistId {
+            commentsByParentPlaylistId(orderBy: CREATED_AT_DESC) {
               nodes {
                 content
                 createdAt

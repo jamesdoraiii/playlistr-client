@@ -15,5 +15,6 @@ export class CommentCreatorComponent implements OnInit {
 
   createComment() {
     this.postComment.emit(this.commentContent);
+    this.commentContent = '';
   }
 }
