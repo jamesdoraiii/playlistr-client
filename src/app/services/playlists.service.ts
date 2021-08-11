@@ -57,7 +57,7 @@ export class PlaylistsService {
               }
             }
           }
-          userVote: votesByParentPlaylistId(condition: {ownerId: ${this.auth.userInfo.userId}}, first: 1) {
+          userLike: votesByParentPlaylistId(condition: {ownerId: ${this.auth.userInfo.userId}}, first: 1) {
             nodes {
               ownerId
               parentPlaylistId
@@ -66,12 +66,10 @@ export class PlaylistsService {
               voteId
             }
           }
-          upVoteCount: votesByParentPlaylistId(condition: {isUpvote: true}) {
+          likeCount: votesByParentPlaylistId(condition: {isUpvote: true}) {
             totalCount
           }
-          downVoteCount: votesByParentPlaylistId(condition: {isUpvote: false}) {
-            totalCount
-          }
+          
         }
       }
       

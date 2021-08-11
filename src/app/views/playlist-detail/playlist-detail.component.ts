@@ -33,7 +33,6 @@ export class PlaylistDetailComponent implements OnInit {
     this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
       console.log('This is the result from the playlist detail graphql call', result);
       this.playlistrDetails = Object.assign({}, result.data.playlistBySpotifyPlaylistId);
-      console.log('The playlistr details have been set check it out', this.playlistrDetails);
       this.formatPlaylistrDetails();
     });
   }
@@ -41,9 +40,9 @@ export class PlaylistDetailComponent implements OnInit {
   formatPlaylistrDetails() {
     if (this.playlistrDetails) {
       this.comments = this.playlistrDetails.commentsByParentPlaylistId.nodes;
-      this.playlistrDetails.voteInfo = {
-        userVote: this.playlistrDetails.userVote.nodes,
-        voteCount: this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount
+      this.playlistrDetails.likeInfo = {
+        userLike: this.playlistrDetails.userLike.nodes,
+        likeCount: this.playlistrDetails.likeCount.totalCount
       };
     }
   }

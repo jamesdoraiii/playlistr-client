@@ -13,9 +13,7 @@ export class CommentDisplayComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {
-    console.log(this.comments);
-  }
+  ngOnInit(): void {}
 
   isOwner(comment: any): boolean {
     if (comment.userByOwnerId.userId == this.auth.userInfo.userId) {

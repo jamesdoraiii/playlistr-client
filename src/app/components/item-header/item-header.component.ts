@@ -13,7 +13,5 @@ export class ItemHeaderComponent implements OnChanges {
 
   constructor() {}
 
-  ngOnChanges() {
-    console.log('in this on init of the item header', this.playlistrDetails);
-  }
+  ngOnChanges() {}
 }
