@@ -18,11 +18,11 @@ export class PlaylistDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.fetchPlaylist();
+      this.fetchPlaylistDetails();
     });
   }
 
-  fetchPlaylist() {
+  fetchPlaylistDetails() {
     this.spotifyPlaylistDetails = undefined;
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
@@ -32,19 +32,19 @@ export class PlaylistDetailComponent implements OnInit {
 
     this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
       console.log('This is the result from the playlist detail graphql call', result);
-      this.playlistrDetails = result.data.playlistBySpotifyPlaylistId;
-
-      if (this.playlistrDetails) {
-        this.comments = this.playlistrDetails.commentsByParentPlaylistId.nodes;
-        this.formatVoteInformation();
-      }
+      this.playlistrDetails = Object.assign({}, result.data.playlistBySpotifyPlaylistId);
+      console.log('The playlistr details have been set check it out', this.playlistrDetails);
+      this.formatPlaylistrDetails();
     });
   }
 
-  formatVoteInformation() {
-    this.spotifyPlaylistDetails.voteInfo = {
-      userVote: this.playlistrDetails.userVote.nodes,
-      voteCount: this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount
-    };
+  formatPlaylistrDetails() {
+    if (this.playlistrDetails) {
+      this.comments = this.playlistrDetails.commentsByParentPlaylistId.nodes;
+      this.playlistrDetails.voteInfo = {
+        userVote: this.playlistrDetails.userVote.nodes,
+        voteCount: this.playlistrDetails.upVoteCount.totalCount - this.playlistrDetails.downVoteCount.totalCount
+      };
+    }
   }
 }

@@ -15,7 +15,7 @@
           <i class="fas fa-circle mr-1" style='font-size: 4px;'></i>
           <span>{{item.type == 'album' ? item.total_tracks : item.tracks.length}} songs</span>
         </div>
-        <app-voting-utility *ngIf="item.playlistrDetails" itemType='playlist' [itemId]='item.id' [userVoteInfo]="item.voteInfo.userVoteInfo" [voteCount]="item.voteInfo.voteCount"></app-voting-utility>
+        <app-voting-utility *ngIf="playlistrDetails" itemType='playlist' [itemId]='playlistrDetails.playlistId' [userVoteInfo]="playlistrDetails.voteInfo.userVoteInfo" [voteCount]="playlistrDetails.voteInfo.voteCount"></app-voting-utility>
       </div>
     </div>
 

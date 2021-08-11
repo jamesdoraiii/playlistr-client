@@ -1,2 +1,2 @@
-<app-item-detail [item]="spotifyPlaylistDetails" [tracks]="spotifyPlaylistDetails.tracks" *ngIf="spotifyPlaylistDetails"></app-item-detail>
+<app-item-detail [item]="spotifyPlaylistDetails" [tracks]="spotifyPlaylistDetails.tracks" [playlistrDetails]="playlistrDetails" *ngIf="spotifyPlaylistDetails"></app-item-detail>
 <app-comments *ngIf="spotifyPlaylistDetails && playlistrDetails" parentItemType="playlist" [parentId]="playlistrDetails.playlistId" [comments]="comments"></app-comments>

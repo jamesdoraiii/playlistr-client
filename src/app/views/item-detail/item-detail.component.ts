@@ -10,6 +10,7 @@ const Vibrant = require('node-vibrant');
 export class ItemDetailComponent implements OnChanges {
   @Input() item: any;
   @Input() tracks: any;
+  @Input() playlistrDetails?: any;
   palette: any;
 
   constructor() {}
