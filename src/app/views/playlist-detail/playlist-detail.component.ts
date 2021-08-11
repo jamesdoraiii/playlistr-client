@@ -44,6 +44,8 @@ export class PlaylistDetailComponent implements OnInit {
         userLike: this.playlistrDetails.userLike.nodes,
         likeCount: this.playlistrDetails.likeCount.totalCount
       };
+
+      console.log('playlistr details have been formatted', this.playlistrDetails);
     }
   }
 }

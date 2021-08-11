@@ -16,7 +16,7 @@
           <span>{{item.type == 'album' ? item.total_tracks : item.tracks.length}} songs</span>
         </div>
         <!-- <app-voting-utility *ngIf="playlistrDetails" itemType='playlist' [itemId]='playlistrDetails.playlistId' [userVoteInfo]="playlistrDetails.voteInfo.userVoteInfo" [voteCount]="playlistrDetails.voteInfo.voteCount"></app-voting-utility> -->
-        <app-liking-utility *ngIf="playlistrDetails" itemType='playlist' [itemId]='playlistrDetails.playlistId' [userLikeInfo]="playlistrDetails.likeInfo.userLikeInfo" [likeCount]="playlistrDetails.likeInfo.likeCount"></app-liking-utility>
+        <app-liking-utility *ngIf="playlistrDetails" itemType='playlist' [itemId]='playlistrDetails.playlistId' [userLikeInfo]="playlistrDetails.likeInfo.userLike" [likeCount]="playlistrDetails.likeInfo.likeCount"></app-liking-utility>
       </div>
     </div>
 

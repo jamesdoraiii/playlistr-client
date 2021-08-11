@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { VoteService } from '@services/vote.service';
-import { isPunctuatorToken } from 'graphql/language/lexer';
 
 @Component({
   selector: 'app-voting-utility',
