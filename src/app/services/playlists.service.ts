@@ -72,7 +72,6 @@ export class PlaylistsService {
           
         }
       }
-      
       `
     });
   }
@@ -112,6 +111,62 @@ export class PlaylistsService {
               imageUrl
               genreTags
               type
+            }
+          }
+        }
+      `
+    });
+  }
+
+  // going to need a date range and a limit
+  getTopVotedPlaylists(period: string, limit: number) {
+    return this.apollo.query({
+      query: gql`
+        query TopVotedPlaylists {
+          allPlaylists(orderBy: VOTES_BY_PARENT_PLAYLIST_ID_COUNT_DESC) {
+            nodes {
+              spotifyPlaylistId
+              playlistId
+              ownerUsername
+              ownerId
+              nodeId
+              name
+              isValid
+              imageUrl
+              genreTags
+              type
+              votesByParentPlaylistId {
+                totalCount
+              }
+            }
+          }
+        }
+      `
+    });
+  }
+
+  getPlaylistsByGenre(tags: string) {
+    return this.apollo.query({
+      query: gql`
+        query PlaylistsByGenreTag {
+          allPlaylists(
+            orderBy: VOTES_BY_PARENT_PLAYLIST_ID_COUNT_DESC
+            filter: { genreTags: { contains: "Progressive House" } }
+          ) {
+            nodes {
+              spotifyPlaylistId
+              playlistId
+              ownerUsername
+              ownerId
+              nodeId
+              name
+              isValid
+              imageUrl
+              genreTags
+              type
+              votesByParentPlaylistId {
+                totalCount
+              }
             }
           }
         }
