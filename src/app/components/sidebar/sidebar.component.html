@@ -40,7 +40,7 @@
       <h5 class="uppercase mt-10 px-6 pb-3">
         Playlists
       </h5>
-      <a *ngFor="let playlist of userPlaylists" [routerLink]="['/playlist', playlist.id]" (click)="closeMenu.emit()" class="block pb-2 px-6  ... hover:text-white truncate" style="min-height: 32px;">{{ playlist.name }}</a>
+      <a *ngFor="let playlist of userPlaylists" [routerLink]="['/playlist', playlist.id]" (click)="closeMenuOnMobileWidth()" class="block pb-2 px-6  ... hover:text-white truncate" style="min-height: 32px;">{{ playlist.name }}</a>
     </div>
     <div class="w-full animate__animated animate__fadeIn animate__delay-1s">
       <img [src]="nowPlayingImageUrl" *ngIf="nowPlayingImageUrl" class="w-full h-auto"/>
