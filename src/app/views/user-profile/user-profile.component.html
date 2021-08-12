@@ -1,3 +1,10 @@
 <div class="main-content-padding pt-40 pb-5">
-    <p>You are on the user profile screen</p>
+    <div *ngIf="profileFound">
+        <h1 class="text-4xl text-white font-semibold mb-6">{{spotifyUserId.toUpperCase()}}'s Profile</h1>
+        <app-item-row title="Posted Playlists" [items]="playlistsByOwnerId"></app-item-row>
+        <app-item-row title="Liked Playlists" [items]="likedPlaylistsByOwnerId"></app-item-row>
+
+        <!-- Next step is do build out the users posted comments and include links to the parent playlist -->
+    </div>
+    
 </div>
