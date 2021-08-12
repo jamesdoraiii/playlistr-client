@@ -69,10 +69,10 @@ export class PlaylistsService {
           likeCount: votesByParentPlaylistId(condition: {isUpvote: true}) {
             totalCount
           }
-          
         }
       }
-      `
+      `,
+      fetchPolicy: 'no-cache'
     });
   }
 

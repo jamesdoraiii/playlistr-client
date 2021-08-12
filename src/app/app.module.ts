@@ -24,6 +24,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ItemDetailComponent } from './views/item-detail/item-detail.component';
 import { ItemHeaderComponent } from './components/item-header/item-header.component';
 import { ItemRowComponent } from './components/item-row/item-row.component';
+import { LikingUtilityComponent } from './components/liking-utility/liking-utility.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NgxAutocompleteModule } from 'ngx-angular-autocomplete';
@@ -36,11 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './views/search/search.component';
 import { SeeAllItemsComponent } from './views/see-all-items/see-all-items.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-up-confirmation.component';
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-up-confirmation.component';
 import { VotingUtilityComponent } from './components/voting-utility/voting-utility.component';
-import { LikingUtilityComponent } from './components/liking-utility/liking-utility.component';
 
 @NgModule({
   declarations: [
