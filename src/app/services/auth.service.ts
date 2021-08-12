@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment';
 import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,9 @@ export class AuthService {
   }
 
   updateUserWithSpotifyUsername(spotifyUsername: string) {
-    return this.apollo.mutate({
-      mutation: gql`mutation UpdateUserSpotifyUserIdByUserId {
+    return this.apollo
+      .mutate({
+        mutation: gql`mutation UpdateUserSpotifyUserIdByUserId {
         updateUserByUserId(input: {userPatch: {spotifyUserId: "${spotifyUsername}"}, userId: ${this.userInfo.userId}}) {
           user {
             email
@@ -36,7 +38,13 @@ export class AuthService {
         }
       }
       `
-    });
+      })
+      .pipe(
+        map(res => {
+          this.storeUserInfo(res);
+          return res;
+        })
+      );
   }
 
   getUserProfileFromSpotify() {
@@ -44,6 +52,16 @@ export class AuthService {
   }
 
   signIn(signInInfo: { email: string; password: string }) {
-    return this.http.post(environment.spotifyServerBaseUrl + 'sign-in', signInInfo);
+    return this.http.post(environment.spotifyServerBaseUrl + 'sign-in', signInInfo).pipe(
+      map(res => {
+        this.storeUserInfo(res);
+        return res;
+      })
+    );
+  }
+
+  storeUserInfo(user: any) {
+    this.userInfo = user;
+    localStorage.setItem('userInfo', JSON.stringify(user));
   }
 }

@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
     { route: '/home', title: 'Home', icon: 'fas fa-home' },
     { route: '/search', title: 'Search', icon: 'fas fa-search' },
     { route: '/post-playlist', title: 'Post a Playlist', icon: 'fas fa-plus-square' },
-    { route: '/user-profile', title: 'Your Profile', icon: 'fas fa-user' }
+    { route: '/user/' + this.auth.userInfo.spotifyUserId, title: 'Your Profile', icon: 'fas fa-user' }
   ];
 
   get userPlaylists(): any[] {

@@ -2,6 +2,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '@services/auth.service';
+import { Router } from '@angular/router';
 import { environment } from '@environment';
 
 @Component({
@@ -15,7 +16,7 @@ export class AuthComponent implements OnInit {
   submitted: boolean;
   error = '';
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {
     // Here if there is already a user in the auth service navigate to the home screen
   }
 
@@ -87,7 +88,6 @@ export class AuthComponent implements OnInit {
           alert('An account already exists with this username.');
           return;
         }
-        this.storeUserInfo(response.data.createUser.user);
         window.location.href = environment.spotifyServerBaseUrl + 'login';
       },
       err => alert('There was an error trying to sign you up. Please try again.')
@@ -101,11 +101,7 @@ export class AuthComponent implements OnInit {
     };
     this.auth.signIn(signInInfo).subscribe(response => {
       console.log('This is the response from the sign in call', response);
+      this.router.navigate(['/home']);
     });
-  }
-
-  storeUserInfo(user: any) {
-    this.auth.userInfo = user;
-    localStorage.setItem('userInfo', JSON.stringify(user));
   }
 }
