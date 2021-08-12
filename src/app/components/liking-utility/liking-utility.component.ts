@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 
 import { VoteService } from '@services/vote.service';
 
@@ -12,29 +12,37 @@ export class LikingUtilityComponent implements OnChanges {
   @Input() itemId: string;
   @Input() likeCount: number;
   @Input() userLikeInfo: any;
+  isLiked: boolean;
 
-  constructor(private voteService: VoteService) {}
-
-  get isLiked() {
-    if (this.userLikeInfo.length > 0) {
-      return true;
-    }
-    return false;
-  }
+  constructor(private voteService: VoteService, private cdRef: ChangeDetectorRef) {}
 
   ngOnChanges(): void {
-    console.log('this is the on init of the liking utility compontnt', this.userLikeInfo);
+    this.checkIsLiked();
+  }
+
+  checkIsLiked() {
+    if (this.userLikeInfo.length > 0) {
+      this.isLiked = true;
+      return;
+    }
+    this.isLiked = false;
   }
 
   likePlaylist() {
-    this.voteService.createVote(this.itemId, true).subscribe(response => {
+    this.voteService.createVote(this.itemId, true).subscribe((response: any) => {
       alert('You have liked the playlist.');
+      this.isLiked = true;
+      this.likeCount += 1;
+      this.userLikeInfo = [response.data.createVote.vote];
     });
   }
 
   unlikePlaylist() {
     this.voteService.removeVote(this.userLikeInfo[0].voteId).subscribe(response => {
       alert('You have unliked the playlist.');
+      this.userLikeInfo = [];
+      this.isLiked = false;
+      this.likeCount -= 1;
     });
   }
 }

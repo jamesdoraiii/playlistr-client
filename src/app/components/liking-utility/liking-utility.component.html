@@ -1,5 +1,5 @@
-<div class="flex items-center text-xl py-4 text-white">
-    <i class="far fa-heart pr-2 cursor-pointer" [ngClass]="{'text-orange-600': false}" (click)="likePlaylist()" *ngIf="!isLiked"></i>
-    <i class="fas fa-heart pr-2 cursor-pointer" [ngClass]="{'text-orange-600': false}" (click)="unlikePlaylist()" *ngIf="isLiked"></i>
-    <p class="font-semibold" [ngClass]="{'text-orange-600': false, 'text-purple-600': false}">{{likeCount}}</p>
+<div class="flex items-center text-2xl py-4 text-white">
+    <i class="far fa-heart pr-2 cursor-pointer" (click)="likePlaylist()" *ngIf="!isLiked"></i>
+    <i class="fas fa-heart pr-2 cursor-pointer" (click)="unlikePlaylist()" *ngIf="isLiked"></i>
+    <p class="font-semibold align-middle mb-1">{{likeCount}}</p>
 </div>
