@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+import { AuthService } from '@services/auth.service';
 import { PlaylistsService } from '@services/playlists.service';
 import { WebPlayerService } from '@services/web-player.service';
 
@@ -26,7 +27,8 @@ export class SidebarComponent implements OnInit {
   constructor(
     private webPlayerService: WebPlayerService,
     private cdRef: ChangeDetectorRef,
-    private playlistsService: PlaylistsService
+    private playlistsService: PlaylistsService,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class SidebarComponent implements OnInit {
         this.cdRef.detectChanges();
       }
     });
+    console.log(this.auth.userInfo);
   }
 
   closeMenuOnMobileWidth() {

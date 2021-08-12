@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'playlist/:playlistId', component: PlaylistDetailComponent },
   { path: 'artist/:artistId', component: ArtistDetailComponent },
-  { path: 'user/:userId', component: UserProfileComponent },
+  { path: 'user/:username', component: UserProfileComponent },
   { path: 'search', component: SearchComponent },
   { path: 'see-all-items', component: SeeAllItemsComponent },
   { path: 'album/:albumId', component: AlbumDetailComponent },
