@@ -75,6 +75,7 @@ export class PlaylistsService {
       fetchPolicy: 'no-cache'
     });
   }
+  // added no-cache policy to the playlist above to prevent users from being able to like over and over, may want to adjust how this works and get the playlist information in a separate query from the likes and the votes, this will allow the playlist to be cached but get likes and votes without caching so that they are always up to date. This will likely be more efficient.
 
   getPlaylistsForUser() {
     this.base.requestWithToken(`https://api.spotify.com/v1/me/playlists`).subscribe(
