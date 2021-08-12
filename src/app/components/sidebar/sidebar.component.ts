@@ -12,6 +12,13 @@ export class SidebarComponent implements OnInit {
   nowPlayingImageUrl: string;
   @Output() closeMenu = new EventEmitter<any>();
 
+  menuItems = [
+    { route: '/home', title: 'Home', icon: 'fas fa-home' },
+    { route: '/search', title: 'Search', icon: 'fas fa-search' },
+    { route: '/post-playlist', title: 'Post a Playlist', icon: 'fas fa-plus-square' },
+    { route: '/user-profile', title: 'Your Profile', icon: 'fas fa-user' }
+  ];
+
   get userPlaylists(): any[] {
     return this.playlistsService.userPlaylists;
   }
