@@ -9,16 +9,19 @@ import { AuthService } from '@services/auth.service';
 })
 export class CommentDisplayComponent implements OnInit {
   @Input() comments: any[];
+  @Input() isProfileView: boolean;
   @Output() deleteCommentEvent = new EventEmitter<string>();
 
   constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.comments);
+  }
 
   isOwner(comment: any): boolean {
-    if (comment.userByOwnerId.userId == this.auth.userInfo.userId) {
-      return true;
-    }
+    // if (comment.userByOwnerId.userId == this.auth.userInfo.userId) {
+    //   return true;
+    // }
     return false;
   }
 

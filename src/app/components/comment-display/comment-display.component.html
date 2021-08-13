@@ -1,7 +1,8 @@
 <div class="w-full rounded-md bg-gray-700 p-3 mb-3 shadow flex justify-between items-center" *ngFor="let comment of comments">
     <div>
-        <p class="font-semibold text-lg mb-1 hover:underline">{{comment.userByOwnerId.spotifyUserId}}</p>
-        <p>{{comment.content}}</p>
+        <p class="font-semibold text-lg mb-1 hover:underline" *ngIf="!isProfileView">{{comment.userByOwnerId.spotifyUserId}}</p>
+        <p class="text-whites">{{comment.content}}</p>
+        <a class="block text-xs mt-2 text-gray-500 hover:underline cursor-pointer" *ngIf="isProfileView" [routerLink]="'/playlist/' + comment.playlistByParentPlaylistId.spotifyPlaylistId">View Parent Playlist</a>
     </div>
     <i class="fas fa-trash-alt cursor-pointer p-2" *ngIf="isOwner(comment)" (click)="deleteComment(comment)"></i>
     <!-- <p>{{comment.createdAt}}</p> -->

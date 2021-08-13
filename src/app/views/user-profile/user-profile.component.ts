@@ -37,11 +37,12 @@ export class UserProfileComponent implements OnInit {
       this.playlistsByOwnerId = data.playlistsByOwnerId.nodes;
       this.likedPlaylistsByOwnerId = this.formatLikesIntoListOfPlaylists(data.likedPlaylists.nodes);
       this.profileFound = true;
-      console.log('check it', this.likesByOwnerId);
     });
   }
 
   formatLikesIntoListOfPlaylists(likes: any) {
     return likes.map(like => like.playlistByParentPlaylistId);
   }
+
+  deleteComment() {}
 }

@@ -30,6 +30,9 @@ export class UserProfileService {
                 parentPlaylistId
                 content
                 createdAt
+                playlistByParentPlaylistId {
+                  spotifyPlaylistId
+                }
               }
             }
             playlistsByOwnerId {
