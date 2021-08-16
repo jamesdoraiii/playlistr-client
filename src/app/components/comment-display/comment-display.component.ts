@@ -10,6 +10,7 @@ import { AuthService } from '@services/auth.service';
 export class CommentDisplayComponent implements OnInit {
   @Input() comments: any[];
   @Input() isProfileView: boolean;
+  @Input() showDelete: boolean;
   @Output() deleteCommentEvent = new EventEmitter<string>();
 
   constructor(private auth: AuthService) {}

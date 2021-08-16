@@ -1,4 +1,4 @@
-<div class="bg-gray-900 w-full h-screen">
+<div class="bg-gray-900 w-full h-screen overflow-auto">
   <div class="pt-4 pb-5 px-6 text-white w-full">
     <i class="fas fa-compact-disc fa-2x mr-1"></i>
     <h3 class="font-extrabold text-4xl inline">Playlistr</h3>
@@ -7,7 +7,7 @@
     style="background-image:url(assets/images/hero-image-1.jpg)"
     class="min-h-1/2 w-full bg-bottom sm:bg-right bg-cover flex justify-center"
   >
-    <div class="h-auto self-center text-center text-white">
+    <div class="h-auto self-center text-center text-white p-2">
       <h1 class="text-6xl font-bold">Playlistr</h1>
       <h3 class="text-2xl font-semibold mb-4">Share and discuss spotify playlists with ease.</h3>
       <button
@@ -19,16 +19,11 @@
     </div>
   </div>
   <div class="p-4 md:mx-16 xl:max-w-3/4 xl:m-auto">
-    <div class="flex flex-wrap -mx-2 w-full">
-      <div class="w-full md:w-1/3 px-2 mb-4">
-        <app-hero-card></app-hero-card>
+    <div class="flex flex-wrap w-full">
+      <div class="w-full md:w-1/3 px-2 mb-4" *ngFor="let card of heroCards">
+        <app-hero-card [icon]="card.icon" [title]="card.title" [description]="card.description"></app-hero-card>
       </div>
-      <div class="w-full md:w-1/3 px-2 mb-4">
-        <app-hero-card></app-hero-card>
-      </div>
-      <div class="w-full md:w-1/3 px-2 mb-4">
-        <app-hero-card></app-hero-card>
-      </div>
+  
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
-<div class="main-content-padding pt-40 pb-5">
+<div class="main-content-padding pt-24 pb-5">
     <div *ngIf="profileFound">
-        <h1 class="text-4xl text-white font-semibold mb-6">{{spotifyUserId.toUpperCase()}}'s Profile</h1>
+        <h1 class="text-4xl text-white font-bold mb-6">{{spotifyUserId.toUpperCase()}}'s Profile</h1>
         <app-item-row title="Posted Playlists" [items]="playlistsByOwnerId"></app-item-row>
         <app-item-row title="Liked Playlists" [items]="likedPlaylistsByOwnerId"></app-item-row>
 
@@ -8,5 +8,4 @@
         <h4 class="text-white font-bold text-2xl sm:text-lg mb-3">Comments</h4>
         <app-comment-display [comments]="commentsByOwnerId" [isProfileView]="true" (deleteComment)="deleteComment()"></app-comment-display>
     </div>
-    
 </div>
