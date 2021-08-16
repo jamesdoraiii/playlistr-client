@@ -1,3 +1,4 @@
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { PlaylistsService } from '@services/playlists.service';
@@ -38,14 +39,28 @@ export class PostPlaylistComponent implements OnInit {
   tagsForPlaylist = [];
   playlistId: string;
   playlistPreviewInfo: any;
+  postPlaylistForm: FormGroup;
 
-  constructor(private playlistService: PlaylistsService, private router: Router) {}
+  constructor(private playlistService: PlaylistsService, private router: Router, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.postPlaylistForm = this.formBuilder.group(
+      {
+        playlistUrl: ['', Validators.required, Validators.pattern('')],
+        genreTags: [[], Validators.required]
+      },
+      { validators: this.validateUrl }
+    );
+  }
 
   removeTag(tagForRemoval: any) {
     this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval);
   }
+
+  validateUrl: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let url = group.get('playlistUrl').value;
+    return url.indexOf('https://open.spotify.com/playlist/') > -1 ? null : { invalidUrl: true };
+  };
 
   clearPlaylistPreview() {
     this.playlistPreviewInfo = undefined;
@@ -83,5 +98,9 @@ export class PostPlaylistComponent implements OnInit {
         this.clearPlaylistPreview();
       }
     );
+  }
+
+  onSubmit() {
+    console.log('submitting!', this.postPlaylistForm);
   }
 }
