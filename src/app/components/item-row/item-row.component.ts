@@ -10,7 +10,6 @@ import { SeeAllItemsService } from '@services/see-all-items.service';
 })
 export class ItemRowComponent implements OnInit {
   @Input() title: string;
-  @Input() seeAllTitle: string;
   @Input() items: any[];
   @Input() showAllItems: boolean;
 
@@ -20,7 +19,7 @@ export class ItemRowComponent implements OnInit {
 
   seeAll() {
     this.seeAllItemsService.setItems(this.items);
-    this.seeAllItemsService.setTitle(this.seeAllTitle);
+    this.seeAllItemsService.setTitle('All ' + this.title);
     this.router.navigate(['/see-all-items']);
   }
 
