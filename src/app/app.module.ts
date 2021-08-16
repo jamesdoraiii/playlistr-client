@@ -41,6 +41,7 @@ import { SignUpConfirmationComponent } from './views/sign-up-confirmation/sign-u
 import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { VotingUtilityComponent } from './components/voting-utility/voting-utility.component';
+import { WelcomeModalComponent } from './components/welcome-modal/welcome-modal.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { VotingUtilityComponent } from './components/voting-utility/voting-utili
     PostPlaylistPreviewComponent,
     SignUpConfirmationComponent,
     VotingUtilityComponent,
-    LikingUtilityComponent
+    LikingUtilityComponent,
+    WelcomeModalComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule, ReactiveFormsModule],
   providers: [
