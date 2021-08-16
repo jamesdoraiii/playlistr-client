@@ -13,19 +13,19 @@ export class HeroComponent implements OnInit {
       icon: 'fas fa-plus',
       title: 'Post',
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        'Share your carefully crafted playlists with the community! Other users will be able to listen to, discuss, and like your playlists. Will you be able to get your playlist into the weekly list of top liked playlists?'
     },
     {
       icon: 'fas fa-comment',
       title: 'Discuss',
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        "Use Playlistr's commenting system to join a discussion with fellow music lovers. Discuss music and playlists with like minded people and use feedback to craft the perfect playlist!"
     },
     {
-      icon: 'fas fa-heart',
-      title: 'Like',
+      icon: 'fas fa-volume-up',
+      title: 'Listen',
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        "Listen to playlists and discover new music! Discover new music in the genre's you love and share that with your fellow Playlistr users."
     }
   ];
   constructor(private router: Router) {}
