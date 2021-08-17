@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 import { Playlist } from '@models/playlist';
 import { PlaylistsService } from '@services/playlists.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -13,8 +15,14 @@ export class PlaylistDetailComponent implements OnInit {
   spotifyPlaylistDetails: any;
   playlistrDetails: any;
   comments: any[];
+  isOwner: boolean;
 
-  constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private playlistsService: PlaylistsService,
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -26,14 +34,22 @@ export class PlaylistDetailComponent implements OnInit {
     this.spotifyPlaylistDetails = undefined;
     const playlistId = this.route.snapshot.paramMap.get('playlistId');
 
-    this.playlistsService.getSpotifyPlaylistInfoById(playlistId).subscribe((result: Playlist) => {
-      this.spotifyPlaylistDetails = result;
-    });
+    this.playlistsService.getSpotifyPlaylistInfoById(playlistId).subscribe(
+      (result: Playlist) => {
+        this.spotifyPlaylistDetails = result;
+      },
+      err => {
+        alert(err.message);
+        this.router.navigate(['/home']);
+      }
+    );
 
     this.playlistsService.getPlaylistrPlaylistInfoById(playlistId).subscribe((result: any) => {
-      console.log('This is the result from the playlist detail graphql call', result);
-      this.playlistrDetails = Object.assign({}, result.data.playlistBySpotifyPlaylistId);
-      this.formatPlaylistrDetails();
+      const playlist = result.data.playlistBySpotifyPlaylistId;
+      if (playlist) {
+        this.playlistrDetails = Object.assign({}, playlist);
+        this.formatPlaylistrDetails();
+      }
     });
   }
 
@@ -44,8 +60,8 @@ export class PlaylistDetailComponent implements OnInit {
         userLike: this.playlistrDetails.userLike.nodes,
         likeCount: this.playlistrDetails.likeCount.totalCount
       };
-
-      console.log('playlistr details have been formatted', this.playlistrDetails);
+      this.isOwner = this.auth.isOwner(this.playlistrDetails.ownerUsername);
+      console.log(this.isOwner);
     }
   }
 }

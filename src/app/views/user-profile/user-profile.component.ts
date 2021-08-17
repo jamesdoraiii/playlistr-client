@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserProfileService } from '@services/user-profile.service';
-import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-user-profile',
