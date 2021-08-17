@@ -4,6 +4,6 @@
         <p class="text-white">{{comment.content}}</p>
         <a class="block text-xs mt-2 text-gray-500 hover:underline cursor-pointer" *ngIf="isProfileView" [routerLink]="'/playlist/' + comment.playlistByParentPlaylistId.spotifyPlaylistId">View Parent Playlist</a>
     </div>
-    <i class="fas fa-trash-alt cursor-pointer p-2" *ngIf="showDelete" (click)="deleteComment(comment)"></i>
-    <!-- <p>{{comment.createdAt}}</p> -->
+   
+    <app-delete-item-utility *ngIf="showDelete" itemType='comment' [itemId]="comment.commentId"></app-delete-item-utility>
 </div>

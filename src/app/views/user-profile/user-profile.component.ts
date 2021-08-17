@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 import { Router } from '@angular/router';
 import { UserProfileService } from '@services/user-profile.service';
 
@@ -17,10 +18,19 @@ export class UserProfileComponent implements OnInit {
   likedPlaylistsByOwnerId: any;
   profileFound: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router, private profileService: UserProfileService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private profileService: UserProfileService,
+    private auth: AuthService
+  ) {}
 
   get spotifyUserId(): string {
     return this.route.snapshot.paramMap.get('username');
+  }
+
+  get isOwner() {
+    return this.auth.isOwner(this.spotifyUserId);
   }
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

@@ -65,7 +65,7 @@ export class AuthService {
     localStorage.setItem('userInfo', JSON.stringify(user));
   }
 
-  isOwner(username: boolean) {
+  isOwner(username: string): boolean {
     return username == this.userInfo.spotifyUserId;
   }
 }

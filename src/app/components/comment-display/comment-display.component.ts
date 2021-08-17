@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { AuthService } from '@services/auth.service';
 
@@ -7,22 +7,13 @@ import { AuthService } from '@services/auth.service';
   templateUrl: './comment-display.component.html',
   styleUrls: ['./comment-display.component.css']
 })
-export class CommentDisplayComponent {
+export class CommentDisplayComponent implements OnChanges {
   @Input() comments: any[];
   @Input() isProfileView: boolean;
   @Input() showDelete: boolean;
-  @Output() deleteCommentEvent = new EventEmitter<string>();
-
   constructor(private auth: AuthService) {}
 
-  isOwner(comment: any): boolean {
-    // if (comment.userByOwnerId.userId == this.auth.userInfo.userId) {
-    //   return true;
-    // }
-    return false;
-  }
-
-  deleteComment(comment) {
-    this.deleteCommentEvent.emit(comment.commentId);
+  ngOnChanges() {
+    console.log(this.comments);
   }
 }
