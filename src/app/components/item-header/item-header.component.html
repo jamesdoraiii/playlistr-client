@@ -15,12 +15,11 @@
           <i class="fas fa-circle mr-1" style='font-size: 4px;'></i>
           <span>{{item.type == 'album' ? item.total_tracks : item.tracks.length}} songs</span>
         </div>
-        <div class='flex items-center'>
-          <app-liking-utility *ngIf="playlistrDetails" itemType='playlist' [itemId]='playlistrDetails.playlistId' [userLikeInfo]="playlistrDetails.likeInfo.userLike" [likeCount]="playlistrDetails.likeInfo.likeCount"></app-liking-utility>
-          <div class="ml-4">
-            <app-delete-item-utility></app-delete-item-utility>
+        <div class='flex items-center' *ngIf="playlistrDetails">
+          <div class="mr-4">
+            <app-liking-utility itemType='playlist' [itemId]='playlistrDetails.playlistId' [userLikeInfo]="playlistrDetails.likeInfo.userLike" [likeCount]="playlistrDetails.likeInfo.likeCount"></app-liking-utility>
           </div>
-          
+            <app-delete-item-utility *ngIf="isOwner" itemType="playlist" [itemId]="playlistrDetails.playlistId"></app-delete-item-utility>
         </div>
       </div>
     </div>

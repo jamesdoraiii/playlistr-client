@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
+import { CommentsService } from '@services/comments.service';
+import { PlaylistsService } from '@services/playlists.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +10,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./delete-item-utility.component.css']
 })
 export class DeleteItemUtilityComponent implements OnInit {
+  @Input() itemType: string;
+  @Input() itemId: string;
   isModalOpen: boolean;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private playlistService: PlaylistsService,
+    private commentService: CommentsService
+  ) {}
 
   ngOnInit(): void {}
 
   deleteItem() {
-    alert('item deleted!');
-    this.router.navigate(['/home']);
+    if (this.itemType == 'playlist') {
+      this.deletePlaylist();
+    }
+
+    if (this.itemType == 'comment') {
+      this.deleteComment();
+    }
+  }
+
+  deletePlaylist() {
+    this.playlistService.deletePlaylistByPlaylistID(this.itemId).subscribe(response => {
+      alert('item deleted!');
+      this.router.navigate(['/home']);
+    });
+  }
+
+  deleteComment() {
+    this.commentService.deleteComment(this.itemId).subscribe(response => {
+      alert('item deleted!');
+      this.router.navigate(['/home']);
+    });
   }
 }

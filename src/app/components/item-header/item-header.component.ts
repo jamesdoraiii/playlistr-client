@@ -17,6 +17,7 @@ export class ItemHeaderComponent implements OnChanges {
   constructor(private auth: AuthService) {}
 
   ngOnChanges() {
+    // console.log('these are the playlistr details', this.playlistrDetails);
     if (this.playlistrDetails) {
       this.isOwner = this.auth.isOwner(this.playlistrDetails.ownerUsername);
     }

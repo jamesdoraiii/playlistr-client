@@ -204,4 +204,16 @@ export class PlaylistsService {
 
     return playlist;
   }
+
+  deletePlaylistByPlaylistID(id: string) {
+    return this.apollo.mutate({
+      mutation: gql`
+      mutation DeletePlaylistByPlaylistID {
+        deletePlaylistByPlaylistId(input: {playlistId: ${id}}) {
+          clientMutationId
+        }
+      }
+      `
+    });
+  }
 }
