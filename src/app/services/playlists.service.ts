@@ -28,8 +28,13 @@ export class PlaylistsService {
     return this.http
       .post(environment.spotifyServerBaseUrl, { endpoint: `https://api.spotify.com/v1/playlists/${id}` })
       .pipe(
-        map(res => {
-          return this.formatTracks(res);
+        map((res: any) => {
+          console.log('this is the response in the get spotify playlist info by ID', res);
+          if (res.name && res.name != 'Error') {
+            return this.formatTracks(res);
+          } else {
+            throw new Error('No playlist found for the submitted ID.');
+          }
         })
       );
   }

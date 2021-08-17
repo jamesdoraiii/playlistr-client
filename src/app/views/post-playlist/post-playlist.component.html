@@ -1,6 +1,7 @@
 <div class="main-content-padding pt-48 h-screen">
     <form [formGroup]="postPlaylistForm" (ngSubmit)="onFormSubmit()" class="w-5/6 lg:w-2/3 mx-auto bg-gray-900 p-8 rounded-md shadow-xl" style="max-width: 700px;" *ngIf="!playlistPreviewInfo">
       <h1 class="text-4xl mb-6">Post a Playlist</h1>
+        <!-- <p class="mb-4">To get the URL for your playlist, go to Spotify, right click on the playlist of your choice, select 'share', and click 'Copy link to playlist'.</p> -->
         <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="playlistUrl">Playlist URL</label>
             <input
