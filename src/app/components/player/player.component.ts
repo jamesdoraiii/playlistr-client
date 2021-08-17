@@ -24,7 +24,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.webPlayerService.playerStatusUpdated.subscribe(status => {
-      if (status.track_window.current_track != this.currentTrackInfo) {
+      if (status && status.track_window.current_track != this.currentTrackInfo) {
         this.currentTrackInfo = status.track_window.current_track;
       }
       this.playerStatus = status;

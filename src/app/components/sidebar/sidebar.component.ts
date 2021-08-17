@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.webPlayerService.playerStatusUpdated.subscribe(status => {
-      if (status.track_window.current_track.album.images[0].url != this.nowPlayingImageUrl) {
+      if (status && status.track_window.current_track.album.images[0].url != this.nowPlayingImageUrl) {
         this.nowPlayingImageUrl = status.track_window.current_track.album.images[0].url;
         this.cdRef.detectChanges();
       }

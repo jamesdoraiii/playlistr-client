@@ -40,6 +40,7 @@ export class PostPlaylistComponent implements OnInit {
   playlistId: string;
   playlistPreviewInfo: any;
   postPlaylistForm: FormGroup;
+  submitted: boolean;
 
   constructor(private playlistService: PlaylistsService, private router: Router, private formBuilder: FormBuilder) {}
 
@@ -51,6 +52,10 @@ export class PostPlaylistComponent implements OnInit {
       },
       { validators: this.validateUrl }
     );
+  }
+
+  get f() {
+    return this.postPlaylistForm.controls;
   }
 
   removeTag(tagForRemoval: any) {
@@ -101,6 +106,14 @@ export class PostPlaylistComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitting!', this.postPlaylistForm);
+    this.submitted = true;
+    console.log('SUBMITTING', this.f);
+
+    if (this.postPlaylistForm.invalid) {
+      console.log('FORM IS INVALID', this.postPlaylistForm);
+      return;
+    } else {
+      // SUBMIT!!
+    }
   }
 }
