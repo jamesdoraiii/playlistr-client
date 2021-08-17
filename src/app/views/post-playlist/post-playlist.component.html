@@ -1,5 +1,5 @@
 <div class="main-content-padding pt-48 h-screen">
-    <form [formGroup]="postPlaylistForm" (ngSubmit)="onSubmit()" class="w-5/6 lg:w-2/3 mx-auto bg-gray-900 p-8 rounded-md shadow-xl" style="max-width: 700px;" *ngIf="!playlistPreviewInfo">
+    <form [formGroup]="postPlaylistForm" (ngSubmit)="onFormSubmit()" class="w-5/6 lg:w-2/3 mx-auto bg-gray-900 p-8 rounded-md shadow-xl" style="max-width: 700px;" *ngIf="!playlistPreviewInfo">
       <h1 class="text-4xl mb-6">Post a Playlist</h1>
         <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="playlistUrl">Playlist URL</label>
@@ -18,8 +18,13 @@
           </div>
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="tag-input">Genre Tags</label>
-            <app-autocomplete-input [options]="availableGenreTags" (selected)="tagsForPlaylist.push($event.name)"></app-autocomplete-input>
-            <p class="text-grey text-xs mt-1"></p>
+            <select class="rounded w-full py-2 px-3 bg-gray-700 text-gray-200 focus:outline-none focus:shadow-outline" (change)="addTag($event)" formControlName="genreTag" [ngClass]="{ 'is-invalid': submitted && tagsForPlaylist.length < 1}">
+              <option value="" [selected]="true" disabled>Select a genre</option>
+              <option *ngFor="let tag of availableGenreTags" [ngValue]="tag">{{tag}}</option>
+           </select>
+           <div *ngIf="submitted" class="invalid-feedback">
+            <div *ngIf="tagsForPlaylist.length < 1">Must select at least one genre tag.</div>
+        </div>
           </div>  
           
           <!-- tags section -->
@@ -37,6 +42,6 @@
     </form>
 
     <div class="w-5/6 lg:w-2/3 mx-auto" style="max-width: 900px;">
-      <app-post-playlist-preview *ngIf="playlistPreviewInfo" [playlist]="playlistPreviewInfo" (submit)="submitPlaylist()" (cancel)="clearPlaylistPreview()"></app-post-playlist-preview>
+      <app-post-playlist-preview *ngIf="playlistPreviewInfo" [playlist]="playlistPreviewInfo" (submit)="postPlaylist()" (cancel)="clearPlaylistPreview()"></app-post-playlist-preview>
     </div>
 </div>

@@ -11,29 +11,29 @@ import { Router } from '@angular/router';
 })
 export class PostPlaylistComponent implements OnInit {
   availableGenreTags = [
-    { id: 1, name: 'Acid House' },
-    { id: 2, name: 'Chicago House' },
-    { id: 3, name: 'Deep House' },
-    { id: 4, name: 'Diva House' },
-    { id: 5, name: 'Dutch House' },
-    { id: 6, name: 'Electro House' },
-    { id: 7, name: 'Freestyle House' },
-    { id: 8, name: 'French House' },
-    { id: 9, name: 'Funky House' },
-    { id: 10, name: 'Ghetto House' },
-    { id: 11, name: 'Hardbag' },
-    { id: 12, name: 'Hip House' },
-    { id: 13, name: 'Italo House' },
-    { id: 14, name: 'Latin House' },
-    { id: 15, name: 'Minimal House' },
-    { id: 16, name: 'Progressive House' },
-    { id: 17, name: 'Rave Music' },
-    { id: 18, name: 'Swing House' },
-    { id: 19, name: 'Tech House' },
-    { id: 20, name: 'Tribal House' },
-    { id: 21, name: 'UK Hard House' },
-    { id: 22, name: 'US Garage' },
-    { id: 23, name: 'Vocal House' }
+    'Acid House',
+    'Chicago House',
+    'Deep House',
+    'Diva House',
+    'Dutch House',
+    'Electro House',
+    'Freestyle House',
+    'French House',
+    'Funky House',
+    'Ghetto House',
+    'Hardbag',
+    'Hip House',
+    'Italo House',
+    'Latin House',
+    'Minimal House',
+    'Progressive House',
+    'Rave Music',
+    'Swing House',
+    'Tech House',
+    'Tribal House',
+    'UK Hard House',
+    'US Garage',
+    'Vocal House'
   ];
   playlistUrl: string;
   tagsForPlaylist = [];
@@ -47,8 +47,8 @@ export class PostPlaylistComponent implements OnInit {
   ngOnInit(): void {
     this.postPlaylistForm = this.formBuilder.group(
       {
-        playlistUrl: ['', Validators.required, Validators.pattern('')],
-        genreTags: [[], Validators.required]
+        playlistUrl: ['', Validators.required],
+        genreTag: [[], Validators.required]
       },
       { validators: this.validateUrl }
     );
@@ -58,12 +58,19 @@ export class PostPlaylistComponent implements OnInit {
     return this.postPlaylistForm.controls;
   }
 
+  addTag(event: any) {
+    console.log('adding tag', event);
+    this.tagsForPlaylist.push(event.target.value.split(': ')[1]);
+  }
+
   removeTag(tagForRemoval: any) {
     this.tagsForPlaylist = this.tagsForPlaylist.filter(tag => tag != tagForRemoval);
   }
 
   validateUrl: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let url = group.get('playlistUrl').value;
+    console.log(group);
+    console.log('validating the url', url);
     return url.indexOf('https://open.spotify.com/playlist/') > -1 ? null : { invalidUrl: true };
   };
 
@@ -71,11 +78,21 @@ export class PostPlaylistComponent implements OnInit {
     this.playlistPreviewInfo = undefined;
   }
 
-  submit() {
-    var playlistId = this.playlistUrl.substring(
-      this.playlistUrl.lastIndexOf('/') + 1,
-      this.playlistUrl.lastIndexOf('?')
-    );
+  onFormSubmit() {
+    this.submitted = true;
+    console.log('SUBMITTING', this.f);
+
+    if (this.postPlaylistForm.invalid) {
+      console.log('FORM IS INVALID', this.postPlaylistForm);
+      return;
+    } else {
+      this.getPlaylistPreview();
+    }
+  }
+
+  getPlaylistPreview() {
+    const playlistUrl = this.f.playlistUrl.value;
+    var playlistId = this.getPlaylistIDFromUrl(playlistUrl);
 
     this.playlistService.getSpotifyPlaylistInfoById(playlistId).subscribe(response => {
       console.log('This is the response from get playlist info by id', response);
@@ -83,11 +100,9 @@ export class PostPlaylistComponent implements OnInit {
     });
   }
 
-  submitPlaylist() {
-    var playlistId = this.playlistUrl.substring(
-      this.playlistUrl.lastIndexOf('/') + 1,
-      this.playlistUrl.lastIndexOf('?')
-    );
+  postPlaylist() {
+    const playlistUrl = this.f.playlistUrl.value;
+    var playlistId = this.getPlaylistIDFromUrl(playlistUrl);
 
     this.playlistService.postPlaylist(playlistId, this.tagsForPlaylist).subscribe(
       response => {
@@ -105,15 +120,9 @@ export class PostPlaylistComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    this.submitted = true;
-    console.log('SUBMITTING', this.f);
+  getPlaylistIDFromUrl(url: string) {
+    const playlistId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('?'));
 
-    if (this.postPlaylistForm.invalid) {
-      console.log('FORM IS INVALID', this.postPlaylistForm);
-      return;
-    } else {
-      // SUBMIT!!
-    }
+    return playlistId;
   }
 }
