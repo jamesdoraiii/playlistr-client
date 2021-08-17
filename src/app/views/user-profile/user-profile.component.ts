@@ -33,10 +33,17 @@ export class UserProfileComponent implements OnInit {
     this.profileService.getPlaylistrUserDetails(this.spotifyUserId).subscribe((response: any) => {
       console.log('this is the response from the user profile lookup page', response);
       const data = response.data.allUsers.nodes[0];
-      this.commentsByOwnerId = data.commentsByOwnerId.nodes;
-      this.playlistsByOwnerId = data.playlistsByOwnerId.nodes;
-      this.likedPlaylistsByOwnerId = this.formatLikesIntoListOfPlaylists(data.likedPlaylists.nodes);
-      this.profileFound = true;
+      if (data) {
+        this.commentsByOwnerId = data.commentsByOwnerId.nodes;
+        this.playlistsByOwnerId = data.playlistsByOwnerId.nodes;
+        this.likedPlaylistsByOwnerId = this.formatLikesIntoListOfPlaylists(data.likedPlaylists.nodes);
+        this.profileFound = true;
+      } else {
+        alert(
+          'Unable to retrieve information on this user. It is likely that they have not registered with Playlistr.'
+        );
+        this.router.navigate(['/home']);
+      }
     });
   }
 
