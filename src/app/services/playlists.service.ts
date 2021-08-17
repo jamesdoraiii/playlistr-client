@@ -188,9 +188,9 @@ export class PlaylistsService {
             this.auth.userInfo.userId
           }, spotifyPlaylistId: "${spotifyPlaylistId}", genreTags: ${JSON.stringify(
         genreTags
-      )}, isValid: false, name: ${playlistName}, ownerUsername: ${
+      )}, isValid: false, name: "${playlistName}", ownerUsername: "${
         this.auth.userInfo.spotifyUserId
-      }, imageUrl: ${imageUrl}}}) {
+      }", imageUrl: "${imageUrl}"}}) {
             clientMutationId
           }
         }

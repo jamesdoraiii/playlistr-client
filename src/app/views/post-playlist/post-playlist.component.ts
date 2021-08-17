@@ -77,10 +77,8 @@ export class PostPlaylistComponent implements OnInit {
 
   onFormSubmit() {
     this.submitted = true;
-    console.log('SUBMITTING', this.f);
 
     if (this.postPlaylistForm.invalid) {
-      console.log('FORM IS INVALID', this.postPlaylistForm);
       return;
     } else {
       this.getPlaylistPreview();
@@ -111,7 +109,6 @@ export class PostPlaylistComponent implements OnInit {
 
     this.playlistService.postPlaylist(playlistName, playlistId, this.tagsForPlaylist, imageUrl).subscribe(
       response => {
-        console.log('This is the response from post playlist', response);
         if (response.data) {
           this.router.navigate(['/playlist/' + playlistId]);
         }
@@ -127,7 +124,6 @@ export class PostPlaylistComponent implements OnInit {
 
   getPlaylistIDFromUrl(url: string) {
     const playlistId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('?'));
-
     return playlistId;
   }
 }
