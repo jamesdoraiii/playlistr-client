@@ -42,6 +42,7 @@ import { TracklistComponent } from './components/tracklist/tracklist.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { VotingUtilityComponent } from './components/voting-utility/voting-utility.component';
 import { WelcomeModalComponent } from './components/welcome-modal/welcome-modal.component';
+import { DeleteItemUtilityComponent } from './components/delete-item-utility/delete-item-utility.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { WelcomeModalComponent } from './components/welcome-modal/welcome-modal.
     SignUpConfirmationComponent,
     VotingUtilityComponent,
     LikingUtilityComponent,
-    WelcomeModalComponent
+    WelcomeModalComponent,
+    DeleteItemUtilityComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgxAutocompleteModule, ReactiveFormsModule],
   providers: [

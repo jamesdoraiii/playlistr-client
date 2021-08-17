@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '@services/auth.service';
 import { Playlist } from '@models/playlist';
 import { PlaylistsService } from '@services/playlists.service';
 import { Router } from '@angular/router';
@@ -15,14 +14,8 @@ export class PlaylistDetailComponent implements OnInit {
   spotifyPlaylistDetails: any;
   playlistrDetails: any;
   comments: any[];
-  isOwner: boolean;
 
-  constructor(
-    private route: ActivatedRoute,
-    private playlistsService: PlaylistsService,
-    private router: Router,
-    private auth: AuthService
-  ) {}
+  constructor(private route: ActivatedRoute, private playlistsService: PlaylistsService, private router: Router) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -60,8 +53,6 @@ export class PlaylistDetailComponent implements OnInit {
         userLike: this.playlistrDetails.userLike.nodes,
         likeCount: this.playlistrDetails.likeCount.totalCount
       };
-      this.isOwner = this.auth.isOwner(this.playlistrDetails.ownerUsername);
-      console.log(this.isOwner);
     }
   }
 }

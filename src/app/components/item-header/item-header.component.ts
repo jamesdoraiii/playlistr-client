@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
+import { AuthService } from '@services/auth.service';
+
 @Component({
   selector: 'app-item-header',
   templateUrl: './item-header.component.html',
@@ -10,8 +12,13 @@ export class ItemHeaderComponent implements OnChanges {
   @Input() headerBackground: any;
   @Input() padTop: boolean;
   @Input() playlistrDetails?: any;
+  isOwner: boolean;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
-  ngOnChanges() {}
+  ngOnChanges() {
+    if (this.playlistrDetails) {
+      this.isOwner = this.auth.isOwner(this.playlistrDetails.ownerUsername);
+    }
+  }
 }
