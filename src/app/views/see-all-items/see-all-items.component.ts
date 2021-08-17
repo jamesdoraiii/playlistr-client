@@ -24,6 +24,8 @@ export class SeeAllItemsComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     const elmnt = document.getElementById('nav');
-    elmnt.scrollIntoView({ behavior: 'smooth' });
+    if (elmnt) {
+      elmnt.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

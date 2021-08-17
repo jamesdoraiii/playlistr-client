@@ -9,7 +9,7 @@
         <p class="mb-2 truncate">{{ item.description }}</p>
         <div  class="flex items-center">
           <a *ngIf="item.type == 'album'" class="text-white font-bold hover:underline cursor-pointer mr-1" [routerLink]="['/artist', item.artists[0].id]">{{ item.artists[0].name }}</a>
-          <a *ngIf="item.type == 'playlist'" class="text-white font-bold hover:underline cursor-pointer mr-1">{{ item.owner.display_name }}</a>
+          <a *ngIf="item.type == 'playlist'" class="text-white font-bold hover:underline cursor-pointer mr-1" [routerLink]="['/user/' + item.owner.display_name]">{{ item.owner.display_name }}</a>
           <i class="fas fa-circle mr-1" style='font-size: 4px;' *ngIf="item.type == 'album'"></i>
           <span class="mr-1" *ngIf="item.type == 'album'">{{ item.release_date.split('-')[0] }}</span>
           <i class="fas fa-circle mr-1" style='font-size: 4px;'></i>
