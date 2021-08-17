@@ -38,12 +38,10 @@ export class SidebarComponent implements OnInit {
         this.cdRef.detectChanges();
       }
     });
-    console.log(this.auth.userInfo);
   }
 
   closeMenuOnMobileWidth() {
     if (window.innerWidth < 767) {
-      alert('Closing menu');
       this.closeMenu.emit();
     }
   }

@@ -36,7 +36,6 @@ export class SignUpConfirmationComponent implements OnInit {
     this.auth.getUserProfileFromSpotify().subscribe(
       (res: any) => {
         this.auth.updateUserWithSpotifyUsername(res.id).subscribe(response => {
-          console.log('This is the response from update user', response);
           this.profileCreatedSuccesfully = true;
         });
       },

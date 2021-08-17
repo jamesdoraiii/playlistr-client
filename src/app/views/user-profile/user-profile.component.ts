@@ -30,7 +30,6 @@ export class UserProfileComponent implements OnInit {
 
   fetchUserDetails() {
     this.profileService.getPlaylistrUserDetails(this.spotifyUserId).subscribe((response: any) => {
-      console.log('this is the response from the user profile lookup page', response);
       const data = response.data.allUsers.nodes[0];
       if (data) {
         this.commentsByOwnerId = data.commentsByOwnerId.nodes;

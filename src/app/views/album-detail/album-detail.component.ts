@@ -21,7 +21,6 @@ export class AlbumDetailComponent implements OnInit {
         this.album.tracks.items.forEach(track => {
           track.album = this.album;
         });
-        console.log('Look at this result', result);
       });
     });
   }

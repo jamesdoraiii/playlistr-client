@@ -7,17 +7,13 @@ import { VoteService } from '@services/vote.service';
   templateUrl: './voting-utility.component.html',
   styleUrls: ['./voting-utility.component.css']
 })
-export class VotingUtilityComponent implements OnInit {
+export class VotingUtilityComponent {
   @Input() itemType: string;
   @Input() itemId: string;
   @Input() voteCount: number;
   @Input() userVoteInfo: any;
 
   constructor(private voteService: VoteService) {}
-
-  ngOnInit(): void {
-    console.log('this is the on init of the voting utility compontnt', { voteinfo: this.userVoteInfo });
-  }
 
   castVote(isUpvote: boolean) {
     this.voteService.createVote(this.itemId, isUpvote).subscribe(response => {

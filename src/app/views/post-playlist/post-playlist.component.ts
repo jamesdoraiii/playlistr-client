@@ -91,11 +91,9 @@ export class PostPlaylistComponent implements OnInit {
 
     this.playlistService.getSpotifyPlaylistInfoById(playlistId).subscribe(
       response => {
-        console.log('This is the response from get playlist info by id', response);
         this.playlistPreviewInfo = response;
       },
       err => {
-        console.log('this is the error', err);
         alert(err.message + 'Please double check your playlist URL and try again.');
       }
     );

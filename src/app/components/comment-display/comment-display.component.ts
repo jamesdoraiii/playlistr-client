@@ -7,17 +7,13 @@ import { AuthService } from '@services/auth.service';
   templateUrl: './comment-display.component.html',
   styleUrls: ['./comment-display.component.css']
 })
-export class CommentDisplayComponent implements OnInit {
+export class CommentDisplayComponent {
   @Input() comments: any[];
   @Input() isProfileView: boolean;
   @Input() showDelete: boolean;
   @Output() deleteCommentEvent = new EventEmitter<string>();
 
   constructor(private auth: AuthService) {}
-
-  ngOnInit(): void {
-    console.log(this.comments);
-  }
 
   isOwner(comment: any): boolean {
     // if (comment.userByOwnerId.userId == this.auth.userInfo.userId) {

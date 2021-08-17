@@ -63,9 +63,8 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log('SUBMITTING', this.f);
+
     if (this.loginForm.invalid) {
-      console.log('FORM IS INVALID', this.loginForm);
       return;
     }
 
@@ -100,7 +99,6 @@ export class AuthComponent implements OnInit {
       password: this.f.password.value
     };
     this.auth.signIn(signInInfo).subscribe(response => {
-      console.log('This is the response from the sign in call', response);
       this.router.navigate(['/home']);
     });
   }
