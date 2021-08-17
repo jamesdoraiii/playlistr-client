@@ -1,4 +1,4 @@
-<div class="main-content-padding pt-24 pb-5">
+<div class="main-content-padding pt-32 md:pt-24 pb-5">
     <div *ngIf="profileFound">
         <h1 class="text-4xl text-white font-bold mb-6">{{spotifyUserId.toUpperCase()}}'s Profile</h1>
         <app-item-row title="Posted Playlists" [items]="playlistsByOwnerId"></app-item-row>
