@@ -180,7 +180,7 @@ export class PlaylistsService {
     });
   }
 
-  postPlaylist(spotifyPlaylistId: string, genreTags: string[]) {
+  postPlaylist(playlistName: string, spotifyPlaylistId: string, genreTags: string[], imageUrl: string) {
     return this.apollo.mutate({
       mutation: gql`
         mutation CreatePlaylist {
@@ -188,7 +188,9 @@ export class PlaylistsService {
             this.auth.userInfo.userId
           }, spotifyPlaylistId: "${spotifyPlaylistId}", genreTags: ${JSON.stringify(
         genreTags
-      )}, isValid: false, name: "Test Playlist", ownerUsername: "jimmyd233", imageUrl: "https://d29rinwu2hi5i3.cloudfront.net/article_media/78a90e8c-b043-426f-a87e-f79d6de6c62e/cdj-2000nexus-screen_copy.jpg"}}) {
+      )}, isValid: false, name: ${playlistName}, ownerUsername: ${
+        this.auth.userInfo.spotifyUserId
+      }, imageUrl: ${imageUrl}}}) {
             clientMutationId
           }
         }

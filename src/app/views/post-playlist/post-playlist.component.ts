@@ -59,7 +59,6 @@ export class PostPlaylistComponent implements OnInit {
   }
 
   addTag(event: any) {
-    console.log('adding tag', event);
     this.tagsForPlaylist.push(event.target.value.split(': ')[1]);
   }
 
@@ -69,8 +68,6 @@ export class PostPlaylistComponent implements OnInit {
 
   validateUrl: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let url = group.get('playlistUrl').value;
-    console.log(group);
-    console.log('validating the url', url);
     return url.indexOf('https://open.spotify.com/playlist/') > -1 ? null : { invalidUrl: true };
   };
 
@@ -109,8 +106,10 @@ export class PostPlaylistComponent implements OnInit {
   postPlaylist() {
     const playlistUrl = this.f.playlistUrl.value;
     var playlistId = this.getPlaylistIDFromUrl(playlistUrl);
+    var playlistName = this.playlistPreviewInfo.name;
+    const imageUrl = this.playlistPreviewInfo.images[0].url;
 
-    this.playlistService.postPlaylist(playlistId, this.tagsForPlaylist).subscribe(
+    this.playlistService.postPlaylist(playlistName, playlistId, this.tagsForPlaylist, imageUrl).subscribe(
       response => {
         console.log('This is the response from post playlist', response);
         if (response.data) {
@@ -119,7 +118,7 @@ export class PostPlaylistComponent implements OnInit {
       },
       err => {
         alert(
-          'There was an issue while trying to submit your playlist. It is possible that this playlist has already been submitted by another user.'
+          'There was an issue while trying to submit your playlist. It is likely that this playlist has already been submitted by another user.'
         );
         this.clearPlaylistPreview();
       }
